@@ -1,4 +1,6 @@
-const db = require('./connection.js');
+/** @format */
+
+const db = require("./connection.js");
 const firebase = require("firebase");
 
 // adding a new document to a collection without setting the ID
@@ -55,8 +57,8 @@ const firebase = require("firebase");
 
 //querying all docs in a collection
 db.collection("Users")
-    .where("name", "==", "Jihyun")
-    .get()
-    .then(users => {
-        users.forEach((user) => console.log(user.data()))
-    })
+	.where("name", "==", "Jihyun")
+	.get()
+	.then(users => {
+		users.forEach(user => console.log(user.data()));
+	});

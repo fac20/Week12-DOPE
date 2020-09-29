@@ -1,47 +1,36 @@
 /** @format */
 
-import React from "react";
-import styled from "styled-components"
+import React, { useState } from "react";
+import styled from "styled-components";
+import { MedsPageOne } from "./meds-page-one";
+import MedsPageTwo from "./meds-page-two";
+import MedsPageThree from "./meds-page-three";
 
 const Form = styled.form`
-display: flex;
-flex-direction: column
-`
+	display: flex;
+	flex-direction: column;
+`;
 
 function AddMedication() {
 	// Add states here
+	const [inputs, setInputs] = useState({
+		supply: 0,
+	});
+
+	const handleChange = event => {
+		const { name, value } = event.target;
+		setInputs({ ...inputs, [name]: value });
+	};
 
 	// The markup for the Step 1 UI
 	return (
 		<Form onSubmit="">
-			<h1>Add your medicine</h1>
-
-			<label>
-				Name of medicine
-				<input name="text" type="text" value="" required />
-			</label>
-
-			<label>Type:</label>
-			<input type="checkbox" id="tablet" name="tablet" value="" />
-			<label for="tablet">Tablet</label>
-
-			<input type="checkbox" id="liquid" name="liquid" value="" />
-			<label for="liquid">Liquid</label>
-            
-			<input type="checkbox" id="needle" name="needle" value="" />
-			<label for="needle">Needle</label>
-
-			<label>
-				Strength:
-                <input name="text" type="text" value="" required />
-			</label>
-
-			<label for="unit">Unit:</label>
-            <select name="unit" id="unit">
-            <option value="mg">mg</option>
-            <option value="ml">ml</option>
-            <option value="g">g</option>
-            </select>
+			<h1> Page one</h1>
+			<MedsPageOne />
+			<h1> Page two</h1>
+			<MedsPageTwo />
+			<h1> Page three</h1>
+			<MedsPageThree handleChange={handleChange} supply={inputs.supply} />
 
 			<button>Submit</button>
 		</Form>
