@@ -13,12 +13,13 @@ const Form = styled.form`
 
 function AddMedication() {
 	// Add states here
-	const [inputs, setInputs] = useState({
-		supply: 0,
-	});
+	const [inputs, setInputs] = useState({ oftenFreq: 0 });
 
 	const handleChange = event => {
-		const { name, value } = event.target;
+		// const { name, value } = event.target;
+		const target = event.target;
+		const value = target.type === "checkbox" ? target.checked : target.value;
+		const name = target.name;
 		setInputs({ ...inputs, [name]: value });
 	};
 
@@ -26,11 +27,11 @@ function AddMedication() {
 	return (
 		<Form onSubmit="">
 			<h1> Page one</h1>
-			<MedsPageOne />
+			<MedsPageOne handleChange={handleChange} inputs={inputs} />
 			<h1> Page two</h1>
-			<MedsPageTwo />
+			<MedsPageTwo handleChange={handleChange} inputs={inputs} />
 			<h1> Page three</h1>
-			<MedsPageThree handleChange={handleChange} supply={inputs.supply} />
+			<MedsPageThree handleChange={handleChange} inputs={inputs} />
 
 			<button>Submit</button>
 		</Form>

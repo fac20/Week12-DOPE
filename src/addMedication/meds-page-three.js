@@ -3,12 +3,12 @@
 import React from "react";
 import styled from "styled-components";
 
-const MedsPageThree = props => {
+const MedsPageThree = ({ inputs, handleChange }) => {
 	return (
 		<>
 			<label>
 				Priority:
-				<select>
+				<select name="priority" value={inputs.priority} onChange={handleChange}>
 					<option value="Low">Low</option>
 					<option value="Medium">Medium</option>
 					<option value="High">High</option>
@@ -18,8 +18,9 @@ const MedsPageThree = props => {
 			<label>
 				Additional Notes
 				<textarea
-					value={props.notes}
-					onChange={props.handleChange}
+					name="notes"
+					value={inputs.notes}
+					onChange={handleChange}
 					type="textarea"
 				/>
 			</label>
@@ -31,8 +32,8 @@ const MedsPageThree = props => {
 					min="0"
 					placeholder="e.g 10"
 					name="supply"
-					value={props.supply}
-					onChange={props.handleChange}></input>
+					value={inputs.supply}
+					onChange={handleChange}></input>
 			</label>
 		</>
 	);

@@ -1,44 +1,54 @@
 /** @format */
 
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import SelectTime from "./select-time";
 
-const MedsPageTwo = () => {
+const MedsPageTwo = ({ inputs, handleChange }) => {
+	let timeArray = [...Array(+inputs.oftenFreq).keys()];
+
 	return (
 		<>
-			<label htmlFor="howMany">
+			<label>
 				How many/much
-				<input type="number" id="howMany" />
+				<input
+					type="number"
+					min="1"
+					placeholder="e.g 3"
+					name="amount"
+					value={inputs.amount}
+					onChange={handleChange}
+				/>
 				per dose
 			</label>
 
-			<label htmlFor="howOften">
+			<label>
 				How often
-				<input type="text" id="howOften" />a
-				<select name="selectHowOften" id="selectHowOften">
-					<option value="day">day</option>
-					<option value="week">week</option>
-					<option value="month">month</option>
-				</select>
+				<input
+					type="number"
+					min="0"
+					placeholder="e.g 3"
+					name="oftenFreq"
+					value={inputs.oftenFreq}
+					onChange={handleChange}
+				/>
+				<label>
+					a
+					<select
+						name="oftenUnit"
+						value={inputs.oftenUnit}
+						onChange={event => {
+							handleChange(event);
+						}}>
+						<option value="day">day</option>
+						<option value="week">week</option>
+						<option value="month">month</option>
+					</select>
+				</label>
 			</label>
-
-			<label htmlFor="">
-				Set time
-				<select name="" id="">
-					<option value="before">before</option>
-					<option value="after">after</option>
-				</select>
-				<select name="" id="">
-					<option value="breakfast">breakfast</option>
-					<option value="lunch">lunch</option>
-					<option value="dinner">dinner</option>
-				</select>
-			</label>
-
-			<label htmlFor="">
-				Duration
-				<input type="text" id="" />
-			</label>
+			{timeArray.map(x => (
+				<SelectTime />
+			))}
 		</>
 	);
 };
