@@ -1,13 +1,21 @@
 /** @format */
 
 import React from "react";
-import "./App.css";
-import AddMedication  from "./addMedication/form"
+import AddMedication from "./addMedication/form";
+import db from "./connection.js";
 
 function App() {
-	return <div className="App">
-		<AddMedication/>
-	</div>;
+	db.collection("Users")
+		// .where("name", "==", "Jihyun")
+		.get()
+		.then(users => {
+			users.forEach(user => console.log(user.data()));
+		});
+	return (
+		<div className="App">
+			<AddMedication />
+		</div>
+	);
 }
 
 export default App;
