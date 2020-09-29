@@ -9,6 +9,6 @@ test("Jest is working", () => {
 });
 
 test("Testing Add Medication Form loads", () => {
-  render(<App></App>);
-  screen.getByText("Add your medicine")
+	render(<App></App>);
+	screen.getByText("Add your medicine");
 }); /** @format */
