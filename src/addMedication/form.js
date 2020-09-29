@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { MedsPageOne } from "./meds-page-one";
 import MedsPageTwo from "./meds-page-two";
@@ -14,27 +14,57 @@ const Form = styled.form`
 function AddMedication() {
 	// Add states here
 	const [inputs, setInputs] = useState({ oftenFreq: 0 });
+	const [page, setPage] = useState(1);
 
 	const handleChange = event => {
 		// const { name, value } = event.target;
 		const target = event.target;
-		const value = target.type === "checkbox" ? target.checked : target.value;
+		const value = target.type === "checbox" ? target.checked : target.value;
 		const name = target.name;
 		setInputs({ ...inputs, [name]: value });
 	};
 
 	// The markup for the Step 1 UI
 	return (
-		<Form onSubmit="">
-			<h1> Page one</h1>
-			<MedsPageOne handleChange={handleChange} inputs={inputs} />
-			<h1> Page two</h1>
-			<MedsPageTwo handleChange={handleChange} inputs={inputs} />
-			<h1> Page three</h1>
-			<MedsPageThree handleChange={handleChange} inputs={inputs} />
+		<>
+			<Form onSubmit={e => e.preventDefault()}>
+				<h2>{page}/3</h2>
 
-			<button>Submit</button>
-		</Form>
+				{page === 1 && (
+					<MedsPageOne
+						handleChange={handleChange}
+						inputs={inputs}
+						page={page}
+					/>
+				)}
+
+				{page === 2 && (
+					<MedsPageTwo
+						handleChange={handleChange}
+						inputs={inputs}
+						page={page}
+					/>
+				)}
+
+				{page === 3 && (
+					<MedsPageThree
+						handleChange={handleChange}
+						inputs={inputs}
+						page={page}
+					/>
+				)}
+
+				{page !== 1 && (
+					<button onClick={() => setPage(page => page - 1)}>back</button>
+				)}
+
+				{page !== 3 && (
+					<button onClick={() => setPage(page => page + 1)}>forward</button>
+				)}
+
+				{page === 3 && <button>Submit</button>}
+			</Form>
+		</>
 	);
 }
 

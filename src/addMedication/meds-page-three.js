@@ -3,7 +3,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const MedsPageThree = ({ inputs, handleChange }) => {
+const MedsPageThree = ({ inputs, handleChange, page }) => {
 	return (
 		<>
 			<label>

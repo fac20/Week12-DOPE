@@ -18,7 +18,8 @@
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
 		"prettier": "./node_modules/.bin/prettier . --write",
-		"eslint": "./node_modules/.bin/eslint . --fix"
+		"eslint": "./node_modules/.bin/eslint . --fix",
+		"add": "git add ."
 	},
 	"eslintConfig": {
 		"extends": "react-app"
@@ -52,7 +53,7 @@
 	"husky": {
 		"hooks": {
 			"prepare-commit-msg": "exec < /dev/tty && git cz --hook || true",
-			"pre-commit": "npm run prettier && npm run eslint"
+			"pre-commit": "npm run prettier && npm run eslint &&npm run add"
 		}
 	},
 	"config": {

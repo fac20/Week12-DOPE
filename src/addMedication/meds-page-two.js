@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import SelectTime from "./select-time";
 
-const MedsPageTwo = ({ inputs, handleChange }) => {
+const MedsPageTwo = ({ inputs, handleChange, page }) => {
 	let timeArray = [...Array(+inputs.oftenFreq).keys()];
 
 	return (
@@ -46,8 +46,9 @@ const MedsPageTwo = ({ inputs, handleChange }) => {
 					</select>
 				</label>
 			</label>
-			{timeArray.map(x => (
-				<SelectTime />
+
+			{timeArray.map((x, i) => (
+				<SelectTime key={i} />
 			))}
 		</>
 	);

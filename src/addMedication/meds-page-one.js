@@ -3,7 +3,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const MedsPageOne = ({ inputs, handleChange }) => {
+const MedsPageOne = ({ inputs, handleChange, page }) => {
 	return (
 		<>
 			<h1>Add your medicine</h1>
@@ -25,6 +25,7 @@ const MedsPageOne = ({ inputs, handleChange }) => {
 				id="tablet"
 				name="type"
 				value="tablet"
+				checked={inputs.type === "tablet"}
 				onChange={handleChange}
 			/>
 			<label for="tablet">Tablet</label>
@@ -34,6 +35,7 @@ const MedsPageOne = ({ inputs, handleChange }) => {
 				id="liquid"
 				name="type"
 				value="liquid"
+				checked={inputs.type === "liquid"}
 				onChange={handleChange}
 			/>
 			<label for="liquid">Liquid</label>
@@ -43,6 +45,7 @@ const MedsPageOne = ({ inputs, handleChange }) => {
 				id="needle"
 				name="type"
 				value="needle"
+				checked={inputs.type === "needle"}
 				onChange={handleChange}
 			/>
 			<label for="needle">Needle</label>
