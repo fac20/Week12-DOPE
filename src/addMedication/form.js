@@ -78,34 +78,34 @@ function AddMedication() {
 
 	// The markup for the Step 1 UI
 	return (
-		<Form onSubmit="">
+		<Form>
 			<Heading>Add your medicine</Heading>
 
 			<Label>Name of medicine</Label>
-			<TextInput name="text" type="text" value="" required />
+			<TextInput name="text" type="text" required />
 
 			<Label>Type</Label>
 			<TypeWrapper>
 				<TabletWrapper>
-					<Label for="tablet">Tablet</Label>
-					<HiddenCheckbox type="checkbox" id="tablet" name="tablet" value="" />
+					<Label htmlFor="tablet">Tablet</Label>
+					<HiddenCheckbox type="checkbox" id="tablet" name="tablet" />
 				</TabletWrapper>
 
 				<LiquidWrapper>
-					<Label for="liquid">Liquid</Label>
-					<HiddenCheckbox type="checkbox" id="liquid" name="liquid" value="" />
+					<Label htmlFor="liquid">Liquid</Label>
+					<HiddenCheckbox type="checkbox" id="liquid" name="liquid" />
 				</LiquidWrapper>
 
 				<NeedleWrapper>
-					<Label for="needle">Needle</Label>
-					<HiddenCheckbox type="checkbox" id="needle" name="needle" value="" />
+					<Label htmlFor="needle">Needle</Label>
+					<HiddenCheckbox type="checkbox" id="needle" name="needle" />
 				</NeedleWrapper>
 			</TypeWrapper>
 
 			<Label>Strength</Label>
-			<TextInput name="text" type="text" value="" required />
+			<TextInput name="text" type="text" required />
 
-			<Label for="unit">Unit</Label>
+			<Label htmlFor="unit">Unit</Label>
 			<select name="unit" id="unit">
 				<option value="mg">mg</option>
 				<option value="ml">ml</option>
@@ -113,7 +113,7 @@ function AddMedication() {
 			</select>
 
 			<Label>Description</Label>
-			<TextInput name="text" type="text" value="" required />
+			<TextInput name="text" type="text" required />
 
 			<Button>Submit</Button>
 		</Form>
