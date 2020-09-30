@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import SelectTime from "./select-time";
+import SetSpecificTime from "./SetSpecificTime";
 
 const MedsPageTwo = ({ inputs, handleChange, page }) => {
 	let timeArray = [...Array(+inputs.oftenFreq).keys()];
@@ -47,8 +48,24 @@ const MedsPageTwo = ({ inputs, handleChange, page }) => {
 				</label>
 			</label>
 
+			<button>Set specific time/time of day</button>
+
 			{timeArray.map((x, i) => (
-				<SelectTime key={i} />
+				<SelectTime
+					key={i}
+					id={i}
+					handleChange={handleChange}
+					inputs={inputs}
+				/>
+			))}
+
+			{timeArray.map((x, i) => (
+				<SetSpecificTime
+					key={i}
+					id={i}
+					handleChange={handleChange}
+					inputs={inputs}
+				/>
 			))}
 		</>
 	);
