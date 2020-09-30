@@ -19,7 +19,7 @@ const Label = styled.label`
 	font-size: 18px;
 `;
 
-const TextInput = styled.input.attrs({ type: 'text' })`
+const TextInput = styled.input.attrs({ type: "text" })`
 	border: 1px solid rgba(0, 0, 0, 0.15);
 	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 `;
@@ -27,14 +27,14 @@ const TextInput = styled.input.attrs({ type: 'text' })`
 const TypeWrapper = styled.div`
 	display: flex;
 	flex-direction: row;
-`
-const HiddenCheckbox = styled.input.attrs({ type: 'checkbox' })`
+`;
+const HiddenCheckbox = styled.input.attrs({ type: "checkbox" })`
 	border: 1px solid red;
 	/* visibility: hidden; */
 `;
 
 const TabletWrapper = styled.div`
-	background: #FFF6F6;
+	background: #fff6f6;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 	border-radius: 10px;
 	width: 93px;
@@ -43,7 +43,7 @@ const TabletWrapper = styled.div`
 `;
 
 const LiquidWrapper = styled.div`
-	background: #FFF6F6;
+	background: #fff6f6;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 	border-radius: 10px;
 	width: 93px;
@@ -52,7 +52,7 @@ const LiquidWrapper = styled.div`
 `;
 
 const NeedleWrapper = styled.div`
-	background: #FFF6F6;
+	background: #fff6f6;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 	border-radius: 10px;
 	width: 93px;
@@ -64,11 +64,11 @@ const Button = styled.button`
 	font-size: 16px;
 	font-weight: bold;
 	font-style: italic;
-	background: linear-gradient(180deg, #FDAF67 0%, #F7C649 100%);
+	background: linear-gradient(180deg, #fdaf67 0%, #f7c649 100%);
 	border-radius: 30px;
 	border: none;
-	Width: 113px;
-	Height: 38px;
+	width: 113px;
+	height: 38px;
 `;
 
 /* ------- Form Components ------- */
@@ -81,34 +81,28 @@ function AddMedication() {
 		<Form onSubmit="">
 			<Heading>Add your medicine</Heading>
 
-			<Label>
-				Name of medicine
-			</Label>
+			<Label>Name of medicine</Label>
 			<TextInput name="text" type="text" value="" required />
-			
+
 			<Label>Type</Label>
 			<TypeWrapper>
+				<TabletWrapper>
+					<Label for="tablet">Tablet</Label>
+					<HiddenCheckbox type="checkbox" id="tablet" name="tablet" value="" />
+				</TabletWrapper>
 
-			<TabletWrapper>
-			<Label for="tablet">Tablet</Label>
-			<HiddenCheckbox type="checkbox" id="tablet" name="tablet" value="" />
-			</TabletWrapper>
+				<LiquidWrapper>
+					<Label for="liquid">Liquid</Label>
+					<HiddenCheckbox type="checkbox" id="liquid" name="liquid" value="" />
+				</LiquidWrapper>
 
-			<LiquidWrapper>
-			<Label for="liquid">Liquid</Label>
-			<HiddenCheckbox type="checkbox" id="liquid" name="liquid" value="" />
-			</LiquidWrapper>
-
-			<NeedleWrapper>
-			<Label for="needle">Needle</Label>
-			<HiddenCheckbox type="checkbox" id="needle" name="needle" value="" />
-			</NeedleWrapper>
-
+				<NeedleWrapper>
+					<Label for="needle">Needle</Label>
+					<HiddenCheckbox type="checkbox" id="needle" name="needle" value="" />
+				</NeedleWrapper>
 			</TypeWrapper>
 
-			<Label>
-				Strength
-			</Label>
+			<Label>Strength</Label>
 			<TextInput name="text" type="text" value="" required />
 
 			<Label for="unit">Unit</Label>
@@ -118,9 +112,7 @@ function AddMedication() {
 				<option value="g">g</option>
 			</select>
 
-			<Label>
-				Description
-			</Label>
+			<Label>Description</Label>
 			<TextInput name="text" type="text" value="" required />
 
 			<Button>Submit</Button>
