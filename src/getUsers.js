@@ -1,7 +1,6 @@
 /** @format */
 
 import db from "./connection.js";
-import firebase from "firebase";
 
 // adding a new document to a collection without setting the ID
 // db.collection("Users")
