@@ -5,7 +5,7 @@ import firebase from "firebase/app";
 import AddMedication from "./addMedication/form";
 import UserHome from "./userHome/userHome";
 import fire from "./connection";
-import "firebase/firestore"
+import "firebase/firestore";
 function App() {
 	let db;
 	db = firebase.firestore(fire);
@@ -20,12 +20,9 @@ function App() {
 	return (
 		<div className="App">
 			<AddMedication />
-			<UserHome/>
-			
+			<UserHome />
 		</div>
 	);
 }
-
-
 
 export default App;
