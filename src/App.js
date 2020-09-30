@@ -1,10 +1,15 @@
 /** @format */
 
 import React from "react";
+import firebase from "firebase/app";
 import AddMedication from "./addMedication/form";
-import db from "./connection.js";
-
+import UserHome from "./userHome/userHome";
+import fire from "./connection";
+import "firebase/firestore"
 function App() {
+	let db;
+	db = firebase.firestore(fire);
+
 	db.collection("Users")
 		.where("name", "==", "Jihyun")
 		.get()
@@ -15,8 +20,12 @@ function App() {
 	return (
 		<div className="App">
 			<AddMedication />
+			<UserHome/>
+			
 		</div>
 	);
 }
+
+
 
 export default App;
