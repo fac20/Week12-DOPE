@@ -1,7 +1,7 @@
 /** @format */
 
 import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import App from "./App.js";
 
 test("Jest is working", () => {
