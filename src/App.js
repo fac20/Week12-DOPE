@@ -6,11 +6,11 @@ import db from "./connection.js";
 
 function App() {
 	db.collection("Users")
-	.where("name", "==", "Jihyun")
-	.get()
-	.then(users => {
-		users.forEach(user => console.log(user.data()));
-	});
+		.where("name", "==", "Jihyun")
+		.get()
+		.then(users => {
+			users.forEach(user => console.log(user.data()));
+		});
 
 	return (
 		<div className="App">
