@@ -4,18 +4,24 @@ import React from "react";
 import { AiOutlineSend } from "react-icons/ai";
 import { FaLock, FaRegUserCircle, FaRegEyeSlash } from "react-icons/fa";
 import { logIn } from "../utils/user-management";
+import { Form } from "../addMedication/formstyle";
 
 function Login() {
-	const [email, setEmail] = React.useState();
-	const [password, setPassword] = React.useState();
+	const [email, setEmail] = React.useState("");
+	const [password, setPassword] = React.useState("");
+	const [error, setError] = React.useState();
 
-	const handleSubmit = event => {
+	const handleSubmit = async event => {
 		event.preventDefault();
-		logIn(email, password);
+		try {
+			await logIn(email, password);
+		} catch (error) {
+			setError(error.message);
+		}
 	};
 
 	return (
-		<form onSubmit={handleSubmit}>
+		<Form onSubmit={handleSubmit}>
 			<label>Email</label>
 			<FaRegUserCircle />
 			<input
@@ -30,16 +36,19 @@ function Login() {
 			<FaLock />
 			<input
 				name="name"
-				type="text"
+				type="password"
 				value={password}
 				onChange={event => setPassword(event.target.value)}
 				required
 			/>
 			<FaRegEyeSlash />
+
+			{error ? <p>{error}</p> : null}
+
 			<button type="submit">
 				LOGIN <AiOutlineSend />
 			</button>
-		</form>
+		</Form>
 	);
 }
 

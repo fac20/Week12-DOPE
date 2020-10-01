@@ -27,7 +27,7 @@ function App() {
 	return (
 		<Router>
 			<Switch>
-				<Route path="/home" exact>
+				<Route path="/" exact>
 					{authStatus ? <UserHome /> : <Redirect to={{ pathname: "/login" }} />}
 					<button onClick={signOut}>SIGN OUT </button>
 				</Route>
@@ -36,16 +36,14 @@ function App() {
 					<AddMedication />
 				</Route>
 
-				<Route path="/" exact>
-					{authStatus ? <Redirect to={{ pathname: "/home" }} /> : <SignUp />}
-					<button onClick={signOut}>SIGN OUT</button>
-					<button onClick={() => logIn("test@email.com", "password123")}>
-						log in
-					</button>
+				<Route path="/signup" exact>
+					{authStatus ? <Redirect to={{ pathname: "/" }} /> : <SignUp />}
+					<Link to="/login">Log in </Link>
 				</Route>
 
 				<Route path="/login">
-					<Login />
+					{authStatus ? <Redirect to={{ pathname: "/" }} /> : <Login />}
+					<Link to="/signup">Sign up </Link>
 				</Route>
 			</Switch>
 		</Router>

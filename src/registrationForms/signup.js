@@ -4,18 +4,24 @@ import React from "react";
 import { AiOutlineSend } from "react-icons/ai";
 import { FaLock, FaRegEnvelope, FaRegEyeSlash } from "react-icons/fa";
 import { signUp } from "../utils/user-management";
+import { Form } from "../addMedication/formstyle";
 
 function SignUp() {
-	const [email, setEmail] = React.useState();
-	const [password, setPassword] = React.useState();
+	const [email, setEmail] = React.useState("");
+	const [password, setPassword] = React.useState("");
+	const [error, setError] = React.useState();
 
-	const handleSubmit = event => {
+	const handleSubmit = async event => {
 		event.preventDefault();
-		signUp(email, password);
+		try {
+			await signUp(email, password);
+		} catch (error) {
+			setError(error.message);
+		}
 	};
 
 	return (
-		<form onSubmit={handleSubmit}>
+		<Form onSubmit={handleSubmit}>
 			<label>Email</label>
 			<FaRegEnvelope />
 			<input
@@ -24,6 +30,7 @@ function SignUp() {
 				value={email}
 				onChange={event => setEmail(event.target.value)}
 			/>
+
 			<label>Password</label>
 			<FaLock />
 			<input
@@ -34,11 +41,14 @@ function SignUp() {
 				required
 			/>
 			<FaRegEyeSlash />
+
+			{error ? <p>{error}</p> : null}
+
 			<button type="submit">
 				{" "}
 				SIGN UP <AiOutlineSend />
 			</button>
-		</form>
+		</Form>
 	);
 }
 
