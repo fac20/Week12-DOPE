@@ -7,14 +7,14 @@ let db;
 
 // firebaseConfig  should be here
 const firebaseConfig = {
-	apiKey: "AIzaSyCKOdFKQOSSFUvWcrYhN2oR2U0n5F6FxUI",
-	authDomain: "pillow-8d61a.firebaseapp.com",
-	databaseURL: "https://pillow-8d61a.firebaseio.com",
-	projectId: "pillow-8d61a",
-	storageBucket: "pillow-8d61a.appspot.com",
-	messagingSenderId: "106764588557",
-	appId: "1:106764588557:web:8a14e18c9752e008e8e744",
-	measurementId: "G-6D43KFGDES",
+	apiKey: process.env.REACT_APP_apiKey,
+	authDomain: process.env.REACT_APP_authDomain,
+	databaseURL: process.env.REACT_APP_databaseURL,
+	projectId: process.env.REACT_APP_projectId,
+	storageBucket: process.env.REACT_APP_storageBucket,
+	messagingSenderId: process.env.REACT_APP_messagingSenderId,
+	appId: process.env.REACT_APP_appId,
+	measurementId: process.env.REACT_APP_measurementId,
 };
 
 // initialize fire base
@@ -41,29 +41,50 @@ let objData = {
 	supply: "10",
 };
 
-db.collection("Users")
-	.doc()
-	.set({ username: username })
-	.then(() => console.log("yay"));
-
-db.collection("Users")
-	.where("username", "==", "jihyun")
-	.get()
-	.then(users => {
-		users.forEach(user => {
-			db.collection("Users")
-				.doc(user.id)
-				.collection("medication") // names/targets the collection
-				.doc(objData.name) //names/targets the document
-				.set(objData);
-		});
-	})
-	.then(() => console.log("data added"));
-
-//querying all docs in a collection
 // db.collection("Users")
-// .where("name", "==", "Jihyun")
+// 	.doc()
+// 	.set({ username: username })
+// 	.then(() => console.log("yay"));
+
+// db.collection("Users")
+// 	.where("username", "==", "jihyun")
 // 	.get()
 // 	.then(users => {
-// 		users.forEach(user => console.log(user.data()));
+// 		users.forEach(user => {
+// 			db.collection("Users")
+// 				.doc(user.id)
+// 				.collection("medication") // names/targets the collection
+// 				.doc(objData.name) //names/targets the document
+// 				.set(objData);
+// 		});
+// 	})
+// 	.then(() => console.log("data added"));
+
+// querying all docs in a medicationcollection
+// db.collection("Users").doc(username).collection("medication")
+// 	.get()
+// 	.then(records => {
+// 		records.forEach(record => {
+
+// 		});
 // 	});
+// newObject = user.data()
+// newObject.id = user.idct = user.data()
+// newObject.id = user.id
+
+// let newArray = []
+
+// db.collection("Users")
+// 	.doc("amy")
+// 	.collection("medication")
+// 	.get()
+// 	.then(records => {
+// 		records.forEach(record => {
+// 			let newObj = record.data()
+// 			newObj.id = record.id
+// 			newArray.push(newObj)
+// 		})
+// 	})
+// 	.then(() => console.log(newArray))
+
+
