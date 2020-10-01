@@ -7,14 +7,14 @@ let db;
 
 // firebaseConfig  should be here
 const firebaseConfig = {
-	apiKey: "AIzaSyCKOdFKQOSSFUvWcrYhN2oR2U0n5F6FxUI",
-	authDomain: "pillow-8d61a.firebaseapp.com",
-	databaseURL: "https://pillow-8d61a.firebaseio.com",
-	projectId: "pillow-8d61a",
-	storageBucket: "pillow-8d61a.appspot.com",
-	messagingSenderId: "106764588557",
-	appId: "1:106764588557:web:8a14e18c9752e008e8e744",
-	measurementId: "G-6D43KFGDES",
+	apiKey: process.env.REACT_APP_apiKey,
+	authDomain: process.env.REACT_APP_authDomain,
+	databaseURL: process.env.REACT_APP_databaseURL,
+	projectId: process.env.REACT_APP_projectId,
+	storageBucket: process.env.REACT_APP_storageBucket,
+	messagingSenderId: process.env.REACT_APP_messagingSenderId,
+	appId: process.env.REACT_APP_appId,
+	measurementId: process.env.REACT_APP_measurementId,
 };
 
 // initialize fire base
