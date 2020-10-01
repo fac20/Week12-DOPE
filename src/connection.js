@@ -7,7 +7,6 @@ let db;
 // import "firebase/firestore";
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-// firebaseConfig  should be here
 const firebaseConfig = {
 	apiKey: process.env.REACT_APP_apiKey,
 	authDomain: process.env.REACT_APP_authDomain,

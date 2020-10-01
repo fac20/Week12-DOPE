@@ -41,29 +41,48 @@ let objData = {
 	supply: "10",
 };
 
-db.collection("Users")
-	.doc()
-	.set({ username: username })
-	.then(() => console.log("yay"));
-
-db.collection("Users")
-	.where("username", "==", "jihyun")
-	.get()
-	.then(users => {
-		users.forEach(user => {
-			db.collection("Users")
-				.doc(user.id)
-				.collection("medication") // names/targets the collection
-				.doc(objData.name) //names/targets the document
-				.set(objData);
-		});
-	})
-	.then(() => console.log("data added"));
-
-//querying all docs in a collection
 // db.collection("Users")
-// .where("name", "==", "Jihyun")
+// 	.doc()
+// 	.set({ username: username })
+// 	.then(() => console.log("yay"));
+
+// db.collection("Users")
+// 	.where("username", "==", "jihyun")
 // 	.get()
 // 	.then(users => {
-// 		users.forEach(user => console.log(user.data()));
+// 		users.forEach(user => {
+// 			db.collection("Users")
+// 				.doc(user.id)
+// 				.collection("medication") // names/targets the collection
+// 				.doc(objData.name) //names/targets the document
+// 				.set(objData);
+// 		});
+// 	})
+// 	.then(() => console.log("data added"));
+
+// querying all docs in a medicationcollection
+// db.collection("Users").doc(username).collection("medication")
+// 	.get()
+// 	.then(records => {
+// 		records.forEach(record => {
+
+// 		});
 // 	});
+// newObject = user.data()
+// newObject.id = user.idct = user.data()
+// newObject.id = user.id
+
+// let newArray = []
+
+// db.collection("Users")
+// 	.doc("amy")
+// 	.collection("medication")
+// 	.get()
+// 	.then(records => {
+// 		records.forEach(record => {
+// 			let newObj = record.data()
+// 			newObj.id = record.id
+// 			newArray.push(newObj)
+// 		})
+// 	})
+// 	.then(() => console.log(newArray))
