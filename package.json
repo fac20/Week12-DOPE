@@ -3,14 +3,16 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
+		"@material-ui/core": "^4.11.0",
 		"@testing-library/jest-dom": "^4.2.4",
 		"@testing-library/react": "^9.5.0",
 		"@testing-library/user-event": "^7.2.1",
-		"firebase": "^7.21.1",
 		"eslint": "^6.6.0",
+		"firebase": "^7.21.1",
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1",
 		"react-hooks-helper": "^1.6.0",
+		"react-icons": "^3.11.0",
 		"react-scripts": "3.4.3"
 	},
 	"scripts": {
@@ -19,7 +21,8 @@
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
 		"prettier": "./node_modules/.bin/prettier . --write",
-		"eslint": "./node_modules/.bin/eslint . --fix"
+		"eslint": "./node_modules/.bin/eslint . --fix",
+		"add": "git add ."
 	},
 	"eslintConfig": {
 		"extends": "react-app"
@@ -55,7 +58,7 @@
 	"husky": {
 		"hooks": {
 			"prepare-commit-msg": "exec < /dev/tty && git cz --hook || true",
-			"pre-commit": "npm run prettier && npm run eslint"
+			"pre-commit": "npm run prettier && npm run eslint &&npm run add"
 		}
 	},
 	"config": {

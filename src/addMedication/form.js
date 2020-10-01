@@ -1,9 +1,10 @@
 /** @format */
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-
-/* ------- Styled Components (JSX CSS) ------- */
+import { MedsPageOne } from "./meds-page-one";
+import MedsPageTwo from "./meds-page-two";
+import MedsPageThree from "./meds-page-three";
 
 const Form = styled.form`
 	display: flex;
@@ -75,48 +76,58 @@ const Button = styled.button`
 
 function AddMedication() {
 	// Add states here
+	const [inputs, setInputs] = useState({ oftenFreq: 0 });
+	const [page, setPage] = useState(1);
+
+	const handleChange = event => {
+		// const { name, value } = event.target;
+		const target = event.target;
+		const value = target.value;
+		const name = target.name;
+		setInputs({ ...inputs, [name]: value });
+	};
 
 	// The markup for the Step 1 UI
 	return (
-		<Form>
-			<Heading>Add your medicine</Heading>
+		<>
+			<Form onSubmit={e => e.preventDefault()}>
+				<h2>{page}/3</h2>
 
-			<Label>Name of medicine</Label>
-			<TextInput name="text" type="text" required />
+				{page === 1 && (
+					<MedsPageOne
+						handleChange={handleChange}
+						inputs={inputs}
+						page={page}
+					/>
+				)}
 
-			<Label>Type</Label>
-			<TypeWrapper>
-				<TabletWrapper>
-					<Label htmlFor="tablet">Tablet</Label>
-					<HiddenCheckbox type="checkbox" id="tablet" name="tablet" />
-				</TabletWrapper>
+				{page === 2 && (
+					<MedsPageTwo
+						handleChange={handleChange}
+						inputs={inputs}
+						page={page}
+					/>
+				)}
 
-				<LiquidWrapper>
-					<Label htmlFor="liquid">Liquid</Label>
-					<HiddenCheckbox type="checkbox" id="liquid" name="liquid" />
-				</LiquidWrapper>
+				{page === 3 && (
+					<MedsPageThree
+						handleChange={handleChange}
+						inputs={inputs}
+						page={page}
+					/>
+				)}
 
-				<NeedleWrapper>
-					<Label htmlFor="needle">Needle</Label>
-					<HiddenCheckbox type="checkbox" id="needle" name="needle" />
-				</NeedleWrapper>
-			</TypeWrapper>
+				{page !== 1 && (
+					<button onClick={() => setPage(page => page - 1)}>back</button>
+				)}
 
-			<Label>Strength</Label>
-			<TextInput name="text" type="text" required />
+				{page !== 3 && (
+					<button onClick={() => setPage(page => page + 1)}>forward</button>
+				)}
 
-			<Label htmlFor="unit">Unit</Label>
-			<select name="unit" id="unit">
-				<option value="mg">mg</option>
-				<option value="ml">ml</option>
-				<option value="g">g</option>
-			</select>
-
-			<Label>Description</Label>
-			<TextInput name="text" type="text" required />
-
-			<Button>Submit</Button>
-		</Form>
+				{page === 3 && <button>Submit</button>}
+			</Form>
+		</>
 	);
 }
 
