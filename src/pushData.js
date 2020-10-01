@@ -86,5 +86,3 @@ let objData = {
 // 		})
 // 	})
 // 	.then(() => console.log(newArray))
-
-

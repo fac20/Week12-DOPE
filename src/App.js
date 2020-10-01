@@ -5,7 +5,6 @@ import AddMedication from "./addMedication/form";
 import UserHome from "./userHome/userHome";
 import "firebase/firestore";
 function App() {
-
 	return (
 		<div className="App">
 			<AddMedication />
