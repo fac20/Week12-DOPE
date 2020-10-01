@@ -1,76 +1,16 @@
 /** @format */
 
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
 import { MedsPageOne } from "./meds-page-one";
 import MedsPageTwo from "./meds-page-two";
 import MedsPageThree from "./meds-page-three";
-
-const Form = styled.form`
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-`;
-
-const Heading = styled.h1`
-	font-size: 24px;
-`;
-
-const Label = styled.label`
-	font-size: 18px;
-`;
-
-const TextInput = styled.input.attrs({ type: "text" })`
-	border: 1px solid rgba(0, 0, 0, 0.15);
-	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
-`;
-
-const TypeWrapper = styled.div`
-	display: flex;
-	flex-direction: row;
-`;
-const HiddenCheckbox = styled.input.attrs({ type: "checkbox" })`
-	border: 1px solid red;
-	/* visibility: hidden; */
-`;
-
-const TabletWrapper = styled.div`
-	background: #fff6f6;
-	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-	border-radius: 10px;
-	width: 93px;
-	height: 93px;
-	text-align: center;
-`;
-
-const LiquidWrapper = styled.div`
-	background: #fff6f6;
-	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-	border-radius: 10px;
-	width: 93px;
-	height: 93px;
-	text-align: center;
-`;
-
-const NeedleWrapper = styled.div`
-	background: #fff6f6;
-	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-	border-radius: 10px;
-	width: 93px;
-	height: 93px;
-	text-align: center;
-`;
-
-const Button = styled.button`
-	font-size: 16px;
-	font-weight: bold;
-	font-style: italic;
-	background: linear-gradient(180deg, #fdaf67 0%, #f7c649 100%);
-	border-radius: 30px;
-	border: none;
-	width: 113px;
-	height: 38px;
-`;
+import { Form, Button } from "./formstyle";
+import convertData from "./../utils/helper";
+import {
+	signUpDB,
+	addMedicationDB,
+	getAllMedicationDB,
+} from "./../utils/data-helpers";
 
 /* ------- Form Components ------- */
 
@@ -86,11 +26,20 @@ function AddMedication() {
 		const name = target.name;
 		setInputs({ ...inputs, [name]: value });
 	};
+	// adding medication to an already logged in person/ signed up
+	const submitData = event => {
+		event.preventDefault();
+		// convert the inputs object to the obj to send to db
+		const submitObj = convertData(inputs);
+		// send new obj to db with username...
+		addMedicationDB("amy", submitObj).then(() => console.log("data was added"));
 
+		// redirect to landing page
+	};
 	// The markup for the Step 1 UI
 	return (
 		<>
-			<Form onSubmit={e => e.preventDefault()}>
+			<Form onSubmit={submitData}>
 				<h2>{page}/3</h2>
 
 				{page === 1 && (
@@ -118,14 +67,18 @@ function AddMedication() {
 				)}
 
 				{page !== 1 && (
-					<button onClick={() => setPage(page => page - 1)}>back</button>
+					<button type="button" onClick={() => setPage(page => page - 1)}>
+						back
+					</button>
 				)}
 
 				{page !== 3 && (
-					<button onClick={() => setPage(page => page + 1)}>forward</button>
+					<button type="button" onClick={() => setPage(page => page + 1)}>
+						forward
+					</button>
 				)}
 
-				{page === 3 && <button>Submit</button>}
+				{page === 3 && <Button>Submit</Button>}
 			</Form>
 		</>
 	);
