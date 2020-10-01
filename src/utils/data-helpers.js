@@ -1,9 +1,6 @@
 /** @format */
-import firebase from "firebase";
-import fire from "../connection";
+import { db } from "../connection.js";
 import "firebase/firestore";
-
-const db = firebase.firestore(fire);
 
 function signUpDB(username) {
 	// what happens with errors?
