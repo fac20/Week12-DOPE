@@ -4,7 +4,7 @@ import React from "react";
 import styled from "styled-components";
 import { FaPlusCircle } from "react-icons/fa";
 import { auth } from "../connection";
-
+import { Link } from "react-router-dom";
 // Styled components
 const Heading = styled.h1``;
 const PillHeading = styled.h5`
@@ -63,9 +63,11 @@ function UserHome() {
 			</PillHeading>
 
 			<PillWrapper>
-				<PillButton onSubmit="">
-					<FaPlusCircle color="#458FE0" size="20px" />
-				</PillButton>
+				<Link to="/add-medication">
+					<PillButton>
+						<FaPlusCircle color="#458FE0" size="20px" />
+					</PillButton>
+				</Link>
 			</PillWrapper>
 		</>
 	);

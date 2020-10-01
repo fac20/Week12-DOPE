@@ -5,6 +5,8 @@ import { AiOutlineSend } from "react-icons/ai";
 import { FaLock, FaRegEnvelope, FaRegEyeSlash } from "react-icons/fa";
 import { signUp, signInWithGoogle } from "../utils/user-management";
 import { Form } from "../addMedication/formstyle";
+import { signUpDB } from "../utils/data-helpers";
+import { auth } from "../connection";
 
 function SignUp() {
 	const [email, setEmail] = useState("");
@@ -16,6 +18,7 @@ function SignUp() {
 		event.preventDefault();
 		try {
 			await signUp(email, password);
+			await signUpDB(auth().currentUser.email);
 		} catch (error) {
 			setError(error.message);
 		}

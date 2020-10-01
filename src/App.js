@@ -5,6 +5,7 @@ import AddMedication from "./addMedication/form";
 import UserHome from "./userHome/userHome";
 import SignUp from "./registrationForms/signup";
 import Login from "./registrationForms/login";
+import MedicationAdded from "./addMedication/medication-added";
 import { AiOutlineSend } from "react-icons/ai";
 import {
 	BrowserRouter as Router,
@@ -27,7 +28,7 @@ function App() {
 		<Router>
 			<Switch>
 				<Route path="/" exact>
-					{authStatus ? <UserHome /> : <Redirect to={{ pathname: "/login" }} />}
+					{authStatus ? <UserHome /> : <Redirect to="/login" />}
 					<button onClick={signOut}>SIGN OUT </button>
 				</Route>
 
@@ -36,13 +37,21 @@ function App() {
 				</Route>
 
 				<Route path="/signup" exact>
-					{authStatus ? <Redirect to={{ pathname: "/" }} /> : <SignUp />}
-					<Link to="/login">Log in </Link>
+					{authStatus ? <Redirect to="/" /> : <SignUp />}
+					<Link to="/login">
+						<button>Log in</button>
+					</Link>
 				</Route>
 
 				<Route path="/login">
-					{authStatus ? <Redirect to={{ pathname: "/" }} /> : <Login />}
-					<Link to="/signup">Sign up </Link>
+					{authStatus ? <Redirect to="/" /> : <Login />}
+					<Link to="/signup">
+						<button>Sign up</button>
+					</Link>
+				</Route>
+
+				<Route path="/medication-added">
+					<MedicationAdded />
 				</Route>
 			</Switch>
 		</Router>

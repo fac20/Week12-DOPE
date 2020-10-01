@@ -1,22 +1,30 @@
 /** @format */
 
 import React, { useEffect, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 import { MedsPageOne } from "./meds-page-one";
 import MedsPageTwo from "./meds-page-two";
 import MedsPageThree from "./meds-page-three";
 import { Form, Button } from "./formstyle";
 import convertData from "./../utils/helper";
+import { Redirect } from "react-router-dom";
 import {
 	signUpDB,
 	addMedicationDB,
 	getAllMedicationDB,
 } from "./../utils/data-helpers";
-
+import { auth } from "../connection";
 /* ------- Form Components ------- */
 
 function AddMedication() {
 	// Add states here
-	const [inputs, setInputs] = useState({ oftenFreq: 0 });
+	const history = useHistory();
+	const [inputs, setInputs] = useState({
+		oftenFreq: 0,
+		unit: "mg",
+		oftenUnit: "day",
+		priority: "Low",
+	});
 	const [page, setPage] = useState(1);
 
 	const handleChange = event => {
@@ -32,9 +40,11 @@ function AddMedication() {
 		// convert the inputs object to the obj to send to db
 		const submitObj = convertData(inputs);
 		// send new obj to db with username...
-		addMedicationDB("amy", submitObj).then(() => console.log("data was added"));
-
+		addMedicationDB(auth().currentUser.email, submitObj).then(() =>
+			console.log("data was added"),
+		);
 		// redirect to landing page
+		history.push("/medication-added");
 	};
 	// The markup for the Step 1 UI
 	return (
@@ -64,6 +74,12 @@ function AddMedication() {
 						inputs={inputs}
 						page={page}
 					/>
+				)}
+
+				{page === 1 && (
+					<Link to="/">
+						<button type="button">cancel</button>
+					</Link>
 				)}
 
 				{page !== 1 && (
