@@ -14,7 +14,7 @@ const PillHeading = styled.h5`
 const CalWrapper = styled.div``;
 const PillWrapper = styled.div`
 	background-color: rgba(255, 246, 246, 1);
-	border: 1px solid #BABFCD;
+	border: 1px solid #babfcd;
 	box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
 	border-radius: 20px;
 	width: 327px;
@@ -40,7 +40,6 @@ const PillButton = styled.button`
 // });
 // depending on current day, we want 5 in total, 2 on either side
 
-
 function UserHome() {
 	const username = "Jihyun";
 	return (
@@ -63,7 +62,7 @@ function UserHome() {
 
 			<PillWrapper>
 				<PillButton onSubmit="">
-					< FaPlusCircle color="#458FE0" size="20px" />
+					<FaPlusCircle color="#458FE0" size="20px" />
 				</PillButton>
 			</PillWrapper>
 		</>
