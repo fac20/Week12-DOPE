@@ -22,7 +22,6 @@ function App() {
 	auth().onAuthStateChanged(user => {
 		user ? setAuthStatus(true) : setAuthStatus(false);
 	});
-	// console.log(auth().currentUser)
 
 	return (
 		<Router>

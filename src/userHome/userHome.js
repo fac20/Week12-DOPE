@@ -3,6 +3,7 @@
 import React from "react";
 import styled from "styled-components";
 import { FaPlusCircle } from "react-icons/fa";
+import { auth } from "../connection";
 
 // Styled components
 const Heading = styled.h1``;
@@ -41,10 +42,11 @@ const PillButton = styled.button`
 // depending on current day, we want 5 in total, 2 on either side
 
 function UserHome() {
-	const username = "Jihyun";
 	return (
 		<>
-			<Heading>Welcome, {username}!</Heading>
+			<Heading>
+				Welcome, {auth().currentUser.displayName || auth().currentUser.email}!
+			</Heading>
 			<CalWrapper>
 				<ul>
 					{/* <li></li>
