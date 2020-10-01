@@ -1,7 +1,6 @@
 /** @format */
 
-const db = require("./connection.js");
-const firebase = require("firebase");
+import db from "./connection.js";
 
 // adding a new document to a collection without setting the ID
 // db.collection("Users")
@@ -22,7 +21,7 @@ const firebase = require("firebase");
 //     })
 //     .then(() => console.log("yay data is added"))
 
-// adding user to doc with random ID
+// adding user to doc with random ID --> finding user and adding new med
 // db.collection("Users")
 //     .doc()
 //     .set({
@@ -32,7 +31,7 @@ const firebase = require("firebase");
 //     })
 //     .then(() => console.log("yay data is added"))
 
-// to update docs with doc name
+// to update docs with doc name --> updating user's med info
 // db.collection("Users")
 //     .doc("shaya")
 //     .update({
