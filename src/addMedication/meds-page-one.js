@@ -28,7 +28,7 @@ const MedsPageOne = ({ inputs, handleChange, page }) => {
 				checked={inputs.type === "tablet"}
 				onChange={handleChange}
 			/>
-			<label for="tablet">Tablet</label>
+			<label htmlFor="tablet">Tablet</label>
 
 			<input
 				type="radio"
@@ -38,7 +38,7 @@ const MedsPageOne = ({ inputs, handleChange, page }) => {
 				checked={inputs.type === "liquid"}
 				onChange={handleChange}
 			/>
-			<label for="liquid">Liquid</label>
+			<label htmlFor="liquid">Liquid</label>
 
 			<input
 				type="radio"
@@ -48,7 +48,7 @@ const MedsPageOne = ({ inputs, handleChange, page }) => {
 				checked={inputs.type === "needle"}
 				onChange={handleChange}
 			/>
-			<label for="needle">Needle</label>
+			<label htmlFor="needle">Needle</label>
 
 			<label>
 				Strength:
@@ -61,7 +61,7 @@ const MedsPageOne = ({ inputs, handleChange, page }) => {
 				/>
 			</label>
 
-			<label for="unit">Unit:</label>
+			<label htmlFor="unit">Unit:</label>
 			<select name="unit" id="unit" value={inputs.unit} onChange={handleChange}>
 				<option value="mg">mg</option>
 				<option value="ml">ml</option>

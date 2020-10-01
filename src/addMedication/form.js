@@ -19,7 +19,7 @@ function AddMedication() {
 	const handleChange = event => {
 		// const { name, value } = event.target;
 		const target = event.target;
-		const value = target.type === "checbox" ? target.checked : target.value;
+		const value = target.value;
 		const name = target.name;
 		setInputs({ ...inputs, [name]: value });
 	};

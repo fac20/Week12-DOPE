@@ -7,7 +7,6 @@ import SetSpecificTime from "./SetSpecificTime";
 
 const MedsPageTwo = ({ inputs, handleChange, page }) => {
 	let timeArray = [...Array(+inputs.oftenFreq).keys()];
-
 	return (
 		<>
 			<label>
@@ -50,19 +49,19 @@ const MedsPageTwo = ({ inputs, handleChange, page }) => {
 
 			<button>Set specific time/time of day</button>
 
-			{timeArray.map((x, i) => (
+			{/* {timeArray.map((x, i) => (
 				<SelectTime
 					key={i}
 					id={i}
 					handleChange={handleChange}
 					inputs={inputs}
 				/>
-			))}
+			))}  */}
 
-			{timeArray.map((x, i) => (
+			{timeArray.map(x => (
 				<SetSpecificTime
-					key={i}
-					id={i}
+					key={x}
+					id={x + 1}
 					handleChange={handleChange}
 					inputs={inputs}
 				/>
