@@ -19,7 +19,7 @@ function addMedicationDB(username, medicineObj) {
 function getAllMedicationDB(username) {
 	let newArray = [];
 	db.collection("Users")
-		.doc("username")
+		.doc(username)
 		.collection("medication")
 		.get()
 		.then(records => {
@@ -30,6 +30,7 @@ function getAllMedicationDB(username) {
 			});
 		})
 		.then(() => console.log(newArray));
+	return newArray;
 }
 
 export { signUpDB, addMedicationDB, getAllMedicationDB };

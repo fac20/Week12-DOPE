@@ -5,6 +5,7 @@ import AddMedication from "./addMedication/form";
 import UserHome from "./userHome/userHome";
 import SignUp from "./registrationForms/signup";
 import Login from "./registrationForms/login";
+import MedicationAdded from "./addMedication/medication-added";
 import { AiOutlineSend } from "react-icons/ai";
 import {
 	BrowserRouter as Router,
@@ -22,13 +23,12 @@ function App() {
 	auth().onAuthStateChanged(user => {
 		user ? setAuthStatus(true) : setAuthStatus(false);
 	});
-	// console.log(auth().currentUser)
 
 	return (
 		<Router>
 			<Switch>
-				<Route path="/home" exact>
-					{authStatus ? <UserHome /> : <Redirect to={{ pathname: "/login" }} />}
+				<Route path="/" exact>
+					{authStatus ? <UserHome /> : <Redirect to="/login" />}
 					<button onClick={signOut}>SIGN OUT </button>
 				</Route>
 
@@ -36,16 +36,22 @@ function App() {
 					<AddMedication />
 				</Route>
 
-				<Route path="/" exact>
-					{authStatus ? <Redirect to={{ pathname: "/home" }} /> : <SignUp />}
-					<button onClick={signOut}>SIGN OUT</button>
-					<button onClick={() => logIn("test@email.com", "password123")}>
-						log in
-					</button>
+				<Route path="/signup" exact>
+					{authStatus ? <Redirect to="/" /> : <SignUp />}
+					<Link to="/login">
+						<button>Log in</button>
+					</Link>
 				</Route>
 
 				<Route path="/login">
-					<Login />
+					{authStatus ? <Redirect to="/" /> : <Login />}
+					<Link to="/signup">
+						<button>Sign up</button>
+					</Link>
+				</Route>
+
+				<Route path="/medication-added">
+					<MedicationAdded />
 				</Route>
 			</Switch>
 		</Router>

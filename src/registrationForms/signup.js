@@ -1,44 +1,74 @@
 /** @format */
 
-import React from "react";
+import React, { useState } from "react";
 import { AiOutlineSend } from "react-icons/ai";
 import { FaLock, FaRegEnvelope, FaRegEyeSlash } from "react-icons/fa";
-import { signUp } from "../utils/user-management";
+import { signUp, signInWithGoogle } from "../utils/user-management";
+import { Form } from "../addMedication/formstyle";
+import { signUpDB } from "../utils/data-helpers";
+import { auth } from "../connection";
 
 function SignUp() {
-	const [email, setEmail] = React.useState();
-	const [password, setPassword] = React.useState();
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const [error, setError] = useState();
+	const [inputType, setInputType] = useState("password");
 
-	const handleSubmit = event => {
+	const handleSubmit = async event => {
 		event.preventDefault();
-		signUp(email, password);
+		try {
+			await signUp(email, password);
+			await signUpDB(auth().currentUser.email);
+		} catch (error) {
+			setError(error.message);
+		}
+	};
+
+	const handleGoogleSignIn = async () => {
+		try {
+			await signInWithGoogle();
+		} catch (error) {
+			setError(error.message);
+		}
 	};
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<label>Email</label>
-			<FaRegEnvelope />
-			<input
-				name="name"
-				type="email"
-				value={email}
-				onChange={event => setEmail(event.target.value)}
-			/>
-			<label>Password</label>
-			<FaLock />
-			<input
-				name="name"
-				type="password"
-				value={password}
-				onChange={event => setPassword(event.target.value)}
-				required
-			/>
-			<FaRegEyeSlash />
-			<button type="submit">
-				{" "}
-				SIGN UP <AiOutlineSend />
-			</button>
-		</form>
+		<>
+			<Form onSubmit={handleSubmit}>
+				<label>Email</label>
+				<FaRegEnvelope />
+				<input
+					name="name"
+					type="email"
+					value={email}
+					onChange={event => setEmail(event.target.value)}
+				/>
+
+				<label>Password</label>
+				<FaLock />
+				<input
+					name="name"
+					type={inputType}
+					value={password}
+					onChange={event => setPassword(event.target.value)}
+				/>
+
+				<div
+					onMouseEnter={() => setInputType(currentType => "text")}
+					onMouseLeave={() => setInputType(currentType => "password")}>
+					<FaRegEyeSlash />
+				</div>
+
+				{error ? <p>{error}</p> : null}
+
+				<button type="submit">
+					{" "}
+					SIGN UP <AiOutlineSend />
+				</button>
+			</Form>
+
+			<button onClick={handleGoogleSignIn}>Sign in with Google</button>
+		</>
 	);
 }
 

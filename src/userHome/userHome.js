@@ -3,7 +3,8 @@
 import React from "react";
 import styled from "styled-components";
 import { FaPlusCircle } from "react-icons/fa";
-
+import { auth } from "../connection";
+import { Link } from "react-router-dom";
 // Styled components
 const Heading = styled.h1``;
 const PillHeading = styled.h5`
@@ -41,10 +42,11 @@ const PillButton = styled.button`
 // depending on current day, we want 5 in total, 2 on either side
 
 function UserHome() {
-	const username = "Jihyun";
 	return (
 		<>
-			<Heading>Welcome, {username}!</Heading>
+			<Heading>
+				Welcome, {auth().currentUser.displayName || auth().currentUser.email}!
+			</Heading>
 			<CalWrapper>
 				<ul>
 					{/* <li></li>
@@ -61,9 +63,11 @@ function UserHome() {
 			</PillHeading>
 
 			<PillWrapper>
-				<PillButton onSubmit="">
-					<FaPlusCircle color="#458FE0" size="20px" />
-				</PillButton>
+				<Link to="/add-medication">
+					<PillButton>
+						<FaPlusCircle color="#458FE0" size="20px" />
+					</PillButton>
+				</Link>
 			</PillWrapper>
 		</>
 	);
