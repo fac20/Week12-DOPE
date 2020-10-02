@@ -1,7 +1,6 @@
 /** @format */
 
 import db from "./connection.js";
-import firebase from "firebase";
 
 // adding a new document to a collection without setting the ID
 // db.collection("Users")
@@ -57,7 +56,7 @@ import firebase from "firebase";
 
 //querying all docs in a collection
 db.collection("Users")
-	// .where("name", "==", "Jihyun")
+	.where("name", "==", "Jihyun")
 	.get()
 	.then(users => {
 		users.forEach(user => console.log(user.data()));

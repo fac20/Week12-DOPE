@@ -1,122 +1,102 @@
 /** @format */
 
-import React from "react";
-import styled from "styled-components";
-
-/* ------- Styled Components (JSX CSS) ------- */
-
-const Form = styled.form`
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-`;
-
-const Heading = styled.h1`
-	font-size: 24px;
-`;
-
-const Label = styled.label`
-	font-size: 18px;
-`;
-
-const TextInput = styled.input.attrs({ type: "text" })`
-	border: 1px solid rgba(0, 0, 0, 0.15);
-	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
-`;
-
-const TypeWrapper = styled.div`
-	display: flex;
-	flex-direction: row;
-`;
-const HiddenCheckbox = styled.input.attrs({ type: "checkbox" })`
-	border: 1px solid red;
-	/* visibility: hidden; */
-`;
-
-const TabletWrapper = styled.div`
-	background: #fff6f6;
-	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-	border-radius: 10px;
-	width: 93px;
-	height: 93px;
-	text-align: center;
-`;
-
-const LiquidWrapper = styled.div`
-	background: #fff6f6;
-	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-	border-radius: 10px;
-	width: 93px;
-	height: 93px;
-	text-align: center;
-`;
-
-const NeedleWrapper = styled.div`
-	background: #fff6f6;
-	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-	border-radius: 10px;
-	width: 93px;
-	height: 93px;
-	text-align: center;
-`;
-
-const Button = styled.button`
-	font-size: 16px;
-	font-weight: bold;
-	font-style: italic;
-	background: linear-gradient(180deg, #fdaf67 0%, #f7c649 100%);
-	border-radius: 30px;
-	border: none;
-	width: 113px;
-	height: 38px;
-`;
-
+import React, { useEffect, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { MedsPageOne } from "./meds-page-one";
+import MedsPageTwo from "./meds-page-two";
+import MedsPageThree from "./meds-page-three";
+import { Form, Button } from "./formstyle";
+import convertData from "./../utils/helper";
+import { Redirect } from "react-router-dom";
+import {
+	signUpDB,
+	addMedicationDB,
+	getAllMedicationDB,
+} from "./../utils/data-helpers";
+import { auth } from "../connection";
 /* ------- Form Components ------- */
 
 function AddMedication() {
 	// Add states here
+	const history = useHistory();
+	const [inputs, setInputs] = useState({
+		oftenFreq: 0,
+		unit: "mg",
+		oftenUnit: "day",
+		priority: "Low",
+	});
+	const [page, setPage] = useState(1);
 
+	const handleChange = event => {
+		// const { name, value } = event.target;
+		const target = event.target;
+		const value = target.value;
+		const name = target.name;
+		setInputs({ ...inputs, [name]: value });
+	};
+	// adding medication to an already logged in person/ signed up
+	const submitData = event => {
+		event.preventDefault();
+		// convert the inputs object to the obj to send to db
+		const submitObj = convertData(inputs);
+		// send new obj to db with username...
+		addMedicationDB(auth().currentUser.email, submitObj).then(() =>
+			console.log("data was added"),
+		);
+		// redirect to landing page
+		history.push("/medication-added");
+	};
 	// The markup for the Step 1 UI
 	return (
-		<Form onSubmit="">
-			<Heading>Add your medicine</Heading>
+		<>
+			<Form onSubmit={submitData}>
+				<h2>{page}/3</h2>
 
-			<Label>Name of medicine</Label>
-			<TextInput name="text" type="text" value="" required />
+				{page === 1 && (
+					<MedsPageOne
+						handleChange={handleChange}
+						inputs={inputs}
+						page={page}
+					/>
+				)}
 
-			<Label>Type</Label>
-			<TypeWrapper>
-				<TabletWrapper>
-					<Label for="tablet">Tablet</Label>
-					<HiddenCheckbox type="checkbox" id="tablet" name="tablet" value="" />
-				</TabletWrapper>
+				{page === 2 && (
+					<MedsPageTwo
+						handleChange={handleChange}
+						inputs={inputs}
+						page={page}
+					/>
+				)}
 
-				<LiquidWrapper>
-					<Label for="liquid">Liquid</Label>
-					<HiddenCheckbox type="checkbox" id="liquid" name="liquid" value="" />
-				</LiquidWrapper>
+				{page === 3 && (
+					<MedsPageThree
+						handleChange={handleChange}
+						inputs={inputs}
+						page={page}
+					/>
+				)}
 
-				<NeedleWrapper>
-					<Label for="needle">Needle</Label>
-					<HiddenCheckbox type="checkbox" id="needle" name="needle" value="" />
-				</NeedleWrapper>
-			</TypeWrapper>
+				{page === 1 && (
+					<Link to="/">
+						<button type="button">cancel</button>
+					</Link>
+				)}
 
-			<Label>Strength</Label>
-			<TextInput name="text" type="text" value="" required />
+				{page !== 1 && (
+					<button type="button" onClick={() => setPage(page => page - 1)}>
+						back
+					</button>
+				)}
 
-			<Label for="unit">Unit</Label>
-			<select name="unit" id="unit">
-				<option value="mg">mg</option>
-				<option value="ml">ml</option>
-				<option value="g">g</option>
-			</select>
+				{page !== 3 && (
+					<button type="button" onClick={() => setPage(page => page + 1)}>
+						forward
+					</button>
+				)}
 
-			<Label>Description</Label>
-			<TextInput name="text" type="text" value="" required />
-
-			<Button>Submit</Button>
-		</Form>
+				{page === 3 && <Button>Submit</Button>}
+			</Form>
+		</>
 	);
 }
 

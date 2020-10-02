@@ -1,11 +1,8 @@
 /** @format */
 
 import firebase from "firebase";
-import "firebase/firestore";
-let db;
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 
-// firebaseConfig  should be here
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
 	apiKey: process.env.REACT_APP_apiKey,
 	authDomain: process.env.REACT_APP_authDomain,
@@ -17,8 +14,9 @@ const firebaseConfig = {
 	measurementId: process.env.REACT_APP_measurementId,
 };
 
-// initialise fire base
+// initialize fire base
 let fire = firebase.initializeApp(firebaseConfig);
-db = firebase.firestore(fire);
+const db = firebase.firestore();
+const auth = firebase.auth;
 
-export default db;
+export { fire, db, auth };
