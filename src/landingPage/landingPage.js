@@ -1,9 +1,11 @@
 /** @format */
 
 import React from "react";
+import { Link } from "react-router-dom";
 import { Button } from "../addMedication/formStyle";
 import { signUp } from "../utils/user-management";
-import pillow from "../assets/pillow.png";
+import pillow from "../assets/pillow.svg";
+import RightArrow from "../assets/rightarrow.png";
 
 import styled from "styled-components";
 // import { auth } from "../connection";
@@ -13,11 +15,11 @@ const PageWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
+	align-items: center;
 `;
 
 const Title = styled.h1`
 	animation: color-change 6s infinite;
-	text-align: center;
 	font-weight: bolder;
 	letter-spacing: 4px;
 	@keyframes color-change {
@@ -34,13 +36,11 @@ const Title = styled.h1`
 `;
 
 const HeadingThree = styled.h3`
-	text-align: center;
 	font-weight: bold;
 	font-size: 24px;
 `;
 
 const HeadingFive = styled.h5`
-	text-align: center;
 	font-weight: normal;
 	font-size: 16px;
 `;
@@ -49,23 +49,31 @@ const Text = styled.p`
 	color: #001d84;
 	font-size: 14px;
 	font-style: normal;
+	margin-left: 20px;
 `;
-const Image = styled.img`
-	align-self: center;
+
+const Arrow = styled.img`
+	width: 15px;
+	float: right;
+	margin-right: 20px;
 `;
 
 function LandingPage() {
 	return (
 		<PageWrapper>
 			<Title>PILLOW</Title>
-			<Image alt="pillow" src={pillow} width="230.34" height="260.34" />
+			<img alt="pillow" src={pillow} width="230.34" height="260.34" />
 			<HeadingThree>Worry less, live healthier.</HeadingThree>
 			<HeadingFive>
 				Monitor your medicine intake with our intuitive tracking app.{" "}
 			</HeadingFive>
-			<Button type="button" onClick={signUp}>
-				<Text>GET STARTED</Text>
-			</Button>
+			<Link to="/signup">
+				<Button>
+					<Text>
+						GET STARTED <Arrow alt="arrow" src={RightArrow}></Arrow>
+					</Text>
+				</Button>
+			</Link>
 		</PageWrapper>
 	);
 }

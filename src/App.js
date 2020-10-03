@@ -7,6 +7,7 @@ import SignUp from "./registrationForms/signup";
 import Login from "./registrationForms/login";
 import LandingPage from "./landingPage/landingPage";
 import MedicationAdded from "./addMedication/medication-added";
+import PageNotFound from "./PageNotFound/PageNotFound.jsx";
 import { AiOutlineSend } from "react-icons/ai";
 import {
 	BrowserRouter as Router,
@@ -61,6 +62,10 @@ function App() {
 
 				<Route path="/medication-added">
 					<MedicationAdded />
+				</Route>
+
+				<Route>
+					<PageNotFound />
 				</Route>
 			</Switch>
 		</Router>
