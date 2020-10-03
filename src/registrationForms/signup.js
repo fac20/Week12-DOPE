@@ -1,10 +1,9 @@
 /** @format */
 
 import React, { useState } from "react";
-import { AiOutlineSend } from "react-icons/ai";
 import { FaLock, FaRegEnvelope, FaRegEyeSlash } from "react-icons/fa";
 import { signUp, signInWithGoogle } from "../utils/user-management";
-import { Form } from "../addMedication/formstyle";
+import { Form } from "../addMedication/formStyle";
 import { signUpDB } from "../utils/data-helpers";
 import { auth } from "../connection";
 
@@ -61,10 +60,7 @@ function SignUp() {
 
 				{error ? <p>{error}</p> : null}
 
-				<button type="submit">
-					{" "}
-					SIGN UP <AiOutlineSend />
-				</button>
+				<button type="submit"> SIGN UP</button>
 			</Form>
 
 			<button onClick={handleGoogleSignIn}>Sign in with Google</button>

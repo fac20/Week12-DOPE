@@ -1,7 +1,6 @@
 /** @format */
 
 import React from "react";
-import styled from "styled-components";
 
 const MedsPageOne = ({ inputs, handleChange, page }) => {
 	return (
