@@ -3,6 +3,7 @@
 import React from "react";
 import { Button } from "../addMedication/formStyle";
 import { signUp } from "../utils/user-management";
+import pillow from "../assets/pillow.png";
 
 import styled from "styled-components";
 // import { auth } from "../connection";
@@ -49,12 +50,15 @@ const Text = styled.p`
 	font-size: 14px;
 	font-style: normal;
 `;
+const Image = styled.img`
+	align-self: center;
+`;
 
 function LandingPage() {
 	return (
 		<PageWrapper>
 			<Title>PILLOW</Title>
-			<div></div>
+			<Image alt="pillow" src={pillow} width="230.34" height="260.34" />
 			<HeadingThree>Worry less, live healthier.</HeadingThree>
 			<HeadingFive>
 				Monitor your medicine intake with our intuitive tracking app.{" "}
