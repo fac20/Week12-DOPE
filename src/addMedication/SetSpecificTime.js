@@ -1,7 +1,6 @@
 /** @format */
 
 import React from "react";
-import styled from "styled-components";
 
 const SetSpecificTime = ({ inputs, handleChange, id }) => {
 	const ampmId = `ampm${id}`;

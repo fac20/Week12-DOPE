@@ -1,10 +1,9 @@
 /** @format */
 
 import React, { useState } from "react";
-import { AiOutlineSend } from "react-icons/ai";
 import { FaLock, FaRegUserCircle, FaRegEyeSlash } from "react-icons/fa";
 import { logIn } from "../utils/user-management";
-import { Form } from "../addMedication/formstyle";
+import { Form } from "../addMedication/formStyle";
 
 function Login() {
 	const [email, setEmail] = useState("");
@@ -51,9 +50,7 @@ function Login() {
 
 			{error ? <p>{error}</p> : null}
 
-			<button type="submit">
-				LOGIN <AiOutlineSend />
-			</button>
+			<button type="submit">LOGIN</button>
 		</Form>
 	);
 }

@@ -5,17 +5,17 @@ import { Link, useHistory } from "react-router-dom";
 import { MedsPageOne } from "./meds-page-one";
 import MedsPageTwo from "./meds-page-two";
 import MedsPageThree from "./meds-page-three";
-import { Form, Button } from "./formstyle";
+import { Form, Button } from "./formStyle";
 import convertData from "./../utils/helper";
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 import {
-	signUpDB,
 	addMedicationDB,
-	getAllMedicationDB,
+	// getAllMedicationDB,
+	// signUpDB
 } from "./../utils/data-helpers";
 import { auth } from "../connection";
-/* ------- Form Components ------- */
 
+/* ------- Form Components ------- */
 function AddMedication() {
 	// Add states here
 	const history = useHistory();
