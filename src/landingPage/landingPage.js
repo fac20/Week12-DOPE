@@ -3,13 +3,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../addMedication/formStyle";
-import { signUp } from "../utils/user-management";
 import pillow from "../assets/pillow.svg";
 import RightArrow from "../assets/rightarrow.png";
-
 import styled from "styled-components";
-// import { auth } from "../connection";
-// import { Link } from "react-router-dom";
 
 const PageWrapper = styled.div`
 	display: flex;
@@ -33,6 +29,7 @@ const Title = styled.h1`
 			color: #ff9b21;
 		}
 	}
+	margin-bottom: 50px;
 `;
 
 const HeadingThree = styled.h3`
@@ -43,6 +40,7 @@ const HeadingThree = styled.h3`
 const HeadingFive = styled.h5`
 	font-weight: normal;
 	font-size: 16px;
+	margin-bottom: 70px;
 `;
 
 const Text = styled.p`

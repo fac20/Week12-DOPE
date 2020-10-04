@@ -2,7 +2,6 @@
 
 const firebase = require("firebase/app");
 require("firebase/firestore");
-let db;
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 
 // firebaseConfig  should be here
@@ -19,7 +18,7 @@ const firebaseConfig = {
 
 // initialize fire base
 let fire = firebase.initializeApp(firebaseConfig);
-db = firebase.firestore(fire);
+let db = firebase.firestore(fire);
 
 let username = "jihyun";
 
