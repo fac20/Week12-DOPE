@@ -11,29 +11,29 @@ import RightArrow from "../assets/rightarrow.png";
 import { Text } from "../landingPage/landingPage";
 import { Link } from "react-router-dom";
 
-const Form = styled.form`
+export const Form = styled.form`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	font-family: "DM Sans", sans-serif;
 	padding: 20px;
-	border: 1px solid red;
+	width: 50%;
 `;
-const Title = styled.h1`
+export const Title = styled.h1`
 	font-family: "DM Sans", sans-serif;
 	font-weight: medium;
 	font-size: 24px;
 	text-align: center;
 	margin-right: 1.5rem;
 `;
-const Label = styled.label`
+export const Label = styled.label`
 	font-size: 12px;
 	font-weight: medium;
 	color: ${props => (props.textColor ? props.textColor : "#8f92a1")};
 	text-align: left;
 	margin: ${props => (props.margin ? props.margin : "0.8rem 0")};
 `;
-const Input = styled.input`
+export const Input = styled.input`
 	font-family: "DM Sans", sans-serif;
 	color: rgba(23, 23, 23, 1);
 	font-size: 16px;
@@ -50,33 +50,31 @@ const Input = styled.input`
 		box-shadow: -8px 10px 0px -7px rgba(253, 175, 103, 1),
 			8px 10px 0px -7px rgba(253, 175, 103, 1);
 	}
-	/* margin-bottom: 20px; */
 	text-align: center;
 `;
-const FlexDiv = styled.div`
+export const FlexDiv = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: ${props => (props.alignItems ? props.alignItems : null)};
 `;
-const FormWrapper = styled.div`
+export const FormWrapper = styled.div`
 	display: flex;
 	justify-content: center;
-	border: 1px solid red;
 	margin-top: 90px;
 `;
-const AlignStartWrapper = styled.div`
+export const AlignStartWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: start;
-	border: 1px solid red;
 `;
+
 const Arrow = styled.img`
 	width: 15px;
 	float: right;
 	margin-right: 20px;
 `;
 
-const LoginButton = styled.button`
+export const LoginButton = styled.button`
 	font-family: "DM Sans", sans-serif;
 	font-weight: bold;
 	font-size: 24px;
@@ -125,7 +123,10 @@ function SignUp() {
 							name="name"
 							type="email"
 							value={email}
-							onChange={event => setEmail(event.target.value)}
+							onChange={event => {
+								setEmail(event.target.value);
+								setError();
+							}}
 						/>
 					</span>
 
@@ -137,7 +138,10 @@ function SignUp() {
 							name="name"
 							type={inputType}
 							value={password}
-							onChange={event => setPassword(event.target.value)}
+							onChange={event => {
+								setPassword(event.target.value);
+								setError();
+							}}
 						/>
 						<div
 							onMouseEnter={() => setInputType(currentType => "text")}
@@ -150,7 +154,7 @@ function SignUp() {
 				{error ? <p>{error}</p> : null}
 
 				<Label textColor="black" margin="3rem 0 0 0">
-					<input type="checkbox" id={"tos"}></input>
+					<input type="checkbox" id={"tos"} required></input>
 					By clicking Sign Up, you agree to our Terms and Conditions.
 				</Label>
 

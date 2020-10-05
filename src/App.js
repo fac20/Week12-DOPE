@@ -11,7 +11,6 @@ import PageNotFound from "./PageNotFound/PageNotFound.jsx";
 import {
 	BrowserRouter as Router,
 	Route,
-	Link,
 	Switch,
 	Redirect,
 } from "react-router-dom";
@@ -29,7 +28,7 @@ function App() {
 		<Router>
 			<Switch>
 				<Route path="/" exact>
-					<LandingPage />
+					{authStatus ? <Redirect to="/home" /> : <LandingPage />}
 				</Route>
 
 				<Route path="/home" exact>
@@ -47,9 +46,6 @@ function App() {
 
 				<Route path="/login">
 					{authStatus ? <Redirect to="/" /> : <Login />}
-					<Link to="/signup">
-						<button>Sign up</button>
-					</Link>
 				</Route>
 
 				<Route path="/medication-added">
