@@ -24,6 +24,9 @@ jobs:
           name: Test
           command: npm test
       - run:
+          name: Cypress Tests
+          command: npm run cypress
+      - run:
           name: Build
           command: CI=false npm run build
       # - run:

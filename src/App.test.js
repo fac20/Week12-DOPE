@@ -10,5 +10,5 @@ test("Jest is working", () => {
 
 test("Testing Add Medication Form loads", () => {
 	render(<App></App>);
-	screen.getByText("Email");
+	screen.getByText("PILLOW");
 }); /** @format */
