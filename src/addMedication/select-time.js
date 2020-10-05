@@ -1,7 +1,6 @@
 /** @format */
 
 import React from "react";
-import styled from "styled-components";
 
 const SelectTime = ({ inputs, handleChange, id }) => {
 	const beforeAfterId = `beforeAfter${id}`;
