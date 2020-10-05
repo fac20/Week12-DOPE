@@ -1,12 +1,15 @@
 # @format
 
-version: 2
+version: 2.1
 orbs:
-  cypress: cypress-io/cypress@1
+  node: circleci/node@3.0.0
+  cypress: cypress-io/cypress@1.26.0
+  codecov: codecov/codecov@1.0.2
 jobs:
   build:
     docker:
       - image: circleci/node:10.16.0
+      - image: circleci/node:10-browsers ## makes virtual environment
     working_directory: ~/repo
     steps:
       - checkout
@@ -26,39 +29,45 @@ jobs:
           name: Test
           command: npm test
       - run:
+          name: run tests and generate coverage
+          command: npm run cov
+      - codecov/upload:
+          file: "./coverage/clover.xml"
+          token: b2dee972-978d-4f36-a032-e5dbe30340c1
+      - run:
           name: Build
           command: CI=false npm run build
       # - run:
       #       name: Firebase Deploy
-  "cypress-build":
-    docker:
-      - image: cypress/base:10
-    steps:
-      - checkout
-      # restore folders with npm dependencies and Cypress binary
-      - restore_cache:
-          keys:
-            - cache-{{ checksum "package.json" }}
-      # install npm dependencies and Cypress binary
-      # if they were cached, this step is super quick
-      - run:
-          name: Install dependencies
-          command: npm ci
-      - run: npm run cypress
-      # save npm dependencies and Cypress binary for future runs
-      - save_cache:
-          key: cache-{{ checksum "package.json" }}
-          paths:
-            - ~/.npm
-            - ~/.cache
-      # start server before starting tests
-      - run:
-          command: npm run start:ci
-          background: true
-      - run: npm run e2e:record
+
+  # "cypress-build":
+  #   docker:
+  #     - image: cypress/base:10
+  #   steps:
+  #     - checkout
+  #     # restore folders with npm dependencies and Cypress binary
+  #     - restore_cache:
+  #         keys:
+  #           - cache-{{ checksum "package.json" }}
+  #     # install npm dependencies and Cypress binary
+  #     # if they were cached, this step is super quick
+  #     - run:
+  #         name: Install dependencies
+  #         command: npm ci
+  #     - run: npm run cypress
+  #     # save npm dependencies and Cypress binary for future runs
+  #     - save_cache:
+  #         key: cache-{{ checksum "package.json" }}
+  #         paths:
+  #           - ~/.npm
+  #           - ~/.cache
+  #     # start server before starting tests
+  #     - run:
+  #         command: npm run start:ci
+  #         background: true
+  #     - run: npm run e2e:record
 workflows:
-  version: 2
   build:
     jobs:
       - "build"
-      - "cypress-build"
+      - cypress/run
