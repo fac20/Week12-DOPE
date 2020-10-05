@@ -2,31 +2,41 @@
 
 import React, { useState } from "react";
 import { FaLock, FaRegEnvelope, FaRegEyeSlash } from "react-icons/fa";
-import { signUp, signInWithGoogle } from "../utils/user-management";
+import { signUp } from "../utils/user-management";
 import { signUpDB } from "../utils/data-helpers";
 import { auth } from "../connection";
 import styled from "styled-components";
-import { Checkbox } from "@progress/kendo-react-inputs";
+import { Button } from "../addMedication/formStyle";
+import RightArrow from "../assets/rightarrow.png";
+import { Text } from "../landingPage/landingPage";
+import { Link } from "react-router-dom";
 
-const Form = styled.form`
+export const Form = styled.form`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	font-family: "DM Sans", sans-serif;
+	padding: 20px;
+	width: 50%;
 `;
-
-const Label = styled.label`
+export const Title = styled.h1`
+	font-family: "DM Sans", sans-serif;
+	font-weight: medium;
+	font-size: 24px;
+	text-align: center;
+	margin-right: 1.5rem;
+`;
+export const Label = styled.label`
 	font-size: 12px;
 	font-weight: medium;
-	color: #8f92a1;
-	margin-bottom: 10px;
+	color: ${props => (props.textColor ? props.textColor : "#8f92a1")};
+	text-align: left;
+	margin: ${props => (props.margin ? props.margin : "0.8rem 0")};
 `;
-
-const Input = styled.input`
+export const Input = styled.input`
 	font-family: "DM Sans", sans-serif;
 	color: rgba(23, 23, 23, 1);
 	font-size: 16px;
-	font-weight: medium;
 	/* creates underline input field */
 	border: 0;
 	outline: 0;
@@ -39,6 +49,43 @@ const Input = styled.input`
 		outline: none;
 		box-shadow: -8px 10px 0px -7px rgba(253, 175, 103, 1),
 			8px 10px 0px -7px rgba(253, 175, 103, 1);
+	}
+	text-align: center;
+`;
+export const FlexDiv = styled.div`
+	display: flex;
+	justify-content: space-between;
+	align-items: ${props => (props.alignItems ? props.alignItems : null)};
+`;
+export const FormWrapper = styled.div`
+	display: flex;
+	justify-content: center;
+	margin-top: 90px;
+`;
+export const AlignStartWrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+`;
+
+const Arrow = styled.img`
+	width: 15px;
+	float: right;
+	margin-right: 20px;
+`;
+
+export const LoginButton = styled.button`
+	font-family: "DM Sans", sans-serif;
+	font-weight: bold;
+	font-size: 24px;
+	text-align: center;
+	margin-right: 1.5rem;
+	border: none;
+	background: transparent;
+	opacity: 0.4;
+	cursor: pointer;
+	&:hover {
+		opacity: 1;
 	}
 `;
 
@@ -58,57 +105,67 @@ function SignUp() {
 		}
 	};
 
-	const handleGoogleSignIn = async () => {
-		try {
-			await signInWithGoogle();
-		} catch (error) {
-			setError(error.message);
-		}
-	};
-
 	return (
-		<>
+		<FormWrapper>
 			<Form onSubmit={handleSubmit}>
-				<Label>Email</Label>
-				<span>
-					<FaRegEnvelope />
-					<Input
-						name="name"
-						type="email"
-						value={email}
-						onChange={event => setEmail(event.target.value)}
-					/>
-				</span>
+				<FlexDiv alignItems="center">
+					<Title>Sign Up</Title>
+					<Link to="/login">
+						<LoginButton>Login</LoginButton>
+					</Link>
+				</FlexDiv>
 
-				<Label>Password</Label>
-				<span>
-					<FaLock />
-					<Input
-						name="name"
-						type={inputType}
-						value={password}
-						onChange={event => setPassword(event.target.value)}
-					/>
-				</span>
-				<span
-					onMouseEnter={() => setInputType(currentType => "text")}
-					onMouseLeave={() => setInputType(currentType => "password")}>
-					<FaRegEyeSlash />
-				</span>
+				<AlignStartWrapper>
+					<Label>Email</Label>
+					<span>
+						<FaRegEnvelope />
+						<Input
+							name="name"
+							type="email"
+							value={email}
+							onChange={event => {
+								setEmail(event.target.value);
+								setError();
+							}}
+						/>
+					</span>
+
+					<Label>Password</Label>
+
+					<FlexDiv>
+						<FaLock />
+						<Input
+							name="name"
+							type={inputType}
+							value={password}
+							onChange={event => {
+								setPassword(event.target.value);
+								setError();
+							}}
+						/>
+						<div
+							onMouseEnter={() => setInputType(currentType => "text")}
+							onMouseLeave={() => setInputType(currentType => "password")}>
+							<FaRegEyeSlash />
+						</div>
+					</FlexDiv>
+				</AlignStartWrapper>
 
 				{error ? <p>{error}</p> : null}
-				<button type="submit"> SIGN UP</button>
-				<div>
-					<Checkbox id={"chb1"}>
-						<label for={"chb1"} style={{ display: "inline-block" }}>
-							By clicking Sign Up, you agree to our Terms and Conditions.
-						</label>
-					</Checkbox>
-				</div>
-				<button onClick={handleGoogleSignIn}>Sign in with Google</button>
+
+				<Label textColor="black" margin="3rem 0 0 0">
+					<input type="checkbox" id={"tos"} required></input>
+					By clicking Sign Up, you agree to our Terms and Conditions.
+				</Label>
+
+				<Button type="submit" margin="2rem 0 2rem 0">
+					<Text>
+						SIGN UP <Arrow alt="arrow" src={RightArrow}></Arrow>
+					</Text>
+				</Button>
 			</Form>
-		</>
+		</FormWrapper>
 	);
 }
 
-export default SignUp;
+export { SignUp, Arrow };

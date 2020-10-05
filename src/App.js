@@ -3,16 +3,14 @@
 import React from "react";
 import AddMedication from "./addMedication/form";
 import UserHome from "./userHome/userHome";
-import SignUp from "./registrationForms/signup";
+import { SignUp } from "./registrationForms/signup";
 import Login from "./registrationForms/login";
-import LandingPage from "./landingPage/landingPage";
+import { LandingPage } from "./landingPage/landingPage";
 import MedicationAdded from "./addMedication/medication-added";
 import PageNotFound from "./PageNotFound/PageNotFound.jsx";
-import { AiOutlineSend } from "react-icons/ai";
 import {
 	BrowserRouter as Router,
 	Route,
-	Link,
 	Switch,
 	Redirect,
 } from "react-router-dom";
@@ -30,7 +28,7 @@ function App() {
 		<Router>
 			<Switch>
 				<Route path="/" exact>
-					<LandingPage />
+					{authStatus ? <Redirect to="/home" /> : <LandingPage />}
 				</Route>
 
 				<Route path="/home" exact>
@@ -44,20 +42,10 @@ function App() {
 
 				<Route path="/signup" exact>
 					{authStatus ? <Redirect to="/" /> : <SignUp />}
-					<Link to="/login">
-						<button>
-							Log in <AiOutlineSend />
-						</button>
-					</Link>
 				</Route>
 
 				<Route path="/login">
 					{authStatus ? <Redirect to="/" /> : <Login />}
-					<Link to="/signup">
-						<button>
-							Sign up <AiOutlineSend />
-						</button>
-					</Link>
 				</Route>
 
 				<Route path="/medication-added">

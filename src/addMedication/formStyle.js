@@ -58,6 +58,7 @@ export const NeedleWrapper = styled.div`
 `;
 
 export const Button = styled.button`
+	margin: ${props => (props.margin ? props.margin : null)};
 	font-size: 14px;
 	font-weight: bold;
 	font-style: italic;
