@@ -5,6 +5,9 @@ import styled from "styled-components";
 import { FaPlusCircle } from "react-icons/fa";
 import { auth } from "../connection";
 import { Link } from "react-router-dom";
+import { db } from "../connection.js";
+import { getAllMedicationDB } from "../utils/data-helpers";
+import { MedicationDisplayData } from "./medication-display-data";
 // Styled components
 const Heading = styled.h1``;
 const PillHeading = styled.h5`
@@ -41,20 +44,43 @@ const PillButton = styled.button`
 // });
 // depending on current day, we want 5 in total, 2 on either side
 
+// userHome does fetch request for meds
+// map through data to get timepoints to create and append
+// put med data under the timepoints
+
 function UserHome() {
+	const [medicationData, setMedicationData] = React.useState();
+	const [element, setElement] = React.useState("li");
+
+	React.useEffect(() => {
+		getAllMedicationDB(auth().currentUser.email).then(result => {
+			setMedicationData(result);
+		});
+	}, []);
+	let medInfoArray = [];
+
+	if (medicationData) {
+		medInfoArray = medicationData.map(medObj => {
+			return (
+				<MedicationDisplayData
+					name={medObj.name}
+					strength={medObj.strength}
+					unit={medObj.unit}
+					type={medObj.type}
+					amount={medObj.amount}></MedicationDisplayData>
+			);
+		});
+	}
+
+	if (medicationData) console.log(medicationData[0]);
+
 	return (
 		<>
 			<Heading>
 				Welcome, {auth().currentUser.displayName || auth().currentUser.email}!
 			</Heading>
 			<CalWrapper>
-				<ul>
-					{/* <li></li>
-					<li>{days} {dates - 1}</li>
-					<li>{days} {dates}</li>
-					<li></li>
-					<li></li> */}
-				</ul>
+				<ul></ul>
 			</CalWrapper>
 
 			<PillHeading>
@@ -69,8 +95,35 @@ function UserHome() {
 					</PillButton>
 				</Link>
 			</PillWrapper>
+
+			{medInfoArray}
 		</>
 	);
 }
 
 export default UserHome;
+
+let nb8ANnKLU2cuglrPnx86 = {
+	supply: "50",
+	time_point1: {
+		hour1: "08",
+		minute1: "00",
+		ampm1: "AM",
+	},
+	time_point2: {
+		ampm2: "PM",
+		hour2: "08",
+		minute2: "30",
+	},
+	priority: "Low",
+	oftenUnit: "day",
+	unit: "mg",
+	name: "paracetamol",
+	description: "white round tablet",
+	notes: "Drink lots of water!",
+	oftenFreq: "2",
+	type: "liquid",
+	strength: "200",
+	amount: "2",
+	id: "nb8ANnKLU2cuglrPnx86",
+};
