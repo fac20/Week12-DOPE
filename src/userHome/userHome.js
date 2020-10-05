@@ -57,9 +57,20 @@ function UserHome() {
 			setMedicationData(result);
 		});
 	}, []);
-	let medInfoArray = [];
 
+	let medInfoArray = [];
+	let timeArray = [];
 	if (medicationData) {
+		timeArray = medicationData.map(medObj => {
+			console.log("run>");
+			let timeString =
+				medObj.time_point1.hour1 +
+				medObj.time_point1.minute1 +
+				medObj.time_point1.ampm1;
+			console.log(timeString);
+			return timeString;
+		});
+
 		medInfoArray = medicationData.map(medObj => {
 			return (
 				<MedicationDisplayData
@@ -70,6 +81,8 @@ function UserHome() {
 					amount={medObj.amount}></MedicationDisplayData>
 			);
 		});
+
+		console.log(timeArray);
 	}
 
 	if (medicationData) console.log(medicationData[0]);
@@ -94,6 +107,7 @@ function UserHome() {
 						<FaPlusCircle color="#458FE0" size="20px" />
 					</PillButton>
 				</Link>
+				{timeArray}
 			</PillWrapper>
 
 			{medInfoArray}
