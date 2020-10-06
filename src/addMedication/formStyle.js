@@ -6,6 +6,9 @@ export const Form = styled.form`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
 `;
 
 export const Heading = styled.h1`
@@ -21,7 +24,15 @@ export const NameInput = styled.input.attrs({ type: "text" })`
 	border: 1px solid rgba(0, 0, 0, 0.15);
 	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 	margin: 10px;
-	width: 70%;
+	min-width: 40%;
+	height: 25px;
+`;
+
+export const NumberInput = styled.input.attrs({ type: "number" })`
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+	margin: 10px;
+	min-width: 40%;
 	height: 25px;
 `;
 
@@ -31,11 +42,6 @@ export const TypeInput = styled.input.attrs({ type: "text" })`
 	margin: 10px;
 `;
 
-export const TypeWrapper = styled.div`
-	display: flex;
-	flex-direction: row;
-	padding: 20px;
-`;
 export const HiddenCheckbox = styled.input.attrs({ type: "checkbox" })`
 	visibility: hidden;
 `;
@@ -48,7 +54,7 @@ export const Button = styled.button`
 	background: linear-gradient(180deg, #fdaf67 0%, #f7c649 100%);
 	border-radius: 30px;
 	border: none;
-	width: 305px;
+	width: 150px;
 	height: 44px;
 	align-self: center;
 	overflow: hidden;
@@ -63,4 +69,25 @@ export const Button = styled.button`
 		top: 3px;
 		left: 3px;
 	}
+`;
+
+export const SelectInput = styled.select`
+	border-radius: 8px;
+	background: #ffffff;
+	border: 1px solid #828282;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 18px;
+	letter-spacing: 0.1px;
+	color: #828282;
+	margin: 10px 0 10px 10px;
+`;
+
+export const TextArea = styled.textarea`
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+	margin: 0 10px 10px 10px;
+	width: 70%;
 `;

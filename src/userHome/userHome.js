@@ -5,6 +5,10 @@ import styled from "styled-components";
 import { FaPlusCircle } from "react-icons/fa";
 import { auth } from "../connection";
 import { Link } from "react-router-dom";
+import { db } from "../connection.js";
+import { getAllMedicationDB } from "../utils/data-helpers";
+import { MedicationDisplayData } from "./medication-display-data";
+import DailyViewArray from "./DailyViewArray";
 // Styled components
 const Heading = styled.h1``;
 const PillHeading = styled.h5`
@@ -26,35 +30,24 @@ const PillButton = styled.button`
 	background-color: transparent;
 `;
 
-// return a h1
-// return a calender with todays date, highlight/add css for current date
-// return the medication detail view with if statement. IF no data is fetched, render empty box and an add medication button
-// if data is fetched then return data and add medication button
-
-// Calendar
-// let day = new Date();
-// let daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
-// let result = daysOfWeek[day.getDay()] + " " + day.getDate();
-// let days = daysOfWeek[day.getDay()];
-// let dates = day.getDate();
-// const logRes = days.filter(x => {
-// });
-// depending on current day, we want 5 in total, 2 on either side
-
 function UserHome() {
+	const [medicationData, setMedicationData] = React.useState();
+
+	React.useEffect(() => {
+		getAllMedicationDB(auth().currentUser.email).then(result => {
+			setMedicationData(result);
+			console.log(result);
+		});
+	}, []);
+
 	return (
 		<>
 			<Heading>
 				Welcome, {auth().currentUser.displayName || auth().currentUser.email}!
 			</Heading>
+
 			<CalWrapper>
-				<ul>
-					{/* <li></li>
-					<li>{days} {dates - 1}</li>
-					<li>{days} {dates}</li>
-					<li></li>
-					<li></li> */}
-				</ul>
+				<ul></ul>
 			</CalWrapper>
 
 			<PillHeading>
@@ -69,6 +62,10 @@ function UserHome() {
 					</PillButton>
 				</Link>
 			</PillWrapper>
+
+			{medicationData ? (
+				<DailyViewArray medicationData={medicationData} />
+			) : null}
 		</>
 	);
 }

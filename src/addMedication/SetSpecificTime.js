@@ -1,6 +1,8 @@
 /** @format */
 
 import React from "react";
+import styled from "styled-components";
+import { Label } from "./formStyle";
 
 const SetSpecificTime = ({ inputs, handleChange, id }) => {
 	const ampmId = `ampm${id}`;
@@ -14,17 +16,17 @@ const SetSpecificTime = ({ inputs, handleChange, id }) => {
 	if (!inputs[minuteId]) inputs[minuteId] = "00";
 
 	return (
-		<label>
+		<Label>
 			Set Time
-			<select
+			<SelectInput
 				name={ampmId}
 				id="ampm"
 				value={inputs[ampmId]}
 				onChange={handleChange}>
 				<option value="AM">AM</option>
 				<option value="PM">PM</option>
-			</select>
-			<select
+			</SelectInput>
+			<SelectInput
 				name={hourId}
 				id="hour"
 				value={inputs[hourId]}
@@ -41,8 +43,8 @@ const SetSpecificTime = ({ inputs, handleChange, id }) => {
 				<option value="09">09</option>
 				<option value="10">10</option>
 				<option value="11">11</option>
-			</select>
-			<select
+			</SelectInput>
+			<SelectInput
 				name={minuteId}
 				id="minute"
 				value={inputs[minuteId]}
@@ -53,9 +55,23 @@ const SetSpecificTime = ({ inputs, handleChange, id }) => {
 				<option value="30">30</option>
 				<option value="40">40</option>
 				<option value="50">50</option>
-			</select>
-		</label>
+			</SelectInput>
+		</Label>
 	);
 };
+
+const SelectInput = styled.select`
+	border-radius: 8px;
+	background: #ffffff;
+	border: 1px solid #828282;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 18px;
+	letter-spacing: 0.1px;
+	color: #828282;
+	margin: 0 5px;
+`;
 
 export default SetSpecificTime;

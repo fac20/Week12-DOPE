@@ -2,7 +2,6 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button } from "../addMedication/formStyle";
 import pillow from "../assets/pillow.svg";
 import RightArrow from "../assets/rightarrow.png";
 import styled from "styled-components";
@@ -54,6 +53,31 @@ const Arrow = styled.img`
 	width: 15px;
 	float: right;
 	margin-right: 20px;
+`;
+
+const Button = styled.button`
+	margin: ${props => (props.margin ? props.margin : null)};
+	font-size: 14px;
+	font-weight: bold;
+	font-style: italic;
+	background: linear-gradient(180deg, #fdaf67 0%, #f7c649 100%);
+	border-radius: 30px;
+	border: none;
+	width: 305px;
+	height: 44px;
+	align-self: center;
+	overflow: hidden;
+	z-index: 1;
+	outline: none;
+	:hover {
+		cursor: pointer;
+		background: linear-gradient(180deg, #f7c649 0%, #fdaf67 100%);
+	}
+	:active {
+		position: relative;
+		top: 3px;
+		left: 3px;
+	}
 `;
 
 function LandingPage() {

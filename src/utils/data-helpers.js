@@ -12,13 +12,15 @@ function addMedicationDB(username, medicineObj) {
 		.collection("Users")
 		.doc(username)
 		.collection("medication")
-		.doc()
-		.set(medicineObj);
+		.add(medicineObj);
+	// .doc()
+	// .set(medicineObj);
 }
 
 function getAllMedicationDB(username) {
 	let newArray = [];
-	db.collection("Users")
+	return db
+		.collection("Users")
 		.doc(username)
 		.collection("medication")
 		.get()
@@ -29,8 +31,10 @@ function getAllMedicationDB(username) {
 				newArray.push(newObj);
 			});
 		})
-		.then(() => console.log(newArray));
-	return newArray;
+		.then(() => {
+			console.log(newArray);
+			return newArray;
+		});
 }
 
 export { signUpDB, addMedicationDB, getAllMedicationDB };

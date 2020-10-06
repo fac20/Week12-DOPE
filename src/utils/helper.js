@@ -39,4 +39,41 @@ function convertData(objData) {
 	return objData;
 }
 
-export default convertData;
+const timePointCombiner = (objData, results) => {
+	for (const prop in objData) {
+		let match = prop.match(/\d+/);
+		if (match) {
+			let time_point = "time_point" + match[0];
+			let hour = "hour" + match[0];
+			let minute = "minute" + match[0];
+			let ampm = "ampm" + match[0];
+			let timePointObj = objData[time_point];
+			let timePointString =
+				timePointObj[hour] + timePointObj[minute] + timePointObj[ampm];
+
+			results[timePointString] = {
+				...results[timePointString],
+				[objData.id]: {
+					name: objData.name,
+					strength: objData.strength,
+					unit: objData.unit,
+					amount: objData.amount,
+					type: objData.type,
+				},
+			};
+		}
+	}
+	return results;
+};
+
+function timePoints(fetchDataObj) {
+	let result = {};
+	fetchDataObj.forEach(x => {
+		return timePointCombiner(x, result);
+	});
+	return Object.entries(result).map(e => {
+		return { [e[0]]: e[1] };
+	});
+}
+
+export { convertData, timePointCombiner, timePoints };
