@@ -14,16 +14,18 @@ const DailyViewArray = ({ medicationData }) => {
 		let timeHeader = Object.keys(timeObj).join("");
 		let medInfoArray = Object.values(timeObj[timeHeader]);
 
-		// myArray.sort((a, b) => a - b);
-
 		const medInfo = medInfoArray.map((medObj, i) => {
+			console.log("hey", medObj);
 			return (
 				<MedicationDisplayData
 					name={medObj.name}
 					strength={medObj.strength}
 					unit={medObj.unit}
 					type={medObj.type}
-					amount={medObj.amount}></MedicationDisplayData>
+					amount={medObj.amount}
+					id={medObj.id}
+					time_point={medObj.time_point}
+					taken={medObj.taken}></MedicationDisplayData>
 			);
 		});
 

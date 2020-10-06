@@ -59,6 +59,9 @@ const timePointCombiner = (objData, results) => {
 					unit: objData.unit,
 					amount: objData.amount,
 					type: objData.type,
+					id: objData.id,
+					taken: objData[time_point].taken,
+					time_point: time_point,
 				},
 			};
 		}
