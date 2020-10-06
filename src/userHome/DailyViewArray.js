@@ -32,8 +32,10 @@ const DailyViewArray = ({ medicationData }) => {
 
 		return (
 			<MedicationWrapper>
-				<TimeHeader>{timeHeader}</TimeHeader>
-				{medInfo}
+				<Inner>
+					<TimeHeader>{timeHeader}</TimeHeader>
+					{medInfo}
+				</Inner>
 			</MedicationWrapper>
 		);
 	});
@@ -41,7 +43,21 @@ const DailyViewArray = ({ medicationData }) => {
 
 export default DailyViewArray;
 
-const MedicationWrapper = styled.div``;
+const MedicationWrapper = styled.div`
+	width: 50%;
+	margin: auto;
+	border-radius: 16px;
+	background: #069fdf;
+	/* #f7c649 */
+	padding: 2px 4px 2.5px;
+`;
+
+const Inner = styled.div`
+	background: linear-gradient(90deg, white 15px, transparent 1%) center,
+		linear-gradient(white 15px, transparent 1%) center, #ccc;
+	background-size: 16px 16px;
+	padding: 30px 20px 25px;
+`;
 
 const TimeHeader = styled.h2`
 	text-align: left;

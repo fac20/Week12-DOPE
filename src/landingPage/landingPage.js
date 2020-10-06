@@ -6,6 +6,28 @@ import pillow from "../assets/pillow.svg";
 import RightArrow from "../assets/rightarrow.png";
 import styled from "styled-components";
 
+function LandingPage() {
+	return (
+		<PageWrapper>
+			<Title>PILLOW</Title>
+			<img alt="pillow" src={pillow} width="230.34" height="260.34" />
+			<HeadingThree>Worry less, live healthier.</HeadingThree>
+			<HeadingFive>
+				Monitor your medicine intake with our intuitive tracking app.{" "}
+			</HeadingFive>
+			<Link to="/signup">
+				<Button>
+					<Text>
+						GET STARTED <Arrow alt="arrow" src={RightArrow}></Arrow>
+					</Text>
+				</Button>
+			</Link>
+		</PageWrapper>
+	);
+}
+
+export { LandingPage };
+
 const PageWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -40,9 +62,10 @@ const HeadingFive = styled.h5`
 	font-weight: normal;
 	font-size: 16px;
 	margin-bottom: 70px;
+	text-align: center;
 `;
 
-const Text = styled.p`
+export const Text = styled.p`
 	color: #001d84;
 	font-size: 14px;
 	font-style: normal;
@@ -79,25 +102,3 @@ const Button = styled.button`
 		left: 3px;
 	}
 `;
-
-function LandingPage() {
-	return (
-		<PageWrapper>
-			<Title>PILLOW</Title>
-			<img alt="pillow" src={pillow} width="230.34" height="260.34" />
-			<HeadingThree>Worry less, live healthier.</HeadingThree>
-			<HeadingFive>
-				Monitor your medicine intake with our intuitive tracking app.{" "}
-			</HeadingFive>
-			<Link to="/signup">
-				<Button>
-					<Text>
-						GET STARTED <Arrow alt="arrow" src={RightArrow}></Arrow>
-					</Text>
-				</Button>
-			</Link>
-		</PageWrapper>
-	);
-}
-
-export { LandingPage, Text };
