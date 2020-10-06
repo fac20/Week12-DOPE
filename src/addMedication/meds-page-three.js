@@ -7,6 +7,11 @@ import { Label } from "./formStyle";
 const MedsPageThree = ({ inputs, handleChange, page }) => {
 	return (
 		<>
+			<label for="progress"></label>
+			<progress id="progress" value="100" max="100">
+				{" "}
+				32%
+			</progress>
 			<Label>
 				Priority:
 				<select name="priority" value={inputs.priority} onChange={handleChange}>

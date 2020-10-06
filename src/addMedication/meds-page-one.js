@@ -17,6 +17,12 @@ import needlePic from "../assets/typeNeedle.png";
 const MedsPageOne = ({ inputs, handleChange, page }) => {
 	return (
 		<>
+			<label for="progress"></label>
+			<progress
+				style={{ color: "red" }}
+				id="progress"
+				value="33"
+				max="100"></progress>
 			<Heading>Add your medicine</Heading>
 			<Form>
 				<Label htmlFor="name">Name of medicine</Label>
