@@ -49,7 +49,7 @@ const timePointCombiner = (objData, results) => {
 			let ampm = "ampm" + match[0];
 			let timePointObj = objData[time_point];
 			let timePointString =
-				timePointObj[hour] + timePointObj[minute] + timePointObj[ampm];
+				timePointObj[hour] + ":" + timePointObj[minute] + timePointObj[ampm];
 
 			results[timePointString] = {
 				...results[timePointString],
@@ -59,6 +59,9 @@ const timePointCombiner = (objData, results) => {
 					unit: objData.unit,
 					amount: objData.amount,
 					type: objData.type,
+					id: objData.id,
+					taken: objData[time_point].taken,
+					time_point: time_point,
 				},
 			};
 		}
@@ -66,14 +69,25 @@ const timePointCombiner = (objData, results) => {
 	return results;
 };
 
+function compare(a, b) {
+	let comparison = 0;
+	if (a > b) comparison = 1;
+	if (a < b) comparison = -1;
+	if (a[0].includes("AM") && b[0].includes("PM")) comparison = -1;
+	if (a[0].includes("PM") && b[0].includes("AM")) comparison = 1;
+	return comparison;
+}
+
 function timePoints(fetchDataObj) {
 	let result = {};
 	fetchDataObj.forEach(x => {
 		return timePointCombiner(x, result);
 	});
-	return Object.entries(result).map(e => {
-		return { [e[0]]: e[1] };
-	});
+	return Object.entries(result)
+		.sort(compare)
+		.map(e => {
+			return { [e[0]]: e[1] };
+		});
 }
 
 export { convertData, timePointCombiner, timePoints };

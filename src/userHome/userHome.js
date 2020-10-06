@@ -50,22 +50,24 @@ function UserHome() {
 				<ul></ul>
 			</CalWrapper>
 
-			<PillHeading>
-				Currently empty. <br />
-				Add your first medication below.
-			</PillHeading>
-
-			<PillWrapper>
-				<Link to="/add-medication">
-					<PillButton>
-						<FaPlusCircle color="#458FE0" size="20px" />
-					</PillButton>
-				</Link>
-			</PillWrapper>
-
 			{medicationData ? (
 				<DailyViewArray medicationData={medicationData} />
-			) : null}
+			) : (
+				<div>
+					<PillHeading>
+						Currently empty. <br />
+						Add your first medication below.
+					</PillHeading>
+
+					<PillWrapper>
+						<Link to="/add-medication">
+							<PillButton>
+								<FaPlusCircle color="#458FE0" size="20px" />
+							</PillButton>
+						</Link>
+					</PillWrapper>
+				</div>
+			)}
 		</>
 	);
 }
