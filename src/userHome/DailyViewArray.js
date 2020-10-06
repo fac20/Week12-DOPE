@@ -8,8 +8,9 @@ const DailyViewArray = ({ medicationData }) => {
 	// [{"0800AM"},{"0830PM"},{"0100AM"},{"1000AM"}] need to sort in order
 
 	let newTimeArray = timePoints(medicationData);
+	console.log(newTimeArray);
+	console.log(Object.values(newTimeArray));
 	return newTimeArray.map(timeObj => {
-		console.log(timeObj);
 		let timeHeader = Object.keys(timeObj).join("");
 		let medInfoArray = Object.values(timeObj[timeHeader]);
 
