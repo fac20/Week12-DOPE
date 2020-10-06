@@ -6,7 +6,7 @@ import { MedsPageOne } from "./meds-page-one";
 import MedsPageTwo from "./meds-page-two";
 import MedsPageThree from "./meds-page-three";
 import { Form, Button } from "./formStyle";
-import convertData from "./../utils/helper";
+import { convertData } from "./../utils/helper";
 // import { Redirect } from "react-router-dom";
 import {
 	addMedicationDB,
