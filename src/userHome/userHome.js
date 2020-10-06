@@ -2,21 +2,23 @@
 
 import React from "react";
 import styled from "styled-components";
-import { FaPlusCircle } from "react-icons/fa";
+import { FaPlusCircle, FaPlus } from "react-icons/fa";
 import { auth } from "../connection";
 import { Link } from "react-router-dom";
 import { db } from "../connection.js";
 import { getAllMedicationDB } from "../utils/data-helpers";
 import { MedicationDisplayData } from "./medication-display-data";
 import DailyViewArray from "./DailyViewArray";
+import { Heading, Button, Text, FlexDiv } from "./userHomeStyle";
+import { signOut } from "./../utils/user-management";
 // Styled components
-const Heading = styled.h1``;
+
 const PillHeading = styled.h5`
 	font-style: italic;
 	color: #828282;
 	font-weight: normal;
 `;
-const CalWrapper = styled.div``;
+
 const PillWrapper = styled.div`
 	background-color: rgba(255, 246, 246, 1);
 	border: 1px solid #babfcd;
@@ -24,10 +26,6 @@ const PillWrapper = styled.div`
 	border-radius: 20px;
 	width: 327px;
 	height: 319px;
-`;
-const PillButton = styled.button`
-	border: none;
-	background-color: transparent;
 `;
 
 function UserHome() {
@@ -41,17 +39,31 @@ function UserHome() {
 	}, []);
 
 	return (
-		<>
+		<HomeWrapper>
 			<Heading>
-				Welcome, {auth().currentUser.displayName || auth().currentUser.email}!
+				Welcome, here's your view for the day!
+				{/* {auth().currentUser.displayName || auth().currentUser.email} */}
 			</Heading>
 
-			<CalWrapper>
+			{/* <CalWrapper>
 				<ul></ul>
-			</CalWrapper>
+			</CalWrapper> */}
 
-			{medicationData ? (
-				<DailyViewArray medicationData={medicationData} />
+			{medicationData && medicationData.length ? (
+				<div>
+					<Button margin="10px auto" onClick={signOut}>
+						SIGN OUT{" "}
+					</Button>
+					<Link to="/add-medication">
+						<Button margin="10px">
+							<FlexDiv>
+								<FaPlus color="#FFFFFF" size="30px" />
+								<Text>Add</Text>
+							</FlexDiv>
+						</Button>
+					</Link>
+					<DailyViewArray medicationData={medicationData} />
+				</div>
 			) : (
 				<div>
 					<PillHeading>
@@ -61,15 +73,26 @@ function UserHome() {
 
 					<PillWrapper>
 						<Link to="/add-medication">
-							<PillButton>
-								<FaPlusCircle color="#458FE0" size="20px" />
-							</PillButton>
+							<FlexDiv>
+								<Button margin="10px">
+									<FaPlus color="#FFFFFF" size="30px" />
+									<Text>Add</Text>
+								</Button>
+							</FlexDiv>
 						</Link>
 					</PillWrapper>
 				</div>
 			)}
-		</>
+		</HomeWrapper>
 	);
 }
 
 export default UserHome;
+
+const HomeWrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+	width: 90%;
+	margin: auto;
+	text-align: center;
+`;

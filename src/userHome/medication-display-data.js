@@ -2,11 +2,11 @@
 
 import React from "react";
 import styled from "styled-components";
-import { CgPill } from "react-icons/cg";
-import { RiMedicineBottleLine } from "react-icons/ri";
-import { FaSyringe } from "react-icons/fa";
 import { Checkbox } from "@material-ui/core";
 import { db, auth } from "../connection.js";
+import tabletPic from "../assets/typePill.png";
+import liquidPic from "../assets/typeLiquid.png";
+import needlePic from "../assets/typeNeedle.png";
 
 const MedicationDisplayData = ({
 	name,
@@ -19,11 +19,10 @@ const MedicationDisplayData = ({
 	taken,
 }) => {
 	const [iconType, setIconType] = React.useState({
-		tablet: <CgPill />,
-		liquid: <RiMedicineBottleLine />,
-		needle: <FaSyringe />,
+		tablet: <img src={tabletPic} width="60" height="60" alt="tablet icon" />,
+		liquid: <img src={liquidPic} width="60" height="60" alt="liquid icon" />,
+		needle: <img src={needlePic} width="60" height="60" alt="needle icon" />,
 	});
-
 	const [checked, setChecked] = React.useState();
 
 	const handleCheck = e => {
@@ -39,19 +38,40 @@ const MedicationDisplayData = ({
 	};
 
 	return (
-		<div>
+		<MedicineDiv>
 			{iconType[type]}
-			<p>{`${name} - ${strength}${unit}`}</p>
-			<p>
-				{`${amount} ${type}`}
-				{amount > 1 ? "s" : null}
-			</p>
-			<label>
-				Medicine taken?
-				<input type="checkbox" onChange={handleCheck} checked={checked}></input>
-			</label>
-		</div>
+			<div>
+				<MedInfoText>{`${name} - ${strength}${unit}`}</MedInfoText>
+				<MedInfoText>
+					{`${amount} ${type}`}
+					{amount > 1 ? "s" : null}
+				</MedInfoText>
+				<Label>
+					Medicine taken?
+					<input
+						type="checkbox"
+						onChange={handleCheck}
+						checked={checked}></input>
+				</Label>
+			</div>
+		</MedicineDiv>
 	);
 };
 
 export { MedicationDisplayData };
+
+const MedicineDiv = styled.div`
+	border-bottom: 1px solid #babfcd;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+`;
+
+const MedInfoText = styled.p`
+	margin: 10px;
+`;
+
+const Label = styled.label`
+	display: inline-block;
+	margin-bottom: 10px;
+`;
