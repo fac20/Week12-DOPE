@@ -14,47 +14,30 @@ export const Heading = styled.h1`
 
 export const Label = styled.label`
 	font-size: 18px;
+	margin: 10px;
 `;
 
-export const TextInput = styled.input.attrs({ type: "text" })`
+export const NameInput = styled.input.attrs({ type: "text" })`
 	border: 1px solid rgba(0, 0, 0, 0.15);
 	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+	margin: 10px;
+	width: 70%;
+	height: 25px;
+`;
+
+export const TypeInput = styled.input.attrs({ type: "text" })`
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+	margin: 10px;
 `;
 
 export const TypeWrapper = styled.div`
 	display: flex;
 	flex-direction: row;
+	padding: 20px;
 `;
 export const HiddenCheckbox = styled.input.attrs({ type: "checkbox" })`
-	border: 1px solid red;
-	/* visibility: hidden; */
-`;
-
-export const TabletWrapper = styled.div`
-	background: #fff6f6;
-	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-	border-radius: 10px;
-	width: 93px;
-	height: 93px;
-	text-align: center;
-`;
-
-export const LiquidWrapper = styled.div`
-	background: #fff6f6;
-	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-	border-radius: 10px;
-	width: 93px;
-	height: 93px;
-	text-align: center;
-`;
-
-export const NeedleWrapper = styled.div`
-	background: #fff6f6;
-	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-	border-radius: 10px;
-	width: 93px;
-	height: 93px;
-	text-align: center;
+	visibility: hidden;
 `;
 
 export const Button = styled.button`

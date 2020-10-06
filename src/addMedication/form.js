@@ -1,12 +1,16 @@
 /** @format */
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { MedsPageOne } from "./meds-page-one";
 import MedsPageTwo from "./meds-page-two";
 import MedsPageThree from "./meds-page-three";
 import { Form, Button } from "./formStyle";
+import leftArrow from "../assets/leftArrow.svg";
+import rightArrow from "../assets/rightArrow.svg";
 import convertData from "./../utils/helper";
+import styled from "styled-components";
+
 // import { Redirect } from "react-router-dom";
 import {
 	addMedicationDB,
@@ -78,20 +82,22 @@ function AddMedication() {
 
 				{page === 1 && (
 					<Link to="/">
-						<button type="button">cancel</button>
+						<CancelArrow type="button">
+							<img alt="" width="80" src={leftArrow} />
+						</CancelArrow>
 					</Link>
 				)}
 
 				{page !== 1 && (
-					<button type="button" onClick={() => setPage(page => page - 1)}>
-						back
-					</button>
+					<LeftArrow type="button" onClick={() => setPage(page => page - 1)}>
+						<img alt="" width="80" src={leftArrow} />
+					</LeftArrow>
 				)}
 
 				{page !== 3 && (
-					<button type="button" onClick={() => setPage(page => page + 1)}>
-						forward
-					</button>
+					<RightArrow type="button" onClick={() => setPage(page => page + 1)}>
+						<img alt="" width="80" src={rightArrow} />
+					</RightArrow>
 				)}
 
 				{page === 3 && <Button>Submit</Button>}
@@ -101,3 +107,22 @@ function AddMedication() {
 }
 
 export default AddMedication;
+
+const LeftArrow = styled.button`
+	cursor: pointer;
+	border: none;
+	background: transparent;
+	margin-left: 200px;
+`;
+const RightArrow = styled.button`
+	cursor: pointer;
+	border: none;
+	background: transparent;
+	margin-left: 200px;
+`;
+const CancelArrow = styled.button`
+	display: inline-block;
+	border: none;
+	background: transparent;
+	margin-right: 200px;
+`;
