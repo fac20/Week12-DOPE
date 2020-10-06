@@ -49,7 +49,7 @@ const timePointCombiner = (objData, results) => {
 			let ampm = "ampm" + match[0];
 			let timePointObj = objData[time_point];
 			let timePointString =
-				timePointObj[hour] + timePointObj[minute] + timePointObj[ampm];
+				timePointObj[hour] + ":" + timePointObj[minute] + timePointObj[ampm];
 
 			results[timePointString] = {
 				...results[timePointString],

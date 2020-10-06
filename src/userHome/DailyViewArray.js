@@ -11,7 +11,8 @@ const DailyViewArray = ({ medicationData }) => {
 		console.log(timeObj);
 		let timeHeader = Object.keys(timeObj).join("");
 		let medInfoArray = Object.values(timeObj[timeHeader]);
-		const medInfo = medInfoArray.map(medObj => {
+
+		const medInfo = medInfoArray.map((medObj, i) => {
 			return (
 				<MedicationDisplayData
 					name={medObj.name}
@@ -21,6 +22,7 @@ const DailyViewArray = ({ medicationData }) => {
 					amount={medObj.amount}></MedicationDisplayData>
 			);
 		});
+
 		return (
 			<>
 				<h2>{timeHeader}</h2>
