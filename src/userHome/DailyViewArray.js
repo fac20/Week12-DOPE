@@ -3,6 +3,7 @@
 import React from "react";
 import { MedicationDisplayData } from "./medication-display-data";
 import { timePoints } from "../utils/helper";
+import styled from "styled-components";
 
 const DailyViewArray = ({ medicationData }) => {
 	// [{"0800AM"},{"0830PM"},{"0100AM"},{"1000AM"}] need to sort in order
@@ -30,12 +31,21 @@ const DailyViewArray = ({ medicationData }) => {
 		});
 
 		return (
-			<>
-				<h2>{timeHeader}</h2>
+			<MedicationWrapper>
+				<TimeHeader>{timeHeader}</TimeHeader>
 				{medInfo}
-			</>
+			</MedicationWrapper>
 		);
 	});
 };
 
 export default DailyViewArray;
+
+const MedicationWrapper = styled.div``;
+
+const TimeHeader = styled.h2`
+	text-align: left;
+	border-bottom: 1px solid #babfcd;
+	padding: 10px;
+	margin-bottom: 0;
+`;
