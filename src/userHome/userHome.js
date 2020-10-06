@@ -50,42 +50,79 @@ const PillButton = styled.button`
 
 function UserHome() {
 	const [medicationData, setMedicationData] = React.useState();
-	const [element, setElement] = React.useState("li");
+	const [element, setElement] = React.useState();
+	// const [newTimeArray, setNewTimeArray] = React.useState();
 
 	React.useEffect(() => {
 		getAllMedicationDB(auth().currentUser.email).then(result => {
 			setMedicationData(result);
+			// setNewTimeArray(timePoints(result));
 		});
 	}, []);
 
-	let medInfoArray = [];
-	let timeArray = [];
-	if (medicationData) {
-		timeArray = medicationData.map(medObj => {
-			console.log("run>");
-			let timeString =
-				medObj.time_point1.hour1 +
-				medObj.time_point1.minute1 +
-				medObj.time_point1.ampm1;
-			console.log(timeString);
-			return timeString;
-		});
+	const timePointCombiner = (objData, results) => {
+		for (const prop in objData) {
+			let match = prop.match(/\d+/);
+			if (match) {
+				let time_point = "time_point" + match[0];
+				let hour = "hour" + match[0];
+				let minute = "minute" + match[0];
+				let ampm = "ampm" + match[0];
+				let timePointObj = objData[time_point];
+				let timePointString =
+					timePointObj[hour] + timePointObj[minute] + timePointObj[ampm];
 
-		medInfoArray = medicationData.map(medObj => {
-			return (
-				<MedicationDisplayData
-					name={medObj.name}
-					strength={medObj.strength}
-					unit={medObj.unit}
-					type={medObj.type}
-					amount={medObj.amount}></MedicationDisplayData>
-			);
-		});
+				results[timePointString] = {
+					...results[timePointString],
+					[objData.id]: {
+						name: objData.name,
+						strength: objData.strength,
+						unit: objData.unit,
+						amount: objData.amount,
+						type: objData.type,
+					},
+				};
+			}
+		}
+		return results;
+	};
 
-		console.log(timeArray);
+	function timePoints(fetchDataObj) {
+		let result = {};
+		fetchDataObj.forEach(x => {
+			return timePointCombiner(x, result);
+		});
+		return Object.entries(result).map(e => {
+			return { [e[0]]: e[1] };
+		});
 	}
 
-	if (medicationData) console.log(medicationData[0]);
+	if (medicationData) {
+		let newTimeArray = timePoints(medicationData);
+		const dailyViewArray = newTimeArray.map(timeObj => {
+			console.log(timeObj);
+			let timeHeader = Object.keys(timeObj).join("");
+			let medInfoArray = Object.values(timeObj[timeHeader]);
+			const medInfo = medInfoArray.map(medObj => {
+				return (
+					<MedicationDisplayData
+						name={medObj.name}
+						strength={medObj.strength}
+						unit={medObj.unit}
+						type={medObj.type}
+						amount={medObj.amount}></MedicationDisplayData>
+				);
+			});
+			return (
+				<>
+					<h2>{timeHeader}</h2>
+					{medInfo}
+				</>
+			);
+		});
+		return dailyViewArray;
+	}
+	// console.log(dailyViewArray)
 
 	return (
 		<>
@@ -107,37 +144,41 @@ function UserHome() {
 						<FaPlusCircle color="#458FE0" size="20px" />
 					</PillButton>
 				</Link>
-				{timeArray}
+				{/* {timeArray} */}
 			</PillWrapper>
 
-			{medInfoArray}
+			{/* {medicationData ? { DailyViewArray } : null} */}
 		</>
 	);
 }
 
 export default UserHome;
 
-let nb8ANnKLU2cuglrPnx86 = {
-	supply: "50",
-	time_point1: {
-		hour1: "08",
-		minute1: "00",
-		ampm1: "AM",
-	},
-	time_point2: {
-		ampm2: "PM",
-		hour2: "08",
-		minute2: "30",
-	},
-	priority: "Low",
-	oftenUnit: "day",
-	unit: "mg",
-	name: "paracetamol",
-	description: "white round tablet",
-	notes: "Drink lots of water!",
-	oftenFreq: "2",
-	type: "liquid",
-	strength: "200",
-	amount: "2",
-	id: "nb8ANnKLU2cuglrPnx86",
-};
+// let medInfoArray = [];
+// 	let timeArray = [];
+// 	if (medicationData) {
+// 		timeArray = medicationData.map(medObj => {
+// 			console.log("run>");
+// 			let timeString =
+// 				medObj.time_point1.hour1 +
+// 				medObj.time_point1.minute1 +
+// 				medObj.time_point1.ampm1;
+// 			console.log(timeString);
+// 			return timeString;
+// 		});
+
+// 		medInfoArray = medicationData.map(medObj => {
+// 			return (
+// 				<MedicationDisplayData
+// 					name={medObj.name}
+// 					strength={medObj.strength}
+// 					unit={medObj.unit}
+// 					type={medObj.type}
+// 					amount={medObj.amount}></MedicationDisplayData>
+// 			);
+// 		});
+
+// 		console.log(timeArray);
+// 	}
+
+// 	if (medicationData) console.log(medicationData[0]);
