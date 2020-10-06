@@ -19,78 +19,6 @@ import {
 	Arrow,
 } from "./signup";
 
-const SignUpButton = styled.button`
-	font-family: "DM Sans", sans-serif;
-	font-weight: bold;
-	font-size: 24px;
-	text-align: center;
-	margin-right: 1.5rem;
-	border: none;
-	background: transparent;
-	opacity: 0.4;
-	cursor: pointer;
-	&:hover {
-		opacity: 1;
-	}
-`;
-
-const GoogleButton = styled.button`
-	width: 75%;
-	height: 40px;
-	border-width: 0;
-	background: #4285f4;
-	color: white;
-	border-radius: 5px;
-	white-space: nowrap;
-	box-shadow: 1px 1px 0px 1px rgba(0, 0, 0, 0.05);
-	transition-property: background-color, box-shadow;
-	transition-duration: 150ms;
-	transition-timing-function: ease-in-out;
-	padding: 0;
-	cursor: pointer;
-	&:focus,
-	&:hover {
-		box-shadow: 1px 4px 5px 1px rgba(0, 0, 0, 0.1);
-		background-color: #307af5;
-	}
-	&:active {
-		box-shadow: 1px 4px 5px 1px rgba(0, 0, 0, 0.1);
-		transition-duration: 10ms;
-		position: relative;
-		top: 3px;
-		left: 3px;
-	}
-`;
-
-const GoogleIconWrapper = styled.div`
-	position: absolute;
-	margin-bottom: 220px;
-	width: 40px;
-	height: 36px;
-	border-radius: 2px;
-	background-color: white;
-	border: 1px solid #4285f4;
-`;
-
-const GoogleIcon = styled.img`
-	display: inline-block;
-	vertical-align: middle;
-	margin: 10px 0 5px 3px;
-	width: 18px;
-	height: 18px;
-	box-sizing: border-box;
-	width: 27px;
-`;
-
-const GoogleText = styled.p`
-	display: inline-block;
-	vertical-align: middle;
-	padding: 0 24px;
-	font-size: 14px;
-	font-weight: bold;
-	font-family: "Roboto", sans-serif;
-`;
-
 function Login() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -177,7 +105,7 @@ function Login() {
 							alt="google icon"
 							src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"></GoogleIcon>
 					</GoogleIconWrapper>
-					<GoogleText>Sign in with Google</GoogleText>
+					<GoogleText>Login with Google</GoogleText>
 				</GoogleButton>
 			</Form>
 		</FormWrapper>
@@ -185,3 +113,74 @@ function Login() {
 }
 
 export { Login };
+
+const SignUpButton = styled.button`
+	font-family: "DM Sans", sans-serif;
+	font-weight: bold;
+	font-size: 24px;
+	text-align: center;
+	margin-right: 1.5rem;
+	border: none;
+	background: transparent;
+	opacity: 0.4;
+	cursor: pointer;
+	&:hover {
+		opacity: 1;
+	}
+`;
+
+export const GoogleButton = styled.button`
+	width: 200px;
+	height: 40px;
+	border-width: 0;
+	background: #4285f4;
+	color: white;
+	border-radius: 5px;
+	white-space: nowrap;
+	box-shadow: 1px 1px 0px 1px rgba(0, 0, 0, 0.05);
+	transition-property: background-color, box-shadow;
+	transition-duration: 150ms;
+	transition-timing-function: ease-in-out;
+	padding: 0;
+	cursor: pointer;
+	&:focus,
+	&:hover {
+		box-shadow: 1px 4px 5px 1px rgba(0, 0, 0, 0.1);
+		background-color: #307af5;
+	}
+	&:active {
+		box-shadow: 1px 4px 5px 1px rgba(0, 0, 0, 0.1);
+		transition-duration: 10ms;
+		position: relative;
+		top: 3px;
+		left: 3px;
+	}
+`;
+
+export const GoogleIconWrapper = styled.div`
+	position: absolute;
+	margin-bottom: 220px;
+	width: 40px;
+	height: 36px;
+	border-radius: 2px;
+	background-color: white;
+	border: 1px solid #4285f4;
+`;
+
+export const GoogleIcon = styled.img`
+	display: inline-block;
+	vertical-align: middle;
+	margin: 10px 0 5px 3px;
+	width: 18px;
+	height: 18px;
+	box-sizing: border-box;
+	width: 27px;
+`;
+
+export const GoogleText = styled.p`
+	display: inline-block;
+	margin-left: 40px;
+	font-size: 14px;
+	font-weight: bold;
+	font-family: "Roboto", sans-serif;
+`;
