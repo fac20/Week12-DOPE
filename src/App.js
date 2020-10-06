@@ -4,7 +4,7 @@ import React from "react";
 import AddMedication from "./addMedication/form";
 import UserHome from "./userHome/userHome";
 import { SignUp } from "./registrationForms/signup";
-import Login from "./registrationForms/login";
+import { Login } from "./registrationForms/login";
 import { LandingPage } from "./landingPage/landingPage";
 import MedicationAdded from "./addMedication/medication-added";
 import PageNotFound from "./PageNotFound/PageNotFound.jsx";

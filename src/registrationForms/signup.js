@@ -116,11 +116,12 @@ function SignUp() {
 				</FlexDiv>
 
 				<AlignStartWrapper>
-					<Label>Email</Label>
+					<Label htmlFor="email">Email</Label>
 					<span>
 						<FaRegEnvelope />
 						<Input
-							name="name"
+							name="email"
+							id="email"
 							type="email"
 							value={email}
 							onChange={event => {
@@ -130,12 +131,13 @@ function SignUp() {
 						/>
 					</span>
 
-					<Label>Password</Label>
+					<Label htmlFor="password">Password</Label>
 
 					<FlexDiv>
 						<FaLock />
 						<Input
-							name="name"
+							id="password"
+							name="password"
 							type={inputType}
 							value={password}
 							onChange={event => {

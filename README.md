@@ -1,5 +1,7 @@
 <!-- @format -->
 
+[![codecov](https://codecov.io/gh/fac20/Week12-DOPE/branch/master/graph/badge.svg?token=25TXY3QH4Q)](undefined)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
