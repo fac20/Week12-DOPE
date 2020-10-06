@@ -5,12 +5,15 @@ import { MedicationDisplayData } from "./medication-display-data";
 import { timePoints } from "../utils/helper";
 
 const DailyViewArray = ({ medicationData }) => {
-	let newTimeArray = timePoints(medicationData);
+	// [{"0800AM"},{"0830PM"},{"0100AM"},{"1000AM"}] need to sort in order
 
+	let newTimeArray = timePoints(medicationData);
 	return newTimeArray.map(timeObj => {
 		console.log(timeObj);
 		let timeHeader = Object.keys(timeObj).join("");
 		let medInfoArray = Object.values(timeObj[timeHeader]);
+
+		// myArray.sort((a, b) => a - b);
 
 		const medInfo = medInfoArray.map((medObj, i) => {
 			return (
