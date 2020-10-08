@@ -1,16 +1,13 @@
-/** @format */
-
 import React from "react";
 import styled from "styled-components";
 import { FaPlus } from "react-icons/fa";
 import { auth } from "../connection";
 import { Link } from "react-router-dom";
-import { db } from "../connection.js";
 import { getAllMedicationDB } from "../utils/data-helpers";
-import { MedicationDisplayData } from "./medication-display-data";
 import DailyViewArray from "./DailyViewArray";
 import { Heading, Button, Text, FlexDiv } from "./userHomeStyle";
 import { signOut } from "./../utils/user-management";
+import wave from "./../assets/wave.svg";
 
 function UserHome() {
 	const [medicationData, setMedicationData] = React.useState();
@@ -18,7 +15,6 @@ function UserHome() {
 	React.useEffect(() => {
 		getAllMedicationDB(auth().currentUser.email).then(result => {
 			setMedicationData(result);
-			console.log(result);
 		});
 	}, []);
 
@@ -29,9 +25,10 @@ function UserHome() {
 
 	return (
 		<HomeWrapper>
+			<Wave alt="" src={wave} />
 			<Heading>
-				Welcome, here's your view for the day!
-				{/* {auth().currentUser.displayName || auth().currentUser.email} */}
+				Welcome {auth().currentUser.displayName || auth().currentUser.email},
+				here's your view for the day!
 			</Heading>
 			{medicationData && medicationData.length ? (
 				<div>
@@ -64,7 +61,7 @@ function UserHome() {
 
 					<PillWrapper>
 						<Link to="/add-medication">
-							<Button style={{ "margin-top": "100px" }}>
+							<Button margin={"10px 0 0 0"}>
 								<FlexDiv>
 									<FaPlus color="#FFFFFF" size="25px" />
 									<Text>Add </Text>
@@ -81,6 +78,12 @@ function UserHome() {
 export default UserHome;
 
 // Styled components
+
+const Wave = styled.img`
+	position: absolute;
+	top: 0;
+	left: 0;
+`;
 
 const PillHeading = styled.h5`
 	font-style: italic;
@@ -110,13 +113,13 @@ const SignOutButton = styled.button`
 	box-shadow: 4px 5px #ea8324;
 	color: #001d84;
 	font-family: "DM Sans", sans-serif;
-	font-size: 15px;
+	font-size: 14px;
 	font-weight: bolder;
 	font-style: italic;
 	background: linear-gradient(180deg, #fdaf67 0%, #f7c649 100%);
 	border-radius: 30px;
 	border: none;
-	width: 150px;
+	width: 100px;
 	height: 44px;
 	margin-left: 20px;
 	align-self: center;

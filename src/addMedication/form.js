@@ -1,6 +1,5 @@
-/** @format */
-
 import React, { useState } from "react";
+import { auth } from "../connection";
 import { Link, useHistory } from "react-router-dom";
 import { MedsPageOne } from "./meds-page-one";
 import MedsPageTwo from "./meds-page-two";
@@ -10,14 +9,7 @@ import leftArrow from "../assets/leftArrow.svg";
 import rightArrow from "../assets/rightArrow.svg";
 import { convertData } from "./../utils/helper";
 import styled from "styled-components";
-
-// import { Redirect } from "react-router-dom";
-import {
-	addMedicationDB,
-	// getAllMedicationDB,
-	// signUpDB
-} from "./../utils/data-helpers";
-import { auth } from "../connection";
+import { addMedicationDB } from "./../utils/data-helpers";
 
 /* ------- Form Components ------- */
 function AddMedication() {
@@ -44,9 +36,7 @@ function AddMedication() {
 		// convert the inputs object to the obj to send to db
 		const submitObj = convertData(inputs);
 		// send new obj to db with username...
-		addMedicationDB(auth().currentUser.email, submitObj).then(() =>
-			console.log("data was added"),
-		);
+		addMedicationDB(auth().currentUser.email, submitObj);
 		// redirect to landing page
 		history.push("/medication-added");
 	};

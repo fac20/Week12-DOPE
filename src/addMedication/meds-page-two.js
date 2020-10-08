@@ -1,10 +1,8 @@
-/** @format */
-
 import React from "react";
 // import styled from "styled-components";
 // import SelectTime from "./select-time";
 import SetSpecificTime from "./SetSpecificTime";
-import { Form, Label, NumberInput, SelectInput } from "./formStyle";
+import { Label, NumberInput, SelectInput } from "./formStyle";
 import styled from "styled-components";
 
 const MedsPageTwo = ({ inputs, handleChange, page }) => {

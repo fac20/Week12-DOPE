@@ -1,5 +1,3 @@
-/** @format */
-
 import { auth } from "../connection";
 
 const signUp = (email, password) => {

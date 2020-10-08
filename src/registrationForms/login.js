@@ -1,5 +1,3 @@
-/** @format */
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaLock, FaRegEnvelope, FaRegEyeSlash } from "react-icons/fa";
@@ -9,6 +7,9 @@ import RightArrow from "../assets/rightarrow.png";
 import styled from "styled-components";
 import { Text } from "../landingPage/landingPage";
 import oval from "./../assets/oval.svg";
+import wave from "./../assets/wave.svg";
+import man from "./../assets/walkingMan.svg";
+
 import {
 	Form,
 	Title,
@@ -18,6 +19,8 @@ import {
 	FormWrapper,
 	AlignStartWrapper,
 	Arrow,
+	Oval,
+	Wave,
 } from "./signup";
 
 function Login() {
@@ -44,13 +47,15 @@ function Login() {
 	};
 
 	return (
-		<div>
-			<Oval src={oval} />
+		<>
+			<Oval alt="" src={oval} />
+			<Wave alt="" src={wave} />
+			<WalkingMan alt="" src={man} />
 			<FormWrapper>
 				<Form onSubmit={handleSubmit}>
 					<FlexDiv alignItems="center">
 						<Link to="/signup">
-							<SignUpButton>Sign Up</SignUpButton>
+							<SignUpButton type="button">Sign Up</SignUpButton>
 						</Link>
 						<Title>Login</Title>
 					</FlexDiv>
@@ -112,18 +117,17 @@ function Login() {
 					</GoogleButton>
 				</Form>
 			</FormWrapper>
-		</div>
+		</>
 	);
 }
 
 export { Login };
 
-const Oval = styled.img`
-	position: fixed;
-	left: 0;
+const WalkingMan = styled.img`
+	width: 90px;
+	position: absolute;
 	bottom: 0;
-	margin: 0;
-	padding: 0;
+	left: 0;
 `;
 
 const SignUpButton = styled.button`
@@ -145,7 +149,7 @@ export const GoogleButton = styled.button`
 	width: 200px;
 	height: 40px;
 	border-width: 0;
-	background: #4285f4;
+	background: #3680fb;
 	color: white;
 	border-radius: 5px;
 	white-space: nowrap;
@@ -193,6 +197,6 @@ export const GoogleText = styled.p`
 	display: inline-block;
 	margin-left: 40px;
 	font-size: 14px;
-	font-weight: bold;
+	font-weight: bolder;
 	font-family: "Roboto", sans-serif;
 `;

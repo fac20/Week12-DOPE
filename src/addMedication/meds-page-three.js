@@ -1,7 +1,4 @@
-/** @format */
-
 import React from "react";
-import styled from "styled-components";
 import { Label, NumberInput, SelectInput, TextArea } from "./formStyle";
 
 const MedsPageThree = ({ inputs, handleChange, page }) => {
@@ -37,7 +34,6 @@ const MedsPageThree = ({ inputs, handleChange, page }) => {
 			<Label htmlFor="current">Current supply</Label>
 			<NumberInput
 				id="current"
-				name="current"
 				type="number"
 				min="0"
 				placeholder="e.g 10"

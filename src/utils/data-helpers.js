@@ -1,4 +1,3 @@
-/** @format */
 import { db } from "../connection.js";
 import "firebase/firestore";
 
@@ -32,7 +31,6 @@ function getAllMedicationDB(username) {
 			});
 		})
 		.then(() => {
-			console.log(newArray);
 			return newArray;
 		});
 }

@@ -1,11 +1,9 @@
-/** @format */
-
 body {
 	margin: 0;
 	font-family: "DM Sans", "Roboto", "Montserrat", sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	overflow: auto;
+	overflow: visible;
 }
 
 code {
