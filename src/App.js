@@ -1,4 +1,13 @@
 import React from "react";
+import styled from "styled-components";
+import AddMedication from "./addMedication/form";
+import UserHome from "./userHome/userHome";
+import { SignUp } from "./registrationForms/signup";
+import { Login } from "./registrationForms/login";
+import { LandingPage } from "./landingPage/landingPage";
+import { SearchNHS } from "./searchNHS/SearchNHS";
+import MedicationAdded from "./addMedication/medication-added";
+import PageNotFound from "./PageNotFound/PageNotFound.jsx";
 import {
 	BrowserRouter as Router,
 	Route,
@@ -6,15 +15,7 @@ import {
 	Redirect,
 } from "react-router-dom";
 import { auth } from "./connection";
-import AddMedication from "./addMedication/form";
-import UserHome from "./userHome/userHome";
-import { SignUp } from "./registrationForms/signup";
-import { Login } from "./registrationForms/login";
-import { LandingPage } from "./landingPage/landingPage";
-import MedicationAdded from "./addMedication/medication-added";
-import PageNotFound from "./PageNotFound/PageNotFound.jsx";
 import mobileLogo from "./assets/mobileLogo.svg";
-import styled from "styled-components";
 
 function App() {
 	const [authStatus, setAuthStatus] = React.useState(false);
@@ -51,6 +52,9 @@ function App() {
 
 				<Route path="/medication-added">
 					<MedicationAdded />
+				</Route>
+				<Route path="/search">
+					<SearchNHS />
 				</Route>
 
 				<Route>

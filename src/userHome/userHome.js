@@ -41,6 +41,13 @@ function UserHome() {
 								</FlexDiv>
 							</Button>
 						</Link>
+						<Link to="/search">
+							<Button>
+								{/* <FlexDiv> */}
+								<Text>NHS Meds Info</Text>
+								{/* </FlexDiv> */}
+							</Button>
+						</Link>
 
 						<SignOutButton margin="10px auto" onClick={signOut}>
 							SIGN OUT{" "}
@@ -121,7 +128,6 @@ const SignOutButton = styled.button`
 	border: none;
 	width: 100px;
 	height: 44px;
-	margin-left: 20px;
 	align-self: center;
 	overflow: hidden;
 	z-index: 1;
@@ -141,7 +147,7 @@ const SignOutButton = styled.button`
 const ButtonDiv = styled.div`
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-evenly;
 	margin-bottom: 30px;
 `;
 
