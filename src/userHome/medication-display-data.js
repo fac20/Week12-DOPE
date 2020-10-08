@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { Checkbox } from "@material-ui/core";
 import { db, auth } from "../connection.js";
 import tabletPic from "../assets/typePill.png";
 import liquidPic from "../assets/typeLiquid.png";
@@ -16,11 +15,12 @@ const MedicationDisplayData = ({
 	time_point,
 	taken,
 }) => {
-	const [iconType, setIconType] = React.useState({
+	const iconType = {
 		tablet: <img src={tabletPic} width="60" height="60" alt="tablet icon" />,
 		liquid: <img src={liquidPic} width="60" height="60" alt="liquid icon" />,
 		needle: <img src={needlePic} width="60" height="60" alt="needle icon" />,
-	});
+	};
+
 	const [checked, setChecked] = React.useState(taken);
 
 	const handleCheck = e => {
