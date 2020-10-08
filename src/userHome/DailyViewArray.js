@@ -44,7 +44,7 @@ const DailyViewArray = ({ medicationData }) => {
 export default DailyViewArray;
 
 const MedicationWrapper = styled.div`
-	width: 50%;
+	width: 85%;
 	margin: auto;
 	border-radius: 16px;
 	background: #069fdf;

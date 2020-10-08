@@ -31,6 +31,7 @@ const MedsPageOne = ({ inputs, handleChange, page }) => {
 				id="name"
 				name="name"
 				type="text"
+				placeholder="e.g. aspirin"
 				value={inputs.name}
 				onChange={handleChange}
 				required
@@ -48,7 +49,7 @@ const MedsPageOne = ({ inputs, handleChange, page }) => {
 						checked={inputs.type === "tablet"}
 						onChange={handleChange}
 					/>
-					<Label htmlFor="tablet">Tablet</Label>
+					<LabelArea htmlFor="tablet">Tablet</LabelArea>
 					<img alt="" width="50" src={tabletPic} />
 				</MedsWrapper>
 
@@ -61,7 +62,7 @@ const MedsPageOne = ({ inputs, handleChange, page }) => {
 						checked={inputs.type === "liquid"}
 						onChange={handleChange}
 					/>
-					<Label htmlFor="liquid">Liquid</Label>
+					<LabelArea htmlFor="liquid">Liquid</LabelArea>
 					<img alt="" width="50" src={liquidPic} />
 				</MedsWrapper>
 
@@ -74,7 +75,7 @@ const MedsPageOne = ({ inputs, handleChange, page }) => {
 						checked={inputs.type === "needle"}
 						onChange={handleChange}
 					/>
-					<Label htmlFor="needle">Needle</Label>
+					<LabelArea htmlFor="needle">Needle</LabelArea>
 					<img alt="" width="50" src={needlePic} />
 				</MedsWrapper>
 			</TypeWrapper>
@@ -85,6 +86,7 @@ const MedsPageOne = ({ inputs, handleChange, page }) => {
 					id="strength"
 					name="strength"
 					type="number"
+					placeholder="e.g. 30"
 					value={inputs.strength}
 					onChange={handleChange}
 					required
@@ -106,6 +108,7 @@ const MedsPageOne = ({ inputs, handleChange, page }) => {
 				id="description"
 				type="textarea"
 				name="description"
+				placeholder="e.g. white round tablet"
 				value={inputs.description}
 				onChange={handleChange}
 			/>
@@ -134,6 +137,7 @@ const MedsWrapper = styled.div`
 		box-shadow: inset 1px 1px 10px #ecdede;
 	}
 	margin: auto;
+	position: relative;
 `;
 
 const TypeWrapper = styled.div`
@@ -141,4 +145,17 @@ const TypeWrapper = styled.div`
 	justify-content: center;
 	width: 100%;
 	margin: 10px;
+`;
+
+const LabelArea = styled.label`
+	font-size: 18px;
+	margin: 10px;
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+	}
 `;

@@ -83,20 +83,20 @@ function AddMedication() {
 					{page === 1 && (
 						<Link to="/">
 							<CancelArrow type="button">
-								<img alt="" width="100px" src={leftArrow} />
+								<img alt="" width="44px" src={leftArrow} />
 							</CancelArrow>
 						</Link>
 					)}
 
 					{page !== 1 && (
 						<LeftArrow type="button" onClick={() => setPage(page => page - 1)}>
-							<img alt="" width="100px" src={leftArrow} />
+							<img alt="" width="44px" src={leftArrow} />
 						</LeftArrow>
 					)}
 
 					{page !== 3 && (
 						<RightArrow type="button" onClick={() => setPage(page => page + 1)}>
-							<img alt="" width="100px" src={rightArrow} />
+							<img alt="" width="44px" src={rightArrow} />
 						</RightArrow>
 					)}
 
