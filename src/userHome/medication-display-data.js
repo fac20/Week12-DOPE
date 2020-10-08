@@ -38,7 +38,7 @@ const MedicationDisplayData = ({
 	};
 
 	return (
-		<MedicineDiv>
+		<MedicineDiv style={checked ? { opacity: 0.3 } : { opacity: 1 }}>
 			{iconType[type]}
 			<div>
 				<MedInfoText>{`${name} - ${strength}${unit}`}</MedInfoText>
@@ -65,6 +65,7 @@ const MedicineDiv = styled.div`
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;
+	position: relative;
 `;
 
 const MedInfoText = styled.p`
@@ -74,4 +75,12 @@ const MedInfoText = styled.p`
 const Label = styled.label`
 	display: inline-block;
 	margin-bottom: 10px;
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+	}
 `;

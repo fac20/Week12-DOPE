@@ -9,6 +9,7 @@ import { Login } from "./registrationForms/login";
 import { LandingPage } from "./landingPage/landingPage";
 import MedicationAdded from "./addMedication/medication-added";
 import PageNotFound from "./PageNotFound/PageNotFound.jsx";
+import oval from "./assets/oval.svg";
 import {
 	BrowserRouter as Router,
 	Route,

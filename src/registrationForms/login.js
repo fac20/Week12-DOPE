@@ -8,6 +8,7 @@ import { Button } from "../addMedication/formStyle";
 import RightArrow from "../assets/rightarrow.png";
 import styled from "styled-components";
 import { Text } from "../landingPage/landingPage";
+import oval from "./../assets/oval.svg";
 import {
 	Form,
 	Title,
@@ -43,76 +44,87 @@ function Login() {
 	};
 
 	return (
-		<FormWrapper>
-			<Form onSubmit={handleSubmit}>
-				<FlexDiv alignItems="center">
-					<Link to="/signup">
-						<SignUpButton>Sign Up</SignUpButton>
-					</Link>
-					<Title>Login</Title>
-				</FlexDiv>
-
-				<AlignStartWrapper>
-					<Label htmlFor="email">Email</Label>
-					<span>
-						<FaRegEnvelope />
-						<Input
-							name="email"
-							id="email"
-							type="email"
-							value={email}
-							onChange={event => {
-								setEmail(event.target.value);
-								setError();
-							}}
-							required
-						/>
-					</span>
-
-					<Label htmlFor="password">Password</Label>
-
-					<FlexDiv>
-						<FaLock />
-						<Input
-							name="password"
-							id="password"
-							type={inputType}
-							value={password}
-							onChange={event => {
-								setPassword(event.target.value);
-								setError();
-							}}
-							required
-						/>
-						<div
-							onMouseEnter={() => setInputType(currentType => "text")}
-							onMouseLeave={() => setInputType(currentType => "password")}>
-							<FaRegEyeSlash />
-						</div>
+		<div>
+			<Oval src={oval} />
+			<FormWrapper>
+				<Form onSubmit={handleSubmit}>
+					<FlexDiv alignItems="center">
+						<Link to="/signup">
+							<SignUpButton>Sign Up</SignUpButton>
+						</Link>
+						<Title>Login</Title>
 					</FlexDiv>
-				</AlignStartWrapper>
 
-				{error ? <p>{error}</p> : null}
+					<AlignStartWrapper>
+						<Label htmlFor="email">Email</Label>
+						<span>
+							<FaRegEnvelope />
+							<Input
+								name="email"
+								id="email"
+								type="email"
+								value={email}
+								onChange={event => {
+									setEmail(event.target.value);
+									setError();
+								}}
+								required
+							/>
+						</span>
 
-				<Button type="submit" margin="2rem 0 2rem 0">
-					<Text>
-						LOGIN <Arrow alt="arrow" src={RightArrow}></Arrow>
-					</Text>
-				</Button>
-				<GoogleButton onClick={handleGoogleSignIn}>
-					<GoogleIconWrapper>
-						<GoogleIcon
-							alt="google icon"
-							src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"></GoogleIcon>
-					</GoogleIconWrapper>
-					<GoogleText>Login with Google</GoogleText>
-				</GoogleButton>
-			</Form>
-		</FormWrapper>
+						<Label htmlFor="password">Password</Label>
+
+						<FlexDiv>
+							<FaLock />
+							<Input
+								name="password"
+								id="password"
+								type={inputType}
+								value={password}
+								onChange={event => {
+									setPassword(event.target.value);
+									setError();
+								}}
+								required
+							/>
+							<div
+								onMouseEnter={() => setInputType(currentType => "text")}
+								onMouseLeave={() => setInputType(currentType => "password")}>
+								<FaRegEyeSlash />
+							</div>
+						</FlexDiv>
+					</AlignStartWrapper>
+
+					{error ? <p>{error}</p> : null}
+
+					<Button type="submit" margin="2rem 0 2rem 0">
+						<Text>
+							LOGIN <Arrow alt="arrow" src={RightArrow}></Arrow>
+						</Text>
+					</Button>
+					<GoogleButton onClick={handleGoogleSignIn}>
+						<GoogleIconWrapper>
+							<GoogleIcon
+								alt="google icon"
+								src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"></GoogleIcon>
+						</GoogleIconWrapper>
+						<GoogleText>Login with Google</GoogleText>
+					</GoogleButton>
+				</Form>
+			</FormWrapper>
+		</div>
 	);
 }
 
 export { Login };
+
+const Oval = styled.img`
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	margin: 0;
+	padding: 0;
+`;
 
 const SignUpButton = styled.button`
 	font-family: "DM Sans", sans-serif;
