@@ -22,13 +22,17 @@ function UserHome() {
 		});
 	}, []);
 
+	const today = new Date().toLocaleDateString("en-US", {
+		day: "2-digit",
+		weekday: "short",
+	});
+
 	return (
 		<HomeWrapper>
 			<Heading>
 				Welcome, here's your view for the day!
 				{/* {auth().currentUser.displayName || auth().currentUser.email} */}
 			</Heading>
-
 			{medicationData && medicationData.length ? (
 				<div>
 					<ButtonDiv>
@@ -46,6 +50,9 @@ function UserHome() {
 						</SignOutButton>
 					</ButtonDiv>
 					{/* <img alt="pencil" width="50" style={{"float": "left"}} src="https://img.icons8.com/emoji/96/000000/pencil-emoji.png"/> */}
+					<DateWrapper>
+						<DateStyled>{today}</DateStyled>
+					</DateWrapper>
 					<DailyViewArray medicationData={medicationData} />
 				</div>
 			) : (
@@ -134,3 +141,26 @@ const ButtonDiv = styled.div`
 	justify-content: center;
 	margin-bottom: 30px;
 `;
+
+const DateStyled = styled.h2`
+	font-family: "DM Sans", sans-serif;
+	text-shadow: 0 0px 4px rgba(0, 0, 0, 0.1);
+
+	font-size: 16px;
+	font-weight: bolder;
+	width: fit-content;
+	margin: 40px auto;
+	box-shadow: 0 5px 15px rgb(57, 168, 228);
+	padding: 10px;
+	padding-left: 3em;
+	padding-right: 3em;
+	color: white;
+	border-radius: 5px;
+	background-image: linear-gradient(135deg, #8d8dd4, #45ced4);
+	&:hover {
+		transition: box-shadow 0.5s;
+		box-shadow: 0 8px 25px rgb(57, 168, 228);
+	}
+`;
+
+const DateWrapper = styled.div``;

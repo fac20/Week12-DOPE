@@ -23,6 +23,7 @@ const MedsPageTwo = ({ inputs, handleChange, page }) => {
 					name="amount"
 					value={inputs.amount}
 					onChange={handleChange}
+					required
 				/>{" "}
 				per dose
 			</Container>
@@ -35,6 +36,7 @@ const MedsPageTwo = ({ inputs, handleChange, page }) => {
 					name="oftenFreq"
 					value={inputs.oftenFreq}
 					onChange={handleChange}
+					required
 				/>
 				<Label>
 					a

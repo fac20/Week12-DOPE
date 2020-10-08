@@ -10,6 +10,7 @@ import { Button } from "../addMedication/formStyle";
 import RightArrow from "../assets/rightarrow.png";
 import { Text } from "../landingPage/landingPage";
 import { Link } from "react-router-dom";
+import oval from "./../assets/oval.svg";
 import {
 	GoogleButton,
 	GoogleIconWrapper,
@@ -42,79 +43,90 @@ function SignUp() {
 	};
 
 	return (
-		<FormWrapper>
-			<Form onSubmit={handleSubmit}>
-				<FlexDiv alignItems="center">
-					<Title>Sign Up</Title>
-					<Link to="/login">
-						<LoginButton>Login</LoginButton>
-					</Link>
-				</FlexDiv>
-
-				<AlignStartWrapper>
-					<Label htmlFor="email">Email</Label>
-					<span>
-						<FaRegEnvelope />
-						<Input
-							name="email"
-							id="email"
-							type="email"
-							value={email}
-							onChange={event => {
-								setEmail(event.target.value);
-								setError();
-							}}
-						/>
-					</span>
-
-					<Label htmlFor="password">Password</Label>
-
-					<FlexDiv>
-						<FaLock />
-						<Input
-							id="password"
-							name="password"
-							type={inputType}
-							value={password}
-							onChange={event => {
-								setPassword(event.target.value);
-								setError();
-							}}
-						/>
-						<div
-							onMouseEnter={() => setInputType(currentType => "text")}
-							onMouseLeave={() => setInputType(currentType => "password")}>
-							<FaRegEyeSlash />
-						</div>
+		<div>
+			<Oval src={oval} />
+			<FormWrapper>
+				<Form onSubmit={handleSubmit}>
+					<FlexDiv alignItems="center">
+						<Title>Sign Up</Title>
+						<Link to="/login">
+							<LoginButton>Login</LoginButton>
+						</Link>
 					</FlexDiv>
-				</AlignStartWrapper>
 
-				{error ? <p>{error}</p> : null}
+					<AlignStartWrapper>
+						<Label htmlFor="email">Email</Label>
+						<span>
+							<FaRegEnvelope />
+							<Input
+								name="email"
+								id="email"
+								type="email"
+								value={email}
+								onChange={event => {
+									setEmail(event.target.value);
+									setError();
+								}}
+							/>
+						</span>
 
-				<Label textColor="black" margin="3rem 0 0 0">
-					<input type="checkbox" id={"tos"} required></input>
-					By clicking Sign Up, you agree to our Terms and Conditions.
-				</Label>
+						<Label htmlFor="password">Password</Label>
 
-				<Button type="submit" margin="2rem 0 2rem 0">
-					<Text>
-						SIGN UP <Arrow alt="arrow" src={RightArrow}></Arrow>
-					</Text>
-				</Button>
-				<GoogleButton onClick={handleGoogleSignIn}>
-					<GoogleIconWrapper>
-						<GoogleIcon
-							alt="google icon"
-							src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"></GoogleIcon>
-					</GoogleIconWrapper>
-					<GoogleText>Sign up with Google</GoogleText>
-				</GoogleButton>
-			</Form>
-		</FormWrapper>
+						<FlexDiv>
+							<FaLock />
+							<Input
+								id="password"
+								name="password"
+								type={inputType}
+								value={password}
+								onChange={event => {
+									setPassword(event.target.value);
+									setError();
+								}}
+							/>
+							<div
+								onMouseEnter={() => setInputType(currentType => "text")}
+								onMouseLeave={() => setInputType(currentType => "password")}>
+								<FaRegEyeSlash />
+							</div>
+						</FlexDiv>
+					</AlignStartWrapper>
+
+					{error ? <p>{error}</p> : null}
+
+					<Label textColor="black" margin="3rem 0 0 0">
+						<input type="checkbox" id={"tos"} required></input>
+						By clicking this box, you agree to our Terms and Conditions.
+					</Label>
+
+					<Button type="submit" margin="2rem 0 2rem 0">
+						<Text>
+							SIGN UP <Arrow alt="arrow" src={RightArrow}></Arrow>
+						</Text>
+					</Button>
+					<GoogleButton onClick={handleGoogleSignIn}>
+						<GoogleIconWrapper>
+							<GoogleIcon
+								alt="google icon"
+								src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"></GoogleIcon>
+						</GoogleIconWrapper>
+						<GoogleText>Sign up with Google</GoogleText>
+					</GoogleButton>
+				</Form>
+			</FormWrapper>
+		</div>
 	);
 }
 
 export { SignUp };
+
+const Oval = styled.img`
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	margin: 0;
+	padding: 0;
+`;
 
 export const Form = styled.form`
 	display: flex;
@@ -165,7 +177,7 @@ export const FlexDiv = styled.div`
 export const FormWrapper = styled.div`
 	display: flex;
 	justify-content: center;
-	margin-top: 90px;
+	margin-top: 80px;
 `;
 export const AlignStartWrapper = styled.div`
 	display: flex;
