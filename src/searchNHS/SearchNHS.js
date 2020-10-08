@@ -1,5 +1,3 @@
-/** @format */
-
 import React from "react";
 import { fetchDataNHS } from "./../utils/api-helpers";
 import { DisplayNHS } from "./DisplayNHS";

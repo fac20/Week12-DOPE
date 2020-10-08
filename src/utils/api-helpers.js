@@ -1,5 +1,3 @@
-/** @format */
-
 const fetchDataNHS = (params, options) => {
 	console.log(process.env.REACT_APP_nhsFetch + "/search/" + params);
 	return fetch(process.env.REACT_APP_nhsFetch + "/search/" + params, options)
@@ -13,7 +11,6 @@ const fetchDataNHS = (params, options) => {
 			}
 		})
 		.catch(error => {
-			console.log(error);
 			return "Something went wrong";
 		});
 };

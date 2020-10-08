@@ -1,17 +1,13 @@
-/** @format */
-
 import React from "react";
+import styled from "styled-components";
 import {
-	Form,
 	Heading,
 	Label,
 	NameInput,
-	HiddenCheckbox,
 	NumberInput,
 	SelectInput,
 	TextArea,
 } from "./formStyle";
-import styled from "styled-components";
 import tabletPic from "../assets/typePill.png";
 import liquidPic from "../assets/typeLiquid.png";
 import needlePic from "../assets/typeNeedle.png";
