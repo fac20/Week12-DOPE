@@ -3,3 +3,6 @@
 .firebase
 /build
 /coverage
+.runtimeconfig.json
+firebase-debug.log
+ui-debug.log
