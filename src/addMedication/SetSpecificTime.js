@@ -7,19 +7,13 @@ const SetSpecificTime = ({ inputs, handleChange, id }) => {
 	const hourId = `hour${id}`;
 	const minuteId = `minute${id}`;
 
-	if (!inputs[ampmId]) inputs[ampmId] = "AM";
-
-	if (!inputs[hourId]) inputs[hourId] = "00";
-
-	if (!inputs[minuteId]) inputs[minuteId] = "00";
-
 	return (
 		<Label>
 			Set Time
 			<SelectInput
 				name={ampmId}
 				id="ampm"
-				value={inputs[ampmId]}
+				value={inputs[ampmId] || "AM"}
 				onChange={handleChange}>
 				<option value="AM">AM</option>
 				<option value="PM">PM</option>
@@ -27,7 +21,7 @@ const SetSpecificTime = ({ inputs, handleChange, id }) => {
 			<SelectInput
 				name={hourId}
 				id="hour"
-				value={inputs[hourId]}
+				value={inputs[hourId] || "00"}
 				onChange={handleChange}>
 				<option value="00">00</option>
 				<option value="01">01</option>
@@ -45,7 +39,7 @@ const SetSpecificTime = ({ inputs, handleChange, id }) => {
 			<SelectInput
 				name={minuteId}
 				id="minute"
-				value={inputs[minuteId]}
+				value={inputs[minuteId] || "00"}
 				onChange={handleChange}>
 				<option value="00">00</option>
 				<option value="10">10</option>

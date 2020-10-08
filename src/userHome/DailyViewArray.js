@@ -41,14 +41,12 @@ const MedicationWrapper = styled.div`
 	width: 85%;
 	margin: auto;
 	border-radius: 16px;
-	background: #069fdf;
-	/* #f7c649 */
+	background: #facda3;
 	padding: 2px 4px 2.5px;
 `;
 
 const Inner = styled.div`
-	background: linear-gradient(90deg, white 15px, transparent 1%) center,
-		linear-gradient(white 15px, transparent 1%) center, #ccc;
+	background: #fff6f6;
 	background-size: 16px 16px;
 	padding: 30px 20px 25px;
 `;

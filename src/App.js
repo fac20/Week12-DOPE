@@ -6,7 +6,6 @@ import {
 	Redirect,
 } from "react-router-dom";
 import { auth } from "./connection";
-
 import AddMedication from "./addMedication/form";
 import UserHome from "./userHome/userHome";
 import { SignUp } from "./registrationForms/signup";
@@ -14,6 +13,8 @@ import { Login } from "./registrationForms/login";
 import { LandingPage } from "./landingPage/landingPage";
 import MedicationAdded from "./addMedication/medication-added";
 import PageNotFound from "./PageNotFound/PageNotFound.jsx";
+import mobileLogo from "./assets/mobileLogo.svg";
+import styled from "styled-components";
 
 function App() {
 	const [authStatus, setAuthStatus] = React.useState(false);
@@ -24,6 +25,9 @@ function App() {
 
 	return (
 		<Router>
+			<>
+				<MobileLogo alt="mobile logo" src={mobileLogo} />
+			</>
 			<Switch>
 				<Route path="/" exact>
 					{authStatus ? <Redirect to="/home" /> : <LandingPage />}
@@ -58,3 +62,12 @@ function App() {
 }
 
 export default App;
+
+const MobileLogo = styled.img`
+	width: 40px;
+	margin-left: 4vw;
+	margin-top: 10vh;
+	@media (min-width: 768px) {
+		margin-top: 28vh;
+	}
+`;

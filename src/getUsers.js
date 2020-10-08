@@ -1,5 +1,3 @@
-/** @format */
-
 import db from "./connection.js";
 
 //querying all docs in a collection
