@@ -11,7 +11,6 @@ const nhsApiKey = functions.config().nhs.api_key;
 // // https://firebase.google.com/docs/functions/write-firebase-functions
 //
 const url = "https://api.nhs.uk/medicines/";
-const param = "paracetamol-for-adults";
 const app = express();
 app.use(express.json());
 // const corsOptions = {
@@ -42,14 +41,10 @@ const getNHSData = (url, param) => {
 		});
 };
 
-app.get("/search", (req, res, next) => {
-	return getNHSData(url, param)
-		.then(data => res.send(data))
-		.catch(error => next(error));
-});
-
 app.get("/search/:medicine", (req, res, next) => {
-	return getNHSData(url, param)
+	const params = req.params.medicine;
+	console.log(params);
+	return getNHSData(url, params)
 		.then(data => res.send(data))
 		.catch(error => next(error));
 });
