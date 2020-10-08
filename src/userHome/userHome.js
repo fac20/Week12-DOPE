@@ -30,9 +30,7 @@ function UserHome() {
 	return (
 		<HomeWrapper>
 			<Heading>
-				{`Welcome ${
-					auth().currentUser.displayName || auth().currentUser.email
-				}, here's your view for the day!`}
+				Welcome, here's your view for the day!
 				{/* {auth().currentUser.displayName || auth().currentUser.email} */}
 			</Heading>
 			{medicationData && medicationData.length ? (
@@ -52,8 +50,9 @@ function UserHome() {
 						</SignOutButton>
 					</ButtonDiv>
 					{/* <img alt="pencil" width="50" style={{"float": "left"}} src="https://img.icons8.com/emoji/96/000000/pencil-emoji.png"/> */}
-
-					<DateStyled>{today}</DateStyled>
+					<DateWrapper>
+						<DateStyled>{today}</DateStyled>
+					</DateWrapper>
 					<DailyViewArray medicationData={medicationData} />
 				</div>
 			) : (
@@ -145,14 +144,36 @@ const ButtonDiv = styled.div`
 
 const DateStyled = styled.h2`
 	font-family: "DM Sans", sans-serif;
-	font-size: 15px;
+	text-shadow: 0 0px 4px rgba(0, 0, 0, 0.1);
+
+	font-size: 16px;
 	font-weight: bolder;
-	border-radius: 20%;
-	background-color: #069fdf;
-	padding: 1rem;
 	width: fit-content;
-	margin: 10px auto;
-	background: #64b3fc;
-	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-	border-radius: 25px;
+	margin: 40px auto;
+	box-shadow: 0 5px 15px rgb(57, 168, 228);
+	padding: 10px;
+	padding-left: 3em;
+	padding-right: 3em;
+	color: white;
+	border-radius: 5px;
+	background-image: linear-gradient(135deg, #8d8dd4, #45ced4);
+	&:hover {
+		transition: box-shadow 0.5s;
+		box-shadow: 0 8px 25px rgb(57, 168, 228);
+	}
 `;
+
+const DateWrapper = styled.div``;
+
+// var date = new Date();
+// var day = date.getDate();
+// var year = date.getFullYear();
+
+// var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+// var dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+// var monthLabel = document.getElementsByClassName('month-label')[0].innerHTML = monthNames[date.getMonth()];
+
+// var dayLabel = document.getElementsByClassName("day-label")[0].innerHTML = day;
+
+// var weekdayLabel = document.getElementsByClassName("weekday-label")[0].innerHTML = dayNames[date.getDay(0)];

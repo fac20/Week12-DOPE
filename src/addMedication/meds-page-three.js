@@ -28,12 +28,13 @@ const MedsPageThree = ({ inputs, handleChange, page }) => {
 			<TextArea
 				id="notes"
 				name="notes"
+				placeholder="e.g. take it 30 minutes after your meal"
 				value={inputs.notes}
 				onChange={handleChange}
 				type="textarea"
 			/>
 
-			<Label htmlFor="current">Current supply:</Label>
+			<Label htmlFor="current">Current supply</Label>
 			<NumberInput
 				id="current"
 				name="current"
