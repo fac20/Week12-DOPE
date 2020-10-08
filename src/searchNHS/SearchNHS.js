@@ -1,19 +1,100 @@
 /** @format */
 
 import React from "react";
-import fetchDataNHS from "../utils/api-helpers";
+import { fetchDataNHS } from "./../utils/api-helpers";
+import { DisplayNHS } from "./DisplayNHS";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const SearchNHS = () => {
-	const [nhsData, setNhsData] = React.useState();
+	const [nhsData, setNHSData] = React.useState();
+
+	const findData = event => {
+		event.preventDefault();
+		let searchValue = event.target.search.value.toLowerCase();
+		fetchDataNHS(searchValue).then(data => {
+			console.log(data);
+			setNHSData(data);
+		});
+	};
 
 	return (
 		<>
-			<h1>PILLOW</h1>
-			<label htmlFor="search">Search for medicine information</label>
-			<input name="search" id="search" type="search" />
-			<button>Search</button>
+			<Form onSubmit={findData}>
+				<Label htmlFor="search">Search for medicine information</Label>
+				<NameInput name="search" id="search" type="search" required />
+				<ButtonDiv>
+					<Link to="/home">
+						<Button type="button">Back to Diary</Button>
+					</Link>
+					<Button>Search</Button>
+				</ButtonDiv>
+			</Form>
+			<main>{nhsData ? <DisplayNHS nhsData={nhsData} /> : null}</main>
 		</>
 	);
 };
 
-export default SearchNHS;
+export { SearchNHS };
+
+const Form = styled.form`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+`;
+
+const Button = styled.button`
+	margin: ${props => (props.margin ? props.margin : null)};
+	font-size: 14px;
+	font-weight: bold;
+	text-decoration: none;
+	color: white;
+	font-style: italic;
+	background: #458fe0;
+	box-shadow: 4px 5px #1f70c9;
+	border-radius: 30px;
+	border: none;
+	overflow: hidden;
+	width: 100px;
+	height: 44px;
+	z-index: 1;
+	:hover {
+		cursor: pointer;
+		background: #3d75b3;
+		box-shadow: 4px 5px #458fe0;
+	}
+	:active {
+		position: relative;
+		top: 3px;
+		left: 3px;
+	}
+`;
+
+const NameInput = styled.input.attrs({ type: "text" })`
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+	margin: 10px;
+	min-width: 40%;
+	height: 25px;
+`;
+
+const TypeInput = styled.input.attrs({ type: "text" })`
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+	margin: 10px;
+`;
+
+const Label = styled.label`
+	font-size: 18px;
+	margin: 10px;
+`;
+
+const ButtonDiv = styled.div`
+	display: flex;
+	justify-content: space-evenly;
+	width: 100%;
+	margin-top: 2rem;
+`;

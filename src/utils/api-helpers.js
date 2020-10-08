@@ -1,7 +1,8 @@
 /** @format */
 
 const fetchDataNHS = (params, options) => {
-	return fetch(process.env.REACT_APP_nhsFetch + "/search" + params, options)
+	console.log(process.env.REACT_APP_nhsFetch + "/search/" + params);
+	return fetch(process.env.REACT_APP_nhsFetch + "/search/" + params, options)
 		.then(response => {
 			if (!response) {
 				const error = new Error("Fetch to Backend Error");
@@ -17,4 +18,4 @@ const fetchDataNHS = (params, options) => {
 		});
 };
 
-export default fetchDataNHS;
+export { fetchDataNHS };

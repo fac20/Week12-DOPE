@@ -7,6 +7,7 @@ import UserHome from "./userHome/userHome";
 import { SignUp } from "./registrationForms/signup";
 import { Login } from "./registrationForms/login";
 import { LandingPage } from "./landingPage/landingPage";
+import { SearchNHS } from "./searchNHS/SearchNHS";
 import MedicationAdded from "./addMedication/medication-added";
 import PageNotFound from "./PageNotFound/PageNotFound.jsx";
 import oval from "./assets/oval.svg";
@@ -52,6 +53,9 @@ function App() {
 
 				<Route path="/medication-added">
 					<MedicationAdded />
+				</Route>
+				<Route path="/search">
+					<SearchNHS />
 				</Route>
 
 				<Route>

@@ -10,6 +10,8 @@
 		"codecov": "^3.7.2",
 		"eslint": "^6.6.0",
 		"firebase": "^7.21.1",
+		"firebase-admin": "^9.2.0",
+		"firebase-functions": "^3.11.0",
 		"progressbar.js": "^1.1.0",
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1",
