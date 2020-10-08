@@ -1,24 +1,18 @@
-/** @format */
-
 import React from "react";
 import { MedicationDisplayData } from "./medication-display-data";
 import { timePoints } from "../utils/helper";
 import styled from "styled-components";
 
 const DailyViewArray = ({ medicationData }) => {
-	// [{"0800AM"},{"0830PM"},{"0100AM"},{"1000AM"}] need to sort in order
-
 	let newTimeArray = timePoints(medicationData);
-	console.log(newTimeArray);
-	console.log(Object.values(newTimeArray));
-	return newTimeArray.map(timeObj => {
+	return newTimeArray.map((timeObj, j) => {
 		let timeHeader = Object.keys(timeObj).join("");
 		let medInfoArray = Object.values(timeObj[timeHeader]);
 
 		const medInfo = medInfoArray.map((medObj, i) => {
-			console.log("hey", medObj);
 			return (
 				<MedicationDisplayData
+					key={i}
 					name={medObj.name}
 					strength={medObj.strength}
 					unit={medObj.unit}
@@ -31,7 +25,7 @@ const DailyViewArray = ({ medicationData }) => {
 		});
 
 		return (
-			<MedicationWrapper>
+			<MedicationWrapper key={j}>
 				<Inner>
 					<TimeHeader>{timeHeader}</TimeHeader>
 					{medInfo}

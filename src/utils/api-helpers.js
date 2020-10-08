@@ -12,7 +12,6 @@ const fetchDataNHS = (params, options) => {
 			}
 		})
 		.catch(error => {
-			console.log(error);
 			return "Something went wrong";
 		});
 };

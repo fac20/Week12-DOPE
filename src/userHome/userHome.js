@@ -1,5 +1,3 @@
-/** @format */
-
 import React from "react";
 import styled from "styled-components";
 import { FaPlus } from "react-icons/fa";
@@ -18,7 +16,6 @@ function UserHome() {
 	React.useEffect(() => {
 		getAllMedicationDB(auth().currentUser.email).then(result => {
 			setMedicationData(result);
-			console.log(result);
 		});
 	}, []);
 
@@ -64,7 +61,7 @@ function UserHome() {
 
 					<PillWrapper>
 						<Link to="/add-medication">
-							<Button style={{ "margin-top": "100px" }}>
+							<Button margin={"10px 0 0 0"}>
 								<FlexDiv>
 									<FaPlus color="#FFFFFF" size="25px" />
 									<Text>Add </Text>

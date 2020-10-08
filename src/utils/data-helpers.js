@@ -32,7 +32,6 @@ function getAllMedicationDB(username) {
 			});
 		})
 		.then(() => {
-			console.log(newArray);
 			return newArray;
 		});
 }

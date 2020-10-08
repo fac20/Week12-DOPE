@@ -43,7 +43,6 @@ const getNHSData = (url, param) => {
 
 app.get("/search/:medicine", (req, res, next) => {
 	const params = req.params.medicine;
-	console.log(params);
 	return getNHSData(url, params)
 		.then(data => res.send(data))
 		.catch(error => next(error));
