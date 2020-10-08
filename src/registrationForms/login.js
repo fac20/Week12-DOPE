@@ -1,5 +1,3 @@
-/** @format */
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaLock, FaRegEnvelope, FaRegEyeSlash } from "react-icons/fa";

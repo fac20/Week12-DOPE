@@ -1,4 +1,3 @@
-/** @format */
 import { db } from "../connection.js";
 import "firebase/firestore";
 

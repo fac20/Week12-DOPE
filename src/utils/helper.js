@@ -1,5 +1,3 @@
-/** @format */
-
 // let objData = {
 // 	oftenFreq: "12",
 // 	name: "aspirin",

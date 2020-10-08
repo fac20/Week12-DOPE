@@ -1,5 +1,3 @@
-/** @format */
-
 import React, { useState } from "react";
 import { FaLock, FaRegEnvelope, FaRegEyeSlash } from "react-icons/fa";
 import { signUp, signInWithGoogle } from "../utils/user-management";
