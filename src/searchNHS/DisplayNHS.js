@@ -1,15 +1,14 @@
-/** @format */
-
 import React from "react";
 import styled from "styled-components";
-import errorImage from "./../assets/dogpaper.gif";
+import errorImage from "./../assets/laptop404.gif";
 
 const DisplayNHS = ({ nhsData }) => {
-	console.log(nhsData);
 	if (nhsData === "Something went wrong") {
 		return (
 			<div>
-				<Heading>Opps we dont have this one our database!</Heading>
+				<Heading>
+					Oops! <br /> We don't have this one in our database.
+				</Heading>
 				<ErrorImg alt="404" src={errorImage} height="200" />
 			</div>
 		);
@@ -19,7 +18,6 @@ const DisplayNHS = ({ nhsData }) => {
 	let sideEffectsText = sideEffectsObject.mainEntityOfPage.map(obj => {
 		return obj.text.replace("api", "www");
 	});
-	console.log(sideEffectsText);
 
 	return (
 		<>
@@ -28,7 +26,7 @@ const DisplayNHS = ({ nhsData }) => {
 				<article>
 					{<p dangerouslySetInnerHTML={{ __html: sideEffectsText.join("") }} />}
 					<h3>To find out more information, click below </h3>
-					<a href={nhsData.url.replace("api", "www")} target="_blank">
+					<a href={nhsData.url.replace("api", "www")} target="blank">
 						<ImgLogo alt="nhsLogo" src={nhsData.author.logo} />
 					</a>
 				</article>
@@ -53,6 +51,7 @@ const ErrorImg = styled.img`
 
 const Heading = styled.h3`
 	text-align: center;
+	line-height: 40px;
 `;
 
 const medicineH3 = styled.h3``;

@@ -24,20 +24,29 @@ export const NameInput = styled.input.attrs({ type: "text" })`
 	margin: 10px;
 	min-width: 40%;
 	height: 25px;
+	::-webkit-input-placeholder {
+		text-align: center;
+	}
 `;
 
 export const NumberInput = styled.input.attrs({ type: "number" })`
 	border: 1px solid rgba(0, 0, 0, 0.15);
 	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 	margin: 10px;
-	min-width: 40%;
+	width: 50%;
 	height: 25px;
+	::-webkit-input-placeholder {
+		text-align: center;
+	}
 `;
 
 export const TypeInput = styled.input.attrs({ type: "text" })`
 	border: 1px solid rgba(0, 0, 0, 0.15);
 	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 	margin: 10px;
+	::-webkit-input-placeholder {
+		text-align: center;
+	}
 `;
 
 export const HiddenCheckbox = styled.input.attrs({ type: "checkbox" })`
@@ -48,7 +57,6 @@ export const Button = styled.button`
 	margin: ${props => (props.margin ? props.margin : null)};
 	font-size: 14px;
 	font-weight: bold;
-	font-style: italic;
 	background: linear-gradient(180deg, #fdaf67 0%, #f7c649 100%);
 	border-radius: 30px;
 	border: none;
@@ -73,7 +81,7 @@ export const SelectInput = styled.select`
 	border-radius: 8px;
 	background: #ffffff;
 	border: 1px solid #828282;
-	font-family: Montserrat;
+	font-family: mosk;
 	font-style: normal;
 	font-weight: 500;
 	font-size: 14px;
@@ -81,6 +89,9 @@ export const SelectInput = styled.select`
 	letter-spacing: 0.1px;
 	color: #828282;
 	margin: 10px 0 10px 10px;
+	::-webkit-input-placeholder {
+		text-align: center;
+	}
 `;
 
 export const TextArea = styled.textarea`
@@ -88,4 +99,7 @@ export const TextArea = styled.textarea`
 	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 	margin: 0 10px 10px 10px;
 	width: 70%;
+	::-webkit-input-placeholder {
+		text-align: center;
+	}
 `;

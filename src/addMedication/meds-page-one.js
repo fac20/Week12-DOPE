@@ -16,13 +16,9 @@ const MedsPageOne = ({ inputs, handleChange, page }) => {
 	return (
 		<>
 			<label htmlFor="progress"></label>
-			<progress
-				style={{ color: "red" }}
-				id="progress"
-				value="33"
-				max="100"></progress>
+			<ProgressBar id="progress" value="33" max="100"></ProgressBar>
 			<Heading>Add your medicine</Heading>
-			<Label htmlFor="name">Name of medicine</Label>
+			<Label htmlFor="name">Name</Label>
 			<NameInput
 				id="name"
 				name="name"
@@ -116,8 +112,63 @@ export { MedsPageOne };
 
 /* additional styles for page 1 */
 
+export const ProgressBar = styled.progress`
+	box-shadow: 5px 0px 15px 0px #3798d9;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	height: 12px;
+	background-color: #3798d9;
+	border-radius: 60px;
+	box-shadow: 0 1px 0px 0 #3798d9;
+	padding: 2px;
+	display: block;
+	margin-bottom: 10px;
+	::-webkit-progress-bar {
+		background: white;
+		border-radius: 60px;
+	}
+	::-moz-progress-bar {
+		background: -moz-linear-gradient(
+				45deg,
+				transparent,
+				transparent 33%,
+				rgba(0, 0, 0, 0.1) 33%,
+				rgba(0, 0, 0, 0.1) 66%,
+				transparent 66%
+			),
+			-moz-linear-gradient(top, #3798d9, #3798d9),
+			-moz-linear-gradient(left, #3798d9, #3798d9);
+		background-size: 25px 14px, 100% 100%, 100% 100%;
+	}
+	::-webkit-progress-value {
+		background: -webkit-linear-gradient(
+				45deg,
+				transparent,
+				transparent 33%,
+				#3798d9 33%,
+				#3798d9 66%,
+				transparent 66%
+			),
+			-webkit-linear-gradient(top, #3798d9, #3798d9),
+			-webkit-linear-gradient(left, #3798d9, #3798d9);
+		background-color: white;
+		background-size: 25px 14px, 100% 100%, 100% 100%;
+	}
+	::-ms-fill {
+		background: repeating-linear-gradient(
+			45deg,
+			#3798d9,
+			#3798d9 10px,
+			#3798d9 10px,
+			#3798d9 20px
+		);
+	}
+`;
+
 const StrengthWrapper = styled.div`
 	display: flex;
+	margin-left: 40px;
 `;
 
 const MedsWrapper = styled.div`

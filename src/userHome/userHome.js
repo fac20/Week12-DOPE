@@ -28,32 +28,28 @@ function UserHome() {
 			<Wave alt="" src={wave} />
 			<Heading>
 				Welcome {auth().currentUser.displayName || auth().currentUser.email},
-				here's your view for the day!
+				here's your view for the day! 👋
 			</Heading>
 			{medicationData && medicationData.length ? (
 				<div>
 					<ButtonDiv>
 						<Link to="/add-medication">
-							<Button>
+							<AddButton type="button">
 								<FlexDiv>
 									<FaPlus color="#FFFFFF" size="25px" />
-									<Text>Add</Text>
 								</FlexDiv>
-							</Button>
+							</AddButton>
 						</Link>
 						<Link to="/search">
-							<Button>
-								{/* <FlexDiv> */}
-								<Text>NHS Meds Info</Text>
-								{/* </FlexDiv> */}
+							<Button type="button" style={{ marginLeft: "10px" }}>
+								<Text>Med Info</Text>
 							</Button>
 						</Link>
 
-						<SignOutButton margin="10px auto" onClick={signOut}>
-							SIGN OUT{" "}
+						<SignOutButton style={{ marginLeft: "10px" }} onClick={signOut}>
+							Sign Out{" "}
 						</SignOutButton>
 					</ButtonDiv>
-					{/* <img alt="pencil" width="50" style={{"float": "left"}} src="https://img.icons8.com/emoji/96/000000/pencil-emoji.png"/> */}
 					<DateWrapper>
 						<DateStyled>{today}</DateStyled>
 					</DateWrapper>
@@ -116,25 +112,77 @@ const HomeWrapper = styled.div`
 	text-align: center;
 `;
 
+const AddButton = styled.button`
+	margin: ${props => (props.margin ? props.margin : null)};
+	font-family: mosk;
+	font-size: 14px;
+	font-weight: bold;
+	text-decoration: none;
+	background: #8d8dd4;
+	box-shadow: 4px 5px #4c4cb4;
+	border-radius: 30px;
+	border: none;
+	overflow: hidden;
+	width: 60px;
+	height: 44px;
+	content: "";
+	&:hover {
+		cursor: pointer;
+		background: #8d8dd4;
+		box-shadow: 4px 5px #4c4cb4;
+		animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+	}
+	&:active {
+		position: relative;
+		top: 3px;
+		left: 3px;
+	}
+	transform: translate3d(0, 0, 0);
+	@keyframes shake {
+		10%,
+		90% {
+			transform: translate3d(-1px, 0, 0);
+		}
+
+		20%,
+		80% {
+			transform: translate3d(2px, 0, 0);
+		}
+
+		30%,
+		50%,
+		70% {
+			transform: translate3d(-4px, 0, 0);
+		}
+
+		40%,
+		60% {
+			transform: translate3d(4px, 0, 0);
+		}
+	}
+`;
+
 const SignOutButton = styled.button`
 	box-shadow: 4px 5px #ea8324;
-	color: #001d84;
-	font-family: "DM Sans", sans-serif;
+	color: black;
+	font-family: mosk;
 	font-size: 14px;
 	font-weight: bolder;
-	font-style: italic;
 	background: linear-gradient(180deg, #fdaf67 0%, #f7c649 100%);
 	border-radius: 30px;
 	border: none;
 	width: 100px;
 	height: 44px;
+	:after {
+		transform: translate(-0.3rem, -0.3rem);
+	}
 	align-self: center;
 	overflow: hidden;
 	z-index: 1;
 	outline: none;
 	:hover {
 		cursor: pointer;
-		box-shadow: 4px 5px #f7c649;
+		box-shadow: 4px 5px #fdaf67;
 		background: linear-gradient(180deg, #f7c649 0%, #ea8324 100%);
 	}
 	:active {
@@ -152,19 +200,18 @@ const ButtonDiv = styled.div`
 `;
 
 const DateStyled = styled.h2`
-	font-family: "DM Sans", sans-serif;
+	font-family: monospace;
 	text-shadow: 0 0px 4px rgba(0, 0, 0, 0.1);
-
 	font-size: 16px;
 	font-weight: bolder;
-	width: fit-content;
+	width: 58px;
 	margin: 40px auto;
 	box-shadow: 0 5px 15px rgb(57, 168, 228);
-	padding: 10px;
-	padding-left: 3em;
-	padding-right: 3em;
+	padding: 8px;
+	padding-left: 2em;
+	padding-right: 2em;
 	color: white;
-	border-radius: 5px;
+	border-radius: 30px;
 	background-image: linear-gradient(135deg, #8d8dd4, #45ced4);
 	&:hover {
 		transition: box-shadow 0.5s;

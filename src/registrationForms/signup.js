@@ -140,18 +140,17 @@ export const Form = styled.form`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	font-family: "DM Sans", sans-serif;
+	font-family: mosk;
 	width: 50%;
 	@media (max-width: 768px) {
 		width: 80%;
 	}
 `;
 export const Title = styled.h1`
-	font-family: "DM Sans", sans-serif;
+	font-family: mosk;
 	font-weight: medium;
 	font-size: 24px;
 	text-align: center;
-	/* margin-right: 1.5rem; */
 	margin: 0;
 `;
 export const Label = styled.label`
@@ -162,7 +161,7 @@ export const Label = styled.label`
 	margin: ${props => (props.margin ? props.margin : "0.8rem 0")};
 `;
 export const Input = styled.input`
-	font-family: "DM Sans", sans-serif;
+	font-family: mosk;
 	color: rgba(23, 23, 23, 1);
 	font-size: 16px;
 	/* creates underline input field */
@@ -178,6 +177,9 @@ export const Input = styled.input`
 			8px 10px 0px -7px rgba(253, 175, 103, 1);
 	}
 	text-align: center;
+	::-webkit-input-placeholder {
+		text-align: center;
+	}
 `;
 export const FlexDiv = styled.div`
 	display: flex;
@@ -203,7 +205,7 @@ export const Arrow = styled.img`
 `;
 
 export const LoginButton = styled.button`
-	font-family: "DM Sans", sans-serif;
+	font-family: mosk;
 	font-weight: bold;
 	font-size: 24px;
 	text-align: center;

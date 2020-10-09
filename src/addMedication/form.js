@@ -4,7 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import { MedsPageOne } from "./meds-page-one";
 import MedsPageTwo from "./meds-page-two";
 import MedsPageThree from "./meds-page-three";
-import { Form, Button } from "./formStyle";
+import { Form } from "./formStyle";
 import leftArrow from "../assets/leftArrow.svg";
 import rightArrow from "../assets/rightArrow.svg";
 import { convertData } from "./../utils/helper";
@@ -90,7 +90,7 @@ function AddMedication() {
 						</RightArrow>
 					)}
 
-					{page === 3 && <Button margin="0">Submit</Button>}
+					{page === 3 && <SubmitButton margin="0">Submit</SubmitButton>}
 				</ButtonWrapper>
 			</Form>
 		</>
@@ -120,4 +120,52 @@ const ButtonWrapper = styled.div`
 	justify-content: space-between;
 	width: 100%;
 	margin-top: 2rem;
+`;
+
+const SubmitButton = styled.button`
+	margin: ${props => (props.margin ? props.margin : null)};
+	font-size: 14px;
+	font-weight: bold;
+	background: linear-gradient(180deg, #fdaf67 0%, #f7c649 100%);
+	border-radius: 30px;
+	border: none;
+	width: 150px;
+	height: 44px;
+	align-self: center;
+	overflow: hidden;
+	z-index: 1;
+	outline: none;
+	:hover {
+		cursor: pointer;
+		background: linear-gradient(180deg, #f7c649 0%, #fdaf67 100%);
+		animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+	}
+	:active {
+		position: relative;
+		top: 3px;
+		left: 3px;
+	}
+	transform: translate3d(0, 0, 0);
+	@keyframes shake {
+		10%,
+		90% {
+			transform: translate3d(-1px, 0, 0);
+		}
+
+		20%,
+		80% {
+			transform: translate3d(2px, 0, 0);
+		}
+
+		30%,
+		50%,
+		70% {
+			transform: translate3d(-4px, 0, 0);
+		}
+
+		40%,
+		60% {
+			transform: translate3d(4px, 0, 0);
+		}
+	}
 `;

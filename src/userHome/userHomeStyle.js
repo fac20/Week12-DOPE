@@ -7,11 +7,11 @@ export const Heading = styled.h1`
 
 export const Button = styled.button`
 	margin: ${props => (props.margin ? props.margin : null)};
+	font-family: mosk;
 	font-size: 14px;
 	font-weight: bold;
 	text-decoration: none;
 	color: white;
-	font-style: italic;
 	background: #458fe0;
 	box-shadow: 4px 5px #1f70c9;
 	border-radius: 30px;

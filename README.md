@@ -2,71 +2,74 @@
 
 [![codecov](https://codecov.io/gh/fac20/Week12-DOPE/branch/master/graph/badge.svg?token=25TXY3QH4Q)](undefined)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![fac20](https://circleci.com/gh/fac20/Week12-DOPE.svg?style=svg)](https://app.circleci.com/pipelines/github/fac20/Week12-DOPE)
 
-## Available Scripts
+## Local Setup
 
-In the project directory, you can run:
+- Clone
+- Run ` npm i`
+- `npm start` to start the live server and view our app locally.
 
-### `npm start`
+## Team:
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- My Hoa - DevOps
+- Jihyun - QA
+- Terrence - UX Lead
+- Shaya - Scrum Facilitator
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Problem
 
-### `npm test`
+#### Problem Statement
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+It can be difficult to keep track of your prescribed medication, especially if you are taking many different types a day (e.g 5+ pills).
 
-### `npm run build`
+Its easy to lose track of what does what, what it looks like and when you are supposed to take it even if they are in labeled containers.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Those with more complex medication plans are given dosette boxes by their pharmacists to help ensure they are taking the pills correctly.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+This definitely helps people take the right medication at the right time but it does not explain what each medication actually does.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Who are the stakeholders?
 
-### `npm run eject`
+- People taking medication themselves
+- Carers who are looking after those on more complex prescriptions
+
+#### What is currently being done to solve this problem?
+
+There are currently many apps out there that let you set reminders to take pills and can give you overviews of the week, and month etc.
+
+Most let you type in whatever you want, only a few actually auto-complete medication names but they were all US based so names of medication are using the US brand names instead of the generic names we are used to here in the UK.
+
+We could not find any that actually held any information on the use of the drug or visual descriptions of them which we think are vital in helping people be more aware of their own prescriptions.
+
+## Our Initial Vision
+
+We wanted to create a platform that lets people organise and track all their medications with reminders along with a short description of what it does and what it looks like.
+
+This would help people take ownership of their medications more so they are better informed of what they are taking and are less likely to forget or make mistakes when handling them.
+
+## Our 2-Week Sprint Results
+
+### Tech Stack
+
+- React
+  - Switch, Link, Router, RTL
+- npm packages: Husky, Commitizen,
+- Styling: Styled-components, Custom fonts, CSS
+- Deployment: Firebase
+- CI: CircleCI
+- Testing: Jest, CodeCov & Cypress
+- Issue Management: Jira
+- Other tools: Firebase Auth, Firestore DB, NHS Api
+
+<!-- ### `npm run eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
 If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+To learn React, check out the [React documentation](https://reactjs.org/). -->
