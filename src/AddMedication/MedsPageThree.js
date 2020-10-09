@@ -1,8 +1,8 @@
 import React from "react";
 import SetSpecificTime from "./SetSpecificTime";
-import { Label, NumberInput, SelectInput } from "./formStyle";
+import { Label, NumberInput, SelectInput } from "./FormStyle";
 import styled from "styled-components";
-import { ProgressBar } from "./meds-page-one";
+import { ProgressBar } from "./MedsPageOne";
 
 const MedsPageTwo = ({ inputs, handleChange, page }) => {
 	let timeArray = [...Array(+inputs.oftenFreq).keys()];

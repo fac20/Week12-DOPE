@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import AddMedication from "./addMedication/form";
-import UserHome from "./userHome/userHome";
-import { SignUp } from "./registrationForms/signup";
-import { Login } from "./registrationForms/login";
-import { LandingPage } from "./landingPage/landingPage";
-import { SearchNHS } from "./searchNHS/SearchNHS";
-import MedicationAdded from "./addMedication/medication-added";
+import AddMedication from "./AddMedication/AddMedicationForm";
+import UserHome from "./UserHome/UserHome";
+import { SignUp } from "./RegistrationForms/Signup";
+import { Login } from "./RegistrationForms/Login";
+import { LandingPage } from "./LandingPage/LandingPage";
+import { SearchNHS } from "./SearchNHS/SearchNHS";
+import MedicationAdded from "./AddMedication/MedicationAdded";
 import PageNotFound from "./PageNotFound/PageNotFound.jsx";
 import {
 	BrowserRouter as Router,

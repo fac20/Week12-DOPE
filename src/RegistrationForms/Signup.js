@@ -4,9 +4,9 @@ import { signUp, signInWithGoogle } from "../utils/user-management";
 import { signUpDB } from "../utils/data-helpers";
 import { auth } from "../connection";
 import styled from "styled-components";
-import { Button } from "../addMedication/formStyle";
+import { Button } from "../AddMedication/FormStyle";
 import RightArrow from "../assets/rightarrow.png";
-import { Text } from "../landingPage/landingPage";
+import { Text } from "../LandingPage/LandingPage";
 import { Link } from "react-router-dom";
 import oval from "./../assets/oval.svg";
 import wave from "./../assets/wave.svg";
@@ -15,7 +15,7 @@ import {
 	GoogleIconWrapper,
 	GoogleIcon,
 	GoogleText,
-} from "./login";
+} from "./Login";
 
 function SignUp() {
 	const [email, setEmail] = useState("");

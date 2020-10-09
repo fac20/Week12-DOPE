@@ -1,6 +1,6 @@
 import React from "react";
-import { Label, NumberInput, SelectInput, TextArea } from "./formStyle";
-import { ProgressBar } from "./meds-page-one";
+import { Label, NumberInput, SelectInput, TextArea } from "./FormStyle";
+import { ProgressBar } from "./MedsPageOne";
 
 const MedsPageThree = ({ inputs, handleChange, page }) => {
 	return (

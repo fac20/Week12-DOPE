@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Label } from "./formStyle";
+import { Label } from "./FormStyle";
 
 const SetSpecificTime = ({ inputs, handleChange, id }) => {
 	const ampmId = `ampm${id}`;

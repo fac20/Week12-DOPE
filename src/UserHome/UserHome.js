@@ -5,8 +5,8 @@ import { auth } from "../connection";
 import { Link } from "react-router-dom";
 import { getAllMedicationDB } from "../utils/data-helpers";
 import DailyViewArray from "./DailyViewArray";
-import { Heading, Button, Text, FlexDiv } from "./userHomeStyle";
-import { signOut } from "./../utils/user-management";
+import { Heading, Button, Text, FlexDiv } from "./UserHomeStyle";
+import { signOut } from "../utils/user-management";
 import wave from "./../assets/wave.svg";
 
 function UserHome() {
