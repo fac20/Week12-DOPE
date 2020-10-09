@@ -56,7 +56,7 @@ const SelectInput = styled.select`
 	border-radius: 8px;
 	background: #ffffff;
 	border: 1px solid #828282;
-	font-family: Montserrat;
+	font-family: mosk;
 	font-style: normal;
 	font-weight: 500;
 	font-size: 14px;

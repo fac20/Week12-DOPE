@@ -1,5 +1,4 @@
 const fetchDataNHS = (params, options) => {
-	console.log(process.env.REACT_APP_nhsFetch + "/search/" + params);
 	return fetch(process.env.REACT_APP_nhsFetch + "/search/" + params, options)
 		.then(response => {
 			if (!response) {

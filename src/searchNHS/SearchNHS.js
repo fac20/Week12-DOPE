@@ -11,7 +11,6 @@ const SearchNHS = () => {
 		event.preventDefault();
 		let searchValue = event.target.search.value.toLowerCase();
 		fetchDataNHS(searchValue).then(data => {
-			console.log(data);
 			setNHSData(data);
 		});
 	};
@@ -23,7 +22,7 @@ const SearchNHS = () => {
 				<NameInput name="search" id="search" type="search" required />
 				<ButtonDiv>
 					<Link to="/home">
-						<Button type="button">Back to Diary</Button>
+						<Button type="button">Go back home</Button>
 					</Link>
 					<Button>Search</Button>
 				</ButtonDiv>
@@ -40,8 +39,7 @@ const Form = styled.form`
 	flex-direction: column;
 	align-items: center;
 	width: 90%;
-	margin-left: auto;
-	margin-right: auto;
+	margin: 0 auto;
 `;
 
 const Button = styled.button`
@@ -50,7 +48,6 @@ const Button = styled.button`
 	font-weight: bold;
 	text-decoration: none;
 	color: white;
-	font-style: italic;
 	background: #458fe0;
 	box-shadow: 4px 5px #1f70c9;
 	border-radius: 30px;
@@ -58,7 +55,6 @@ const Button = styled.button`
 	overflow: hidden;
 	width: 100px;
 	height: 44px;
-	z-index: 1;
 	:hover {
 		cursor: pointer;
 		background: #3d75b3;
@@ -79,14 +75,10 @@ const NameInput = styled.input.attrs({ type: "text" })`
 	height: 25px;
 `;
 
-const TypeInput = styled.input.attrs({ type: "text" })`
-	border: 1px solid rgba(0, 0, 0, 0.15);
-	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
-	margin: 10px;
-`;
-
 const Label = styled.label`
 	font-size: 18px;
+	font-weight: bold;
+	text-align: center;
 	margin: 10px;
 `;
 

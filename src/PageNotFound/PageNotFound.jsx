@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import errorImage from "../assets/cow.gif";
 import { Link } from "react-router-dom";
+
 const ImageWrapper = styled.div`
 	text-align: center;
 `;
@@ -20,8 +21,7 @@ const ButtonWrapper = styled.div`
 
 const Button = styled.button`
 	cursor: pointer;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-		Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+	font-family: mosk;
 	font-weight: bold;
 	border-radius: 30px;
 	margin: 1em;

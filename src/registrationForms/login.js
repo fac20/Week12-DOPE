@@ -131,7 +131,7 @@ const WalkingMan = styled.img`
 `;
 
 const SignUpButton = styled.button`
-	font-family: "DM Sans", sans-serif;
+	font-family: mosk;
 	font-weight: bold;
 	font-size: 24px;
 	text-align: center;

@@ -1,19 +1,18 @@
 import React from "react";
-// import styled from "styled-components";
-// import SelectTime from "./select-time";
 import SetSpecificTime from "./SetSpecificTime";
 import { Label, NumberInput, SelectInput } from "./formStyle";
 import styled from "styled-components";
+import { ProgressBar } from "./meds-page-one";
 
 const MedsPageTwo = ({ inputs, handleChange, page }) => {
 	let timeArray = [...Array(+inputs.oftenFreq).keys()];
 	return (
 		<>
 			<label htmlFor="progress"></label>
-			<progress id="progress" value="66" max="100"></progress>
-			<Label htmlFor="number">How many/much</Label>
+			<ProgressBar id="progress" value="66" max="100"></ProgressBar>
+			<Label htmlFor="number">Amount</Label>
 			<Container>
-				<NumberInput
+				<FrequencyInput
 					type="number"
 					id="number"
 					min="1"
@@ -23,7 +22,6 @@ const MedsPageTwo = ({ inputs, handleChange, page }) => {
 					onChange={handleChange}
 					required
 				/>{" "}
-				per dose
 			</Container>
 			<Label>How often</Label>
 			<Container>
@@ -75,5 +73,16 @@ export default MedsPageTwo;
 
 const Container = styled.div`
 	display: flex;
-	align-items: center;
+	margin-bottom: 10px;
+`;
+
+const FrequencyInput = styled.input.attrs({ type: "number" })`
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+	margin: auto;
+	width: 50%;
+	height: 25px;
+	::-webkit-input-placeholder {
+		text-align: center;
+	}
 `;
