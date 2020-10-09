@@ -1,8 +1,8 @@
 import React from "react";
 import SetSpecificTime from "./SetSpecificTime";
-import { Label, NumberInput, SelectInput } from "./formStyle";
+import { Label, NumberInput, SelectInput } from "./FormStyle";
 import styled from "styled-components";
-import { ProgressBar } from "./meds-page-one";
+import { ProgressBar } from "./MedsPageOne";
 
 const MedsPageTwo = ({ inputs, handleChange, page }) => {
 	let timeArray = [...Array(+inputs.oftenFreq).keys()];
@@ -48,15 +48,7 @@ const MedsPageTwo = ({ inputs, handleChange, page }) => {
 					</SelectInput>
 				</Label>
 			</Container>
-			{/* <button>Set specific time/time of day</button> */}
-			{/* {timeArray.map((x, i) => (
-				<SelectTime
-					key={i}
-					id={i}
-					handleChange={handleChange}
-					inputs={inputs}
-				/>
-			))}  */}
+
 			{timeArray.map(x => (
 				<SetSpecificTime
 					key={x}

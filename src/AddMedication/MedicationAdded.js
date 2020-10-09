@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button, Heading } from "./formStyle";
+import { Button, Heading } from "./FormStyle";
 import styled from "styled-components";
 
 const MedicationAdded = () => {

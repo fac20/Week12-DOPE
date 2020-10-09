@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaLock, FaRegEnvelope, FaRegEyeSlash } from "react-icons/fa";
 import { logIn, signInWithGoogle } from "../utils/user-management";
-import { Button } from "../addMedication/formStyle";
+import { Button } from "../AddMedication/FormStyle";
 import RightArrow from "../assets/rightarrow.png";
 import styled from "styled-components";
-import { Text } from "../landingPage/landingPage";
+import { Text } from "../LandingPage/LandingPage";
 import oval from "./../assets/oval.svg";
 import wave from "./../assets/wave.svg";
 import man from "./../assets/walkingMan.svg";
@@ -21,7 +21,7 @@ import {
 	Arrow,
 	Oval,
 	Wave,
-} from "./signup";
+} from "./Signup";
 
 function Login() {
 	const [email, setEmail] = useState("");

@@ -1,11 +1,15 @@
 import React from "react";
 import styled from "styled-components";
-import { Label } from "./formStyle";
+import { Label } from "./FormStyle";
 
 const SetSpecificTime = ({ inputs, handleChange, id }) => {
 	const ampmId = `ampm${id}`;
 	const hourId = `hour${id}`;
 	const minuteId = `minute${id}`;
+
+	if (!inputs[ampmId]) inputs[ampmId] = "AM";
+	if (!inputs[hourId]) inputs[hourId] = "00";
+	if (!inputs[minuteId]) inputs[minuteId] = "00";
 
 	return (
 		<Label>
@@ -13,7 +17,7 @@ const SetSpecificTime = ({ inputs, handleChange, id }) => {
 			<SelectInput
 				name={ampmId}
 				id="ampm"
-				value={inputs[ampmId] || "AM"}
+				value={inputs[ampmId]}
 				onChange={handleChange}>
 				<option value="AM">AM</option>
 				<option value="PM">PM</option>
@@ -21,7 +25,7 @@ const SetSpecificTime = ({ inputs, handleChange, id }) => {
 			<SelectInput
 				name={hourId}
 				id="hour"
-				value={inputs[hourId] || "00"}
+				value={inputs[hourId]}
 				onChange={handleChange}>
 				<option value="00">00</option>
 				<option value="01">01</option>
@@ -39,7 +43,7 @@ const SetSpecificTime = ({ inputs, handleChange, id }) => {
 			<SelectInput
 				name={minuteId}
 				id="minute"
-				value={inputs[minuteId] || "00"}
+				value={inputs[minuteId]}
 				onChange={handleChange}>
 				<option value="00">00</option>
 				<option value="10">10</option>

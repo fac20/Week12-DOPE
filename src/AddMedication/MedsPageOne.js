@@ -7,7 +7,7 @@ import {
 	NumberInput,
 	SelectInput,
 	TextArea,
-} from "./formStyle";
+} from "./FormStyle";
 import tabletPic from "../assets/typePill.png";
 import liquidPic from "../assets/typeLiquid.png";
 import needlePic from "../assets/typeNeedle.png";

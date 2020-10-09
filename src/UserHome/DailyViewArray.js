@@ -1,5 +1,5 @@
 import React from "react";
-import { MedicationDisplayData } from "./medication-display-data";
+import { MedicationDisplayData } from "./MedicationDisplayData";
 import { timePoints } from "../utils/helper";
 import styled from "styled-components";
 

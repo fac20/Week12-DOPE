@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { auth } from "../connection";
 import { Link, useHistory } from "react-router-dom";
-import { MedsPageOne } from "./meds-page-one";
-import MedsPageTwo from "./meds-page-two";
-import MedsPageThree from "./meds-page-three";
-import { Form } from "./formStyle";
+import { MedsPageOne } from "./MedsPageOne";
+import MedsPageTwo from "./MedsPageThree";
+import MedsPageThree from "./MedsPageTwo";
+import { Form } from "./FormStyle";
 import leftArrow from "../assets/leftArrow.svg";
 import rightArrow from "../assets/rightArrow.svg";
-import { convertData } from "./../utils/helper";
+import { convertData } from "../utils/helper";
 import styled from "styled-components";
-import { addMedicationDB } from "./../utils/data-helpers";
+import { addMedicationDB } from "../utils/data-helpers";
 
 /* ------- Form Components ------- */
 function AddMedication() {

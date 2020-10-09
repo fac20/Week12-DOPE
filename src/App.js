@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import AddMedication from "./addMedication/form";
-import UserHome from "./userHome/userHome";
-import { SignUp } from "./registrationForms/signup";
-import { Login } from "./registrationForms/login";
-import { LandingPage } from "./landingPage/landingPage";
-import { SearchNHS } from "./searchNHS/SearchNHS";
-import MedicationAdded from "./addMedication/medication-added";
+import AddMedication from "./AddMedication/AddMedicationForm";
+import UserHome from "./UserHome/UserHome";
+import { SignUp } from "./RegistrationForms/Signup";
+import { Login } from "./RegistrationForms/Login";
+import { LandingPage } from "./LandingPage/LandingPage";
+import { SearchNHS } from "./SearchNHS/SearchNHS";
+import MedicationAdded from "./AddMedication/MedicationAdded";
 import PageNotFound from "./PageNotFound/PageNotFound.jsx";
 import {
 	BrowserRouter as Router,
@@ -24,45 +24,89 @@ function App() {
 		user ? setAuthStatus(true) : setAuthStatus(false);
 	});
 
-	return (
-		<Router>
-			<>
-				<MobileLogo alt="mobile logo" src={mobileLogo} />
-			</>
-			<Switch>
-				<Route path="/" exact>
-					{authStatus ? <Redirect to="/home" /> : <LandingPage />}
-				</Route>
+	if (authStatus) {
+		return (
+			<Router>
+				<>
+					<MobileLogo alt="mobile logo" src={mobileLogo} />
+				</>
+				<Switch>
+					<Route path="/" exact>
+						<Redirect to="/home" />
+					</Route>
 
-				<Route path="/home" exact>
-					{authStatus ? <UserHome /> : <Redirect to="/login" />}
-				</Route>
+					<Route path="/home">
+						<UserHome />
+					</Route>
 
-				<Route path="/add-medication">
-					<AddMedication />
-				</Route>
+					<Route path="/add-medication">
+						<AddMedication />
+					</Route>
 
-				<Route path="/signup" exact>
-					{authStatus ? <Redirect to="/" /> : <SignUp />}
-				</Route>
+					<Route path="/signup">
+						<Redirect to="/home" />
+					</Route>
 
-				<Route path="/login">
-					{authStatus ? <Redirect to="/" /> : <Login />}
-				</Route>
+					<Route path="/login">
+						<Redirect to="/home" />
+					</Route>
 
-				<Route path="/medication-added">
-					<MedicationAdded />
-				</Route>
-				<Route path="/search">
-					<SearchNHS />
-				</Route>
+					<Route path="/medication-added">
+						<MedicationAdded />
+					</Route>
 
-				<Route>
-					<PageNotFound />
-				</Route>
-			</Switch>
-		</Router>
-	);
+					<Route path="/search">
+						<SearchNHS />
+					</Route>
+
+					<Route>
+						<PageNotFound />
+					</Route>
+				</Switch>
+			</Router>
+		);
+	} else {
+		return (
+			<Router>
+				<>
+					<MobileLogo alt="mobile logo" src={mobileLogo} />
+				</>
+				<Switch>
+					<Route path="/" exact>
+						<LandingPage />
+					</Route>
+
+					<Route path="/home">
+						<Redirect to="/login" />
+					</Route>
+
+					<Route path="/add-medication">
+						<Redirect to="/login" />
+					</Route>
+
+					<Route path="/signup">
+						<SignUp />
+					</Route>
+
+					<Route path="/login">
+						<Login />
+					</Route>
+
+					<Route path="/medication-added">
+						<Redirect to="/login" />
+					</Route>
+
+					<Route path="/search">
+						<SearchNHS />
+					</Route>
+
+					<Route>
+						<PageNotFound />
+					</Route>
+				</Switch>
+			</Router>
+		);
+	}
 }
 
 export default App;

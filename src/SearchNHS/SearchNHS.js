@@ -1,5 +1,5 @@
 import React from "react";
-import { fetchDataNHS } from "./../utils/api-helpers";
+import { fetchDataNHS } from "../utils/api-helpers";
 import { DisplayNHS } from "./DisplayNHS";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
