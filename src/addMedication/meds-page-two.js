@@ -48,15 +48,7 @@ const MedsPageTwo = ({ inputs, handleChange, page }) => {
 					</SelectInput>
 				</Label>
 			</Container>
-			{/* <button>Set specific time/time of day</button> */}
-			{/* {timeArray.map((x, i) => (
-				<SelectTime
-					key={i}
-					id={i}
-					handleChange={handleChange}
-					inputs={inputs}
-				/>
-			))}  */}
+
 			{timeArray.map(x => (
 				<SetSpecificTime
 					key={x}
