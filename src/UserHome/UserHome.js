@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { getAllMedicationDB } from "../utils/data-helpers";
 import DailyViewArray from "./DailyViewArray";
 import { Heading, Button, Text, FlexDiv } from "./UserHomeStyle";
-import { signOut } from "../utils/user-management";
+import { signOut } from "./../utils/user-management";
 import wave from "./../assets/wave.svg";
 
 function UserHome() {
@@ -30,29 +30,29 @@ function UserHome() {
 				Welcome {auth().currentUser.displayName || auth().currentUser.email},
 				here's your view for the day! 👋
 			</Heading>
+			<ButtonDiv>
+				<Link to="/add-medication">
+					<AddButton type="button">
+						<FlexDiv>
+							<FaPlus color="#FFFFFF" size="25px" />
+						</FlexDiv>
+					</AddButton>
+				</Link>
+				<Link to="/search">
+					<Button type="button" style={{ marginLeft: "10px" }}>
+						<Text>Med Info</Text>
+					</Button>
+				</Link>
+
+				<SignOutButton style={{ marginLeft: "10px" }} onClick={signOut}>
+					Sign Out{" "}
+				</SignOutButton>
+			</ButtonDiv>
+			<DateWrapper>
+				<DateStyled>{today}</DateStyled>
+			</DateWrapper>
 			{medicationData && medicationData.length ? (
 				<div>
-					<ButtonDiv>
-						<Link to="/add-medication">
-							<AddButton type="button">
-								<FlexDiv>
-									<FaPlus color="#FFFFFF" size="25px" />
-								</FlexDiv>
-							</AddButton>
-						</Link>
-						<Link to="/search">
-							<Button type="button" style={{ marginLeft: "10px" }}>
-								<Text>Med Info</Text>
-							</Button>
-						</Link>
-
-						<SignOutButton style={{ marginLeft: "10px" }} onClick={signOut}>
-							Sign Out{" "}
-						</SignOutButton>
-					</ButtonDiv>
-					<DateWrapper>
-						<DateStyled>{today}</DateStyled>
-					</DateWrapper>
 					<DailyViewArray medicationData={medicationData} />
 				</div>
 			) : (
@@ -99,7 +99,7 @@ const PillWrapper = styled.div`
 	box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
 	border-radius: 20px;
 	border: 1px solid #babfcd;
-	margin: auto;
+	margin: 1rem auto;
 	width: 327px;
 	height: 319px;
 `;
