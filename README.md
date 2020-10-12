@@ -61,13 +61,15 @@ This would help people take ownership of their medications more so they are bett
 
 - React
   - Switch, Link, Router, RTL
-- npm packages: Husky, Commitizen,
+- npm packages: Husky, Commitizen, Prettier, ESlint
 - Styling: Styled-components, Custom fonts, CSS
-- Deployment: Firebase
+- Deployment: Firebase hosting
+- Database: Firestore(noSQL)
+- Cloud Functions: Firebase cloud functions, Express.js
 - CI: CircleCI
 - Testing: Jest, CodeCov & Cypress
 - Issue Management: Jira
-- Other tools: Firebase Auth, Firestore DB, NHS Api
+- Other tools: Firebase Auth, NHS Api, Jira, Figma
 
 <!-- ### `npm run eject`
 
