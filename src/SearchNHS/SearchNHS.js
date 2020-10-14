@@ -19,6 +19,15 @@ const SearchNHS = () => {
 		<>
 			<Form onSubmit={findData}>
 				<Label htmlFor="search">Search for medicine information</Label>
+				<NoteDiv>
+					<p>
+						The NHS has multiple pages for common medication such as paracetamol
+						and asprin.{" "}
+					</p>
+					<p>To get results for them, please search the following:</p>
+					<p>Paracetamol: paracetamol-for-adults or paracetamol-for-children</p>
+					<p>Aspirin: low-dose-aspirin or aspirin-for-pain-relief</p>
+				</NoteDiv>
 				<NameInput name="search" id="search" type="search" required />
 				<ButtonDiv>
 					<Link to="/home">
@@ -87,4 +96,11 @@ const ButtonDiv = styled.div`
 	justify-content: space-evenly;
 	width: 100%;
 	margin-top: 2rem;
+`;
+
+const NoteDiv = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 `;
