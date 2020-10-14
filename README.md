@@ -50,17 +50,26 @@ This would help people take ownership of their medications more so they are bett
 
 ## Our 2-Week Sprint Results
 
+- Developed with user research and user testing feedback
+- Allows users to add medication information to a database
+- Pulls all medication data from the database and generates a daily
+  view with time points
+- Fully functional login and sign up authentication
+- Search page that fetches medication information from a NHS API
+
 ### Tech Stack
 
 - React
   - Switch, Link, Router, RTL
-- npm packages: Husky, Commitizen,
+- npm packages: Husky, Commitizen, Prettier, ESlint
 - Styling: Styled-components, Custom fonts, CSS
-- Deployment: Firebase
+- Deployment: Firebase hosting
+- Database: Firestore(noSQL)
+- Cloud Functions: Firebase cloud functions, Express.js
 - CI: CircleCI
 - Testing: Jest, CodeCov & Cypress
 - Issue Management: Jira
-- Other tools: Firebase Auth, Firestore DB, NHS Api
+- Other tools: Firebase Auth, NHS Api, Jira, Figma
 
 <!-- ### `npm run eject`
 

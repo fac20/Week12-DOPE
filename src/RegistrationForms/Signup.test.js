@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
-import { SignUp } from "./signup";
+import { SignUp } from "./Signup";
 import { BrowserRouter as Router } from "react-router-dom";
 
 test("Signup page loads", () => {
